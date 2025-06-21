@@ -101,16 +101,17 @@ const projectsData = [
   {
     title: "Software Enginnering",
     description:
-      "Entwicklung einer Website zur Datenbereinigung und -darstellung. Mitglied des Backend-Teams in einem agilen Softwareentwicklungsprojekt im Modul Softwareentwicklung, verantwortlich für die Entwicklung der Datenbank mit Django. Zusammenarbeit in einem Team aus drei Gruppen (Frontend, Backend).",
-    tags: ["Django", "Agile Methods", "Project Management", "Database Design"],
+      "Development of a website for data cleaning and visualization as part of an agile software engineering project. Served as a backend team member responsible for designing and implementing the database using Django. Collaborated closely within a team structured into three clusters: Documentation, Frontend, and Backend.",
+    tags: ["Agile Methods", "Project Management", "Team Work", "Communication", "Django"],
     image: "images/se/se.gif",
-    date: "Software Engineering Module",
+    date: "Mar 2024 - April 2024",
     category: "Web Development",
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
+    disabled: true,
   },
 ]
 
-// Sample timeline data with education details - removed Data Engineer and High School
+// Sample timeline data with education details
 const timelineData = [
   {
     year: "2022 - Present",
@@ -702,7 +703,8 @@ export default function Home() {
                   tags={project.tags}
                   image={project.image}
                   date={project.date}
-                  onClick={() => handleProjectClick(project)}
+                  onClick={project.disabled ? undefined : () => handleProjectClick(project)}
+                  disabled={project.disabled}
                 />
               ))}
             </Carousel>

@@ -15,13 +15,17 @@ interface ProjectCardProps {
   code?: string
   demoImages?: string[]
   onClick?: () => void
+  disabled?: boolean 
 }
 
-const ProjectCard = ({ title, description, tags, image, link, date, onClick }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, tags, image, link, date, onClick, disabled }: ProjectCardProps) => {
   return (
     <Card
-      className="overflow-hidden transition-all hover:shadow-lg bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 w-full flex-shrink-0 h-[540px] group cursor-pointer flex flex-col"
-      onClick={onClick}
+      className={`overflow-hidden transition-all hover:shadow-lg bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 w-full flex-shrink-0 h-[540px] group flex flex-col
+        ${disabled ? "pointer-events-none cursor-not-allowed" : "cursor-pointer"}`}
+      onClick={disabled ? undefined : onClick}
+      tabIndex={disabled ? -1 : 0}
+      aria-disabled={disabled}
     >
       <div className="relative h-72 w-full"> {/* Increase height here */}
         <Image
