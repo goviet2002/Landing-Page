@@ -1,0 +1,75 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    main, .container {
+      background: #fff;
+      padding: 32px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    h1, h2 {
+      color: #f7b731;
+      margin-top: 0.2em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.5em; }
+    a {
+      color: #3867d6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #f7b731;
+      text-decoration: underline;
+    }
+    ul {
+      margin: 1em 0 1em 2em;
+      line-height: 1.7;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    @media (max-width: 600px) {
+      main, .container {
+        padding: 12px 4vw;
+      }
+      h1 { font-size: 1.4em; }
+      h2 { font-size: 1.1em; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="-analysis">📊 Analysis</h1>
+    <p>I have developed some analytical SQL queries and a simple machine learning model in BigQuery to explore the F1 data. For example:</p>
+    <ul>
+      <li>
+        <p><strong>Race standings queries</strong> show each driver’s current points, position changes, and championship ranking after the current race (updated result after every new race).</p>
+        <p><img src="images/F1/Current%20Race%20Result%20-%20Standing_query.jpg" alt="Query">
+        <img src="images/F1/Current%20Race%20Result%20-%20Standing_result.jpg" alt="Query Result"></p>
+      </li>
+      <li>
+        <p><strong>Win streak analysis</strong> identifies drivers like Max Verstappen and Sebastian Vettel with the longest consecutive wins in F1 history.</p>
+        <p><img src="images/F1/driver_most_streaks_query.jpg" alt="Query">
+        <img src="images/F1/driver_most_streaks_result.jpg" alt="Query Result"></p>
+      </li>
+      <li>
+        <p><strong>Machine Learning model results</strong> estimate the probability of winning from pole position at around 13.9%, providing insight into the impact of starting grid position.</p>
+        <p><img src="images/F1/ML_predict_winner_from_pole.jpg" alt="ML Model"></p>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>

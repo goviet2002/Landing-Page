@@ -40,6 +40,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   const isFootballTeamAnalysis = project?.title === "Football Team Analysis"
   const isBananaAirlines = project?.title === "Banana Airlines Website"
   const isFlappyBird = project?.title === "Flappy Bird Game"
+  const isF1ETL = project?.title === "Automated F1 ETL-Pipeline";
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -66,43 +67,55 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
 
         <Tabs defaultValue="info" className="mt-4" onValueChange={setActiveTab}>
           <TabsList>
-            <TabsTrigger value="info" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
-              {isFootballTeamAnalysis ? (
+              {isF1ETL ? (
                 <>
-                  <BarChart3 className="h-4 w-4 mr-2" />
-                  Analysis
+                  <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                    <Info className="h-4 w-4 mr-2" />
+                    Overview
+                  </TabsTrigger>
+                  <TabsTrigger value="analysis" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                    <BarChart3 className="h-4 w-4 mr-2" />
+                    Analysis
+                  </TabsTrigger>
+                  {project.githubRepo && (
+                    <TabsTrigger value="repo">
+                      <Github className="h-4 w-4 mr-2" />
+                      Repository
+                    </TabsTrigger>
+                  )}
                 </>
               ) : (
-                <>
-                  <Info className="h-4 w-4 mr-2" />
-                  Overview
-                </>
-              )}
-            </TabsTrigger>
-            {isFootballTeamAnalysis && project.reportPdf && (
-              <TabsTrigger
-                value="report"
-                className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
-              >
-                <FileText className="h-4 w-4 mr-2" />
-                Report
-              </TabsTrigger>
-            )}
-            {/* Change Screenshots to Live Demo */}
-            {isBananaAirlines && project.demoImages && project.demoImages.length > 0 && (
-              <TabsTrigger
-                value="images"
-                className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
-              >
-                <MonitorPlay className="h-4 w-4 mr-2" /> {/* Use MonitorPlay icon */}
-                Live Demo
-              </TabsTrigger>
-            )}
-            {project.githubRepo && (
-              <TabsTrigger value="repo">
-                <Github className="h-4 w-4 mr-2" />
-                Repository
-              </TabsTrigger>
+              <>
+                {isFootballTeamAnalysis ? (
+                  <>
+                    <TabsTrigger value="info" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                      <BarChart3 className="h-4 w-4 mr-2" />
+                      Analysis
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="report"
+                      className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
+                    >
+                      <FileText className="h-4 w-4 mr-2" />
+                      Report
+                    </TabsTrigger>
+                  </>
+                ) : isBananaAirlines && project.demoImages && project.demoImages.length > 0 ? (
+                  <TabsTrigger
+                    value="images"
+                    className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
+                  >
+                    <MonitorPlay className="h-4 w-4 mr-2" /> {/* Use MonitorPlay icon */}
+                    Live Demo
+                  </TabsTrigger>
+                ) : null}
+                {project.githubRepo && (
+                  <TabsTrigger value="repo">
+                    <Github className="h-4 w-4 mr-2" />
+                    Repository
+                  </TabsTrigger>
+                )}
+              </>
             )}
           </TabsList>
 
@@ -137,6 +150,20 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                   title="Flappy Bird"
                 />
               </div>
+            ) : isF1ETL ? (
+              <>
+                <div className="relative h-64 w-full overflow-hidden rounded-lg mb-4">
+                  <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+                </div>
+                <p className="text-gray-300 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, index) => (
+                    <Badge key={index} variant="outline" className="bg-cyan-500/10 text-cyan-300 border-cyan-500/30">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </>
             ) : (
               <>
                 <div className="relative h-64 w-full overflow-hidden rounded-lg mb-4">
@@ -210,6 +237,34 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                 setSelectedFile={setSelectedRepoFile}
               />
             </TabsContent>
+          )}
+
+          {/* TabsContent for F1 ETL */}
+          {isF1ETL && (
+            <>
+              <TabsContent value="overview" className="mt-4">
+                <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                  <iframe
+                    src="/f1-overview.html"
+                    width="100%"
+                    height="100%"
+                    style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
+                    title="F1 ETL Overview"
+                  />
+                </div>
+              </TabsContent>
+              <TabsContent value="analysis" className="mt-4">
+                <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                  <iframe
+                    src="/F1-Analysis.html"
+                    width="100%"
+                    height="100%"
+                    style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
+                    title="F1 ETL Analysis"
+                  />
+                </div>
+              </TabsContent>
+            </>
           )}
         </Tabs>
       </DialogContent>

@@ -1,0 +1,107 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    main, .container {
+      background: #fff;
+      padding: 32px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    h1, h2 {
+      color: #f7b731;
+      margin-top: 0.2em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.5em; }
+    a {
+      color: #3867d6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #f7b731;
+      text-decoration: underline;
+    }
+    ul {
+      margin: 1em 0 1em 2em;
+      line-height: 1.7;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    @media (max-width: 600px) {
+      main, .container {
+        padding: 12px 4vw;
+      }
+      h1 { font-size: 1.4em; }
+      h2 { font-size: 1.1em; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="-f1-data-pipeline">🏎️ F1 Data Pipeline</h1>
+    <p>This project implements a robust, automated ETL (Extract, Transform, Load) pipeline for Formula 1 data, designed for reliability, scalability, and cloud integration. The pipeline is orchestrated via GitHub Actions and leverages modern Python data engineering practices.</p>
+    <h2 id="-extract">🔍 Extract</h2>
+    <ul>
+      <li><p><strong>Web Crawling</strong>: Custom Python crawlers use <strong>aiohttp</strong>, <strong>BeautifulSoup</strong>, and <strong>Playwright</strong> to asynchronously and interactively scrape F1 data from the official Formula 1 website, including:</p>
+        <ul>
+          <li>Driver standings and profiles</li>
+          <li>Team standings and profiles</li>
+          <li>Race results, sessions, and fastest laps</li>
+        </ul>
+        <p>Asynchronous requests enable the pipeline to fetch multiple web pages in parallel, significantly reducing the total extraction time compared to traditional sequential scraping. This is especially valuable for large, multi-year datasets and frequent updates.</p>
+      </li>
+      <li><p><strong>Checkpointing</strong>: Intermediate results and checkpoints are saved in <strong>f1_checkpoints</strong> folder to support incremental extraction and recovery from failures.</p>
+      </li>
+      <li><p><strong>Data Storage</strong>: Raw and processed data are stored in <strong>structured JSON</strong> files under data, organized by entity and year.</p>
+      </li>
+    </ul>
+    <h2 id="-transform">🔄 Transform</h2>
+    <ul>
+      <li><p><strong>Automatic schema detection</strong>: Identifies and adapts to changes in data structure across years and session types (Practice, Qualifying, Race, etc.).</p>
+      </li>
+      <li><p><strong>Dynamic column mapping</strong>: Handles different or missing columns for each session.</p>
+      </li>
+      <li><p><strong>Session-specific parsing</strong>: Applies custom logic for each session type to extract and normalize relevant data.</p>
+      </li>
+      <li><p><strong>Consistent output schema</strong>: Normalizes all records to a unified structure for reliable downstream analytics.</p>
+      </li>
+      <li><p><strong>Fact and Dimension Modeling</strong>: The pipeline builds <strong>star-schema-style</strong> tables:</p>
+        <ul>
+          <li>Dimensions: drivers, teams, races, sessions, countries.</li>
+          <li>Facts: race_results, qualifying_results, practice_results, fastest_laps, pit_stops, team_standings, driver_standings.</li>
+        </ul>
+        <p><img src="images/F1/DataModel.png" alt="Data Model"></p>
+      </li>
+    </ul>
+    <h2 id="-load">📥 Load</h2>
+    <ul>
+      <li><p><strong>Cloud Data Warehouse Integration</strong>: Transformed data is loaded into <strong>Google BigQuery using the google-cloud-bigquery library</strong>.</p>
+        <ul>
+          <li>Automated table creation and schema inference.</li>
+          <li>Bulk loading of both dimension and fact tables.</li>
+        </ul>
+      </li>
+      <li><p><strong>Automation</strong>: The entire ETL process is orchestrated by <strong>f1_scheduler.py</strong> and scheduled via a GitHub Actions workflow for weekly execution on <strong>Monday at 00:00 UTC</strong>.</p>
+      </li>
+    </ul>
+    <h2 id="-future-work">🚧 Future Work</h2>
+    <p>Planned enhancements include developing more advanced analytical queries and machine learning models for deeper F1 data analysis.</p>
+    <h2 id="-disclaimer">⚠️ Disclaimer</h2>
+    <p>Due to Formula 1’s Terms &amp; Conditions, this repository contains <strong>code only</strong>—no scraped data is included.  </p>
+  </main>
+</body>
+</html>

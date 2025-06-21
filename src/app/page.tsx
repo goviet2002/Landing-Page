@@ -44,6 +44,17 @@ import SimplePDFViewer from "@/components/simple-pdf-viewer"
 // Sample project data with code and demo images
 const projectsData = [
   {
+    title: "Automated F1 ETL-Pipeline",
+    description:
+      "Entwicklung einer automatisierten ETL-Pipeline für Formel 1 Daten. Die Pipeline extrahiert Renndaten aus verschiedenen Quellen, transformiert sie für Analysezwecke und lädt sie in eine relationale Datenbank. Implementierung mit Python, Pandas und SQL.",
+    tags: ["Python", "ETL", "BeautifulSoup", "asyncio", "BigQuery", "SQL", "Github Actions"],
+    image: "images/F1/F1.gif", 
+    githubRepo: "https://github.com/goviet2002/F1",
+    date: "May 2025 - now",
+    category: "Data Engineering",
+    demoImages: ["/placeholder.svg?height=600&width=800"],
+  },
+  {
     title: "Big Data Recommendation System",
     description:
       "Entwicklung eines Recommendation Systems im Modul Big Data zur Analyse von ca. 1 GB an Food Reviews mithilfe von Apache Spark und Scala. Implementierung von Algorithmen wie Collaborative Filtering, TF-IDF, Item Profiles, Min Hashing und Locality-Sensitive Hashing (LSH).",
