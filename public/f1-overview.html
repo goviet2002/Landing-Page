@@ -15,12 +15,12 @@
       box-shadow: 0 4px 24px rgba(0,0,0,0.07);
     }
     h1, h2 {
-      color: #f7b731;
+      color: #e10600; /* Formula 1 red */
       margin-top: 0.2em;
       margin-bottom: 0.5em;
       font-weight: 700;
     }
-    h1 { font-size: 2.2em; }
+    h1 { font-size: 2.2em; text-align: center; }
     h2 { font-size: 1.5em; }
     a {
       color: #3867d6;
@@ -28,12 +28,19 @@
       transition: color 0.2s;
     }
     a:hover {
-      color: #f7b731;
+      color: #e10600;
       text-decoration: underline;
     }
     ul {
       margin: 1em 0 1em 2em;
       line-height: 1.7;
+    }
+    code {
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 1em;
+      color: #e10600;
     }
     img {
       max-width: 100%;
@@ -56,7 +63,7 @@
     <p>This project implements a robust, automated ETL (Extract, Transform, Load) pipeline for Formula 1 data, designed for reliability, scalability, and cloud integration. The pipeline is orchestrated via GitHub Actions and leverages modern Python data engineering practices.</p>
     <h2 id="-extract">🔍 Extract</h2>
     <ul>
-      <li><p><strong>Web Crawling</strong>: Custom Python crawlers use <strong>aiohttp</strong>, <strong>BeautifulSoup</strong>, and <strong>Playwright</strong> to asynchronously and interactively scrape F1 data from the official Formula 1 website, including:</p>
+      <li><p><strong>Web Crawling</strong>: Custom Python crawlers use <code>aiohttp</code>, <code>BeautifulSoup</code>, and <code>Playwright</code> to asynchronously and interactively scrape F1 data from the official Formula 1 website, including:</p>
         <ul>
           <li>Driver standings and profiles</li>
           <li>Team standings and profiles</li>
@@ -64,9 +71,9 @@
         </ul>
         <p>Asynchronous requests enable the pipeline to fetch multiple web pages in parallel, significantly reducing the total extraction time compared to traditional sequential scraping. This is especially valuable for large, multi-year datasets and frequent updates.</p>
       </li>
-      <li><p><strong>Checkpointing</strong>: Intermediate results and checkpoints are saved in <strong>f1_checkpoints</strong> folder to support incremental extraction and recovery from failures.</p>
+      <li><p><strong>Checkpointing</strong>: Intermediate results and checkpoints are saved in <code>f1_checkpoints</code> folder to support incremental extraction and recovery from failures.</p>
       </li>
-      <li><p><strong>Data Storage</strong>: Raw and processed data are stored in <strong>structured JSON</strong> files under data, organized by entity and year.</p>
+      <li><p><strong>Data Storage</strong>: Raw and processed data are stored in <code>structured JSON</code> files under data, organized by entity and year.</p>
       </li>
     </ul>
     <h2 id="-transform">🔄 Transform</h2>
@@ -81,21 +88,21 @@
       </li>
       <li><p><strong>Fact and Dimension Modeling</strong>: The pipeline builds <strong>star-schema-style</strong> tables:</p>
         <ul>
-          <li>Dimensions: drivers, teams, races, sessions, countries.</li>
-          <li>Facts: race_results, qualifying_results, practice_results, fastest_laps, pit_stops, team_standings, driver_standings.</li>
+          <li>Dimensions: <code>drivers</code>, <code>teams</code>, <code>races</code>, <code>sessions</code>, <code>countries</code>.</li>
+          <li>Facts: <code>race_results</code>, <code>qualifying_results</code>, <code>practice_results</code>, <code>fastest_laps</code>, <code>pit_stops</code>, <code>team_standings</code>, <code>driver_standings</code>.</li>
         </ul>
         <p><img src="images/F1/DataModel.png" alt="Data Model"></p>
       </li>
     </ul>
     <h2 id="-load">📥 Load</h2>
     <ul>
-      <li><p><strong>Cloud Data Warehouse Integration</strong>: Transformed data is loaded into <strong>Google BigQuery using the google-cloud-bigquery library</strong>.</p>
+      <li><p><strong>Cloud Data Warehouse Integration</strong>: Transformed data is loaded into <code>Google BigQuery</code> using the <code>google-cloud-bigquery</code> library.</p>
         <ul>
           <li>Automated table creation and schema inference.</li>
           <li>Bulk loading of both dimension and fact tables.</li>
         </ul>
       </li>
-      <li><p><strong>Automation</strong>: The entire ETL process is orchestrated by <strong>f1_scheduler.py</strong> and scheduled via a GitHub Actions workflow for weekly execution on <strong>Monday at 00:00 UTC</strong>.</p>
+      <li><p><strong>Automation</strong>: The entire ETL process is orchestrated by <code>f1_scheduler.py</code> and scheduled via a GitHub Actions workflow for weekly execution on <strong>Monday at 00:00 UTC</strong>.</p>
       </li>
     </ul>
     <h2 id="-future-work">🚧 Future Work</h2>

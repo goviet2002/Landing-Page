@@ -43,32 +43,11 @@ import SimplePDFViewer from "@/components/simple-pdf-viewer"
 
 // Sample project data with code and demo images
 const projectsData = [
-  {
-    title: "Automated F1 ETL-Pipeline",
-    description:
-      "Entwicklung einer automatisierten ETL-Pipeline für Formel 1 Daten. Die Pipeline extrahiert Renndaten aus verschiedenen Quellen, transformiert sie für Analysezwecke und lädt sie in eine relationale Datenbank. Implementierung mit Python, Pandas und SQL.",
-    tags: ["Python", "ETL", "BeautifulSoup", "asyncio", "BigQuery", "SQL", "Github Actions"],
-    image: "images/F1/F1.gif", 
-    githubRepo: "https://github.com/goviet2002/F1",
-    date: "May 2025 - now",
-    category: "Data Engineering",
-    demoImages: ["/placeholder.svg?height=600&width=800"],
-  },
-  {
-    title: "Big Data Recommendation System",
-    description:
-      "Entwicklung eines Recommendation Systems im Modul Big Data zur Analyse von ca. 1 GB an Food Reviews mithilfe von Apache Spark und Scala. Implementierung von Algorithmen wie Collaborative Filtering, TF-IDF, Item Profiles, Min Hashing und Locality-Sensitive Hashing (LSH).",
-    tags: ["Big Data", "Scala", "Apache Spark", "Recommendation Systems", "Collaborative Filtering"],
-    image: "/placeholder.svg?height=400&width=600",
-    date: "Aug 2023 - Aug 2024",
-    category: "Big Data",
-    demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
-  },
-  {
+    {
     title: "Football Team Analysis",
     description:
-      "Eigenes Projekt zur Datenanalyse einer Fußballmannschaft der aktuellen Saison basierend auf Daten von Transfermarkt. Analyse mit Pandas und Seaborn, um Leistungskennzahlen wie Spielerstatistiken, Transferwerte und Teamdynamiken zu untersuchen. Visualisierung der Ergebnisse mit Power BI.",
-    tags: ["Python", "Pandas", "Seaborn", "PowerBI", "Data Analysis", "Data Visualization"],
+      "Personal project for data analysis of a football team for the current season based on data from Transfermarkt. Analysis with Pandas and Seaborn to examine performance metrics such as player statistics, transfer values, and team dynamics. Visualization of the results with Power BI.",
+    tags: ["Python", "Pandas", "Seaborn", "PowerBI", "Data Analysis", "Data Visualization", "Data Wrangling"],
     image: "images/football-project/football-analysis.gif",
     githubRepo: "https://github.com/goviet2002/Football-Club-Analysis",
     date: "Jan 2023 - Feb 2024",
@@ -78,8 +57,8 @@ const projectsData = [
   {
     title: "Banana Airlines Website",
     description:
-      "Entwicklung einer Website für eine Fluggesellschaft im Modul Datenbank. Funktionen umfassten die Suche, Buchung, Bezahlung, Reservierung und den Check-in für Flüge. Implementierung des Frontends mit HTML/CSS/JavaScript, Backend mit Flask, SQL und Datenbankmanagement mit MariaDB.",
-    tags: ["Flask", "SQL", "Database Management", "Web Development", "MariaDB"],
+      "Development of a website for an airline as part of the Database module at JGU Mainz. Features included search, booking, payment, and check-in for flights. Frontend implemented with HTML/CSS/JavaScript, backend with Flask, SQL, and database management with MariaDB/PostgreSQL.",
+    tags: ["Flask", "SQL", "Data Modelling", "HTML/CSS/Javascript", "MariaDB", "PostgreSQL"],
     image: "/images/bananaairlines/bananaairlines.gif",
     githubRepo: "https://github.com/goviet2002/BananaAirlines",
     date: "Sept 2023 - Sept 2023",
@@ -87,10 +66,32 @@ const projectsData = [
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
   },
   {
+    title: "Automated F1 ETL-Pipeline",
+    description:
+      "Automated ETL pipeline for Formula 1 data using Python for parallel extraction, dynamic schema detection, and transformation. Loads data into BigQuery with automated tables, bulk loading, weekly GitHub Actions orchestration, plus analytical SQL and ML for race prediction.",
+    tags: ["Python", "ETL", "BeautifulSoup", "asyncio", "BigQuery", "SQL", "Github Actions (CI/CD)"],
+    image: "images/F1/F1.gif", 
+    githubRepo: "https://github.com/goviet2002/F1",
+    date: "May 2025 - now",
+    category: "Data Engineering",
+    demoImages: ["/placeholder.svg?height=600&width=800"],
+  },
+  {
+    title: "Big Data Food Recommendation System",
+    description:
+      "Development of a recommendation system in the Big Data module for analyzing about 1 GB of food reviews using Apache Spark and Scala. Implementation of algorithms such as collaborative filtering, TF-IDF, item profiles, min hashing, and locality-sensitive hashing (LSH).",
+    tags: ["Big Data", "Scala", "Apache Spark", "Collaborative Filtering"],
+    image: "images/bigdata/bigdata-result.gif",
+    githubRepo: "https://github.com/goviet2002/Food-Recommendation-System",
+    date: "Aug 2023 - Aug 2024",
+    category: "Big Data",
+    demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
+  },
+  {
     title: "Flappy Bird Game",
     description:
-      "Entwicklung eines klassischen Flappy Bird Spiels im Rahmen des Moduls Einführung in die Programmierung. Einsatz von Simple I/O zur Darstellung einfacher grafischen Objekte zur Simulation von Spielmechaniken.",
-    tags: ["Python", "Game Development", "Programming", "Simple I/O"],
+      "Development of a classic Flappy Bird game as part of the Introduction to Programming module. Used Simple I/O package provided by JGU Mainz to display basic graphical objects and simulate game mechanics.",
+    tags: ["Python", "Game Development", "Programming", "basicio @JGU Mainz"],
     image: "/images/flappybird/flappybird.gif",
     githubRepo: "https://github.com/goviet2002/FlappyBird",
     date: "Sept 2022 - Sept 2022",
@@ -98,11 +99,11 @@ const projectsData = [
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
   },
   {
-    title: "Data Cleaning & Visualization Website",
+    title: "Software Enginnering",
     description:
       "Entwicklung einer Website zur Datenbereinigung und -darstellung. Mitglied des Backend-Teams in einem agilen Softwareentwicklungsprojekt im Modul Softwareentwicklung, verantwortlich für die Entwicklung der Datenbank mit Django. Zusammenarbeit in einem Team aus drei Gruppen (Frontend, Backend).",
     tags: ["Django", "Agile Methods", "Project Management", "Database Design"],
-    image: "/placeholder.svg?height=400&width=600",
+    image: "images/se/se.gif",
     date: "Software Engineering Module",
     category: "Web Development",
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],

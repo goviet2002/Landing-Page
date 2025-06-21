@@ -1,0 +1,158 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    main, .container {
+      background: #fff;
+      padding: 32px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    h1, h2 {
+      color: #1e88e5; /* Use the same blue for both */
+      margin-top: 0.2em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    h1 { font-size: 2.2em; text-align: center; }
+    h2 { font-size: 1.5em; }
+    a {
+      color: #3867d6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #1e88e5;
+      text-decoration: underline;
+    }
+    ul {
+      margin: 1em 0 1em 2em;
+      line-height: 1.7;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    blockquote {
+      background: #f1f5f9;
+      border-left: 4px solid #1e88e5;
+      margin: 1em 0;
+      padding: 0.7em 1.2em;
+      border-radius: 6px;
+      color: #444;
+    }
+    code {
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 1em;
+      color: #1e88e5;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 2em 0;
+    }
+    @media (max-width: 600px) {
+      main, .container {
+        padding: 12px 4vw;
+      }
+      h1 { font-size: 1.4em; }
+      h2 { font-size: 1.1em; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="-food-recommendation-system-big-data-praktikum-jgu-mainz-">🥗 Food Recommendation System</h1>
+    <h3 style="text-align:center; color:#1e88e5; font-weight:400; margin-top:-0.5em; margin-bottom:1em;">
+      Big Data Praktikum – JGU Mainz
+    </h3>
+    <p>This project implements a scalable, item-based collaborative filtering recommendation system using Apache Spark. It is designed to process large-scale user-recipe interaction data and generate personalized recipe recommendations.</p>
+    <h2 id="-dataset">🗂️ Dataset</h2>
+    <p>This project uses the <a href="https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-user-interactions/data?select=PP_recipes.csv">Food.com Recipes and User Interactions dataset</a> from Kaggle.<br>It contains millions of user-recipe interactions, ratings, and recipe metadata, making it suitable for large-scale recommendation system experiments.</p>
+    <h2 id="-features">✨ Features</h2>
+    <ul>
+      <li><strong>Item-based Collaborative Filtering:</strong> Recommends recipes based on similarities between items (recipes) rather than users.</li>
+      <li><strong>Cosine Similarity:</strong> Measures similarity between recipes using centered user ratings.</li>
+      <li><strong>Rating Centralization:</strong> Normalizes ratings by subtracting the mean rating for each recipe.</li>
+      <li><strong>Top-K Prediction:</strong> Predicts ratings for unrated recipes using the most similar items a user has already rated.</li>
+      <li><strong>Distributed Processing:</strong> Utilizes Spark RDDs for efficient, scalable computation.</li>
+    </ul>
+    <h2 id="-how-the-code-works">⚙️ How the Code Works</h2>
+    <p>This project implements an <strong>item-based collaborative filtering</strong> recommendation system using Apache Spark, designed for scalability and speed on large datasets.</p>
+    <h3 id="main-steps-and-algorithms">Main Steps and Algorithms</h3>
+    <ol>
+      <li>
+        <p><strong>Data Loading &amp; Preprocessing</strong></p>
+        <ul>
+          <li>Reads user-recipe-rating triples from a CSV file.</li>
+          <li>Filters and parses the data into <code>(userId, itemId, rating)</code> tuples.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Rating Centralization</strong></p>
+        <ul>
+          <li>The <code>center</code> method normalizes ratings for each recipe by subtracting the mean rating for that recipe.</li>
+          <li>This step removes popularity bias and improves similarity calculations.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Cosine Similarity Calculation</strong></p>
+        <ul>
+          <li>The <code>cosineSimilarityPerRow</code> method computes the cosine similarity between all pairs of recipes based on the centered ratings.</li>
+          <li>For each pair, it finds users who rated both, computes the dot product of their ratings, and divides by the product of their norms.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Top-K Prediction</strong></p>
+        <ul>
+          <li>The <code>predictTopK</code> method predicts ratings for recipes the user hasn’t rated.</li>
+          <li>For each candidate recipe, it finds the most similar recipes the user has rated, and predicts a rating using a weighted sum (by similarity).</li>
+          <li>Only the top-K most similar items are used for each prediction.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Output</strong></p>
+        <ul>
+          <li>The system outputs the top-K recommended recipes for the user, with predicted ratings, to the specified directory.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>(Optional) RMSE Calculation</strong></p>
+        <ul>
+          <li>The code includes (commented) logic for evaluating prediction accuracy using Root Mean Squared Error.</li>
+        </ul>
+      </li>
+    </ol>
+    <h3 id="combined-methods">Combined Methods</h3>
+    <ul>
+      <li><strong>Collaborative Filtering:</strong> Recommends items based on item-to-item similarity.</li>
+      <li><strong>Cosine Similarity:</strong> Quantifies similarity between recipes using user ratings.</li>
+      <li><strong>Rating Centralization:</strong> Normalizes for item popularity.</li>
+      <li><strong>Top-K Neighbors:</strong> Uses only the most similar items for prediction.</li>
+      <li><strong>Distributed Processing:</strong> All steps use Spark RDDs for parallel, scalable computation.</li>
+    </ul>
+    <h3 id="performance">Performance</h3>
+    <p>Because all major computations (grouping, joining, aggregating) are performed using Spark’s distributed RDDs, the system can efficiently process very large datasets—potentially millions of users and recipes—across multiple CPU cores or cluster nodes. On a modern multi-core machine or Spark cluster, even datasets with millions of interactions can be processed in minutes, depending on hardware and cluster size.</p>
+    <hr>
+    <p>This combination of methods ensures both accuracy and scalability, making the system suitable for real-world, large-scale recommendation tasks.</p>
+    <h2 id="-project-structure">📁 Project Structure</h2>
+    <ul>
+      <li><code>src/main/scala/FoodRecommendation.scala</code><br>Main logic for data processing, similarity computation, and prediction.</li>
+      <li><code>datasets/</code><br>Contains input data files such as <code>RAW_interactions.csv</code>, user and recipe metadata, and test splits.</li>
+      <li><code>Old/</code><br>Contains old output folders from previous runs (not used by the main program).</li>
+    </ul>
+    <h2 id="-usage">📖 Usage</h2>
+    <p>Build the project using <code>sbt</code>:</p>
+    <p><code>sbt package</code></p>
+  </main>
+</body>

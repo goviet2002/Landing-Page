@@ -1,0 +1,137 @@
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    main, .container {
+      background: #fff;
+      padding: 32px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+    h1, h2 {
+      color: #1e88e5; /* Use the same blue for both */
+      margin-top: 0.2em;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+    }
+    h1 { font-size: 2.2em; text-align: center; }
+    h2 { font-size: 1.5em; }
+    a {
+      color: #3867d6;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #1e88e5;
+      text-decoration: underline;
+    }
+    ul {
+      margin: 1em 0 1em 2em;
+      line-height: 1.7;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    blockquote {
+      background: #f1f5f9;
+      border-left: 4px solid #1e88e5;
+      margin: 1em 0;
+      padding: 0.7em 1.2em;
+      border-radius: 6px;
+      color: #444;
+    }
+    code {
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 1em;
+      color: #1e88e5;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 2em 0;
+    }
+    @media (max-width: 600px) {
+      main, .container {
+        padding: 12px 4vw;
+      }
+      h1 { font-size: 1.4em; }
+      h2 { font-size: 1.1em; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="-results-evaluation">📊 Results &amp; Evaluation</h1>
+    <p>This section summarizes the most important results, evaluation metrics, and insights from our item-based collaborative filtering recommender system, tested on the Food.com dataset. We include references to figures and charts extracted from our project presentation.</p>
+    <h2 id="-dataset-scale-system-performance">🚀 Dataset Scale &amp; System Performance</h2>
+    <ul>
+      <li><strong>170,000 recipes</strong></li>
+      <li><strong>25,000 users</strong></li>
+      <li><strong>700,000 interactions</strong></li>
+    </ul>
+    <blockquote>
+      <p>Our system efficiently processed this large-scale dataset using distributed Spark RDDs, validating its scalability and real-world readiness.</p>
+    </blockquote>
+    <h2 id="-cosine-signature-approximation-locality-sensitive-hashing-lsh-">🔎 Cosine Signature Approximation &amp; Locality Sensitive Hashing (LSH)</h2>
+    <p>We used cosine signature approximation and LSH to scale up the similarity search, making item-based collaborative filtering feasible on massive datasets.</p>
+    <ul>
+      <li><strong>LSH reduced candidate pairs from 28 billion to ~66 million</strong><br>This optimization drastically cut down computation time and made large-scale recommendations practical.</li>
+    </ul>
+    <p><strong>Figure 1: Number of candidate pairs found by LSH</strong><br><img src="images/bigdata/cf1.png" alt="Number of candidate pairs found by LSH"></p>
+    <ul>
+      <li><strong>Runtime flattens out after 20 hyperplanes</strong><br>Increasing the number of hyperplanes initially increases runtime, but the effect plateaus, indicating diminishing returns after a certain point.</li>
+    </ul>
+    <p><strong>Figure 2: Average runtime for LSH</strong><br><img src="images/bigdata/avgRunTimeLSH.png" alt="Average runtime for LSH"></p>
+    <h2 id="-error-accuracy">📈 Error &amp; Accuracy</h2>
+    <ul>
+      <li><strong>Low RMSE and Average Error</strong>
+        <ul>
+          <li>Most users have little variance in their ratings, leading to generally low RMSE/ME.</li>
+          <li><strong>Trade-off:</strong> More hyperplanes result in fewer candidates and a slightly worse (but faster) approximation.</li>
+          <li><strong>Centralized ratings:</strong><br>RMSE/ME = <code>0.59 / 0.45</code> (20 hyperplanes, 1 bucket)</li>
+          <li><strong>Uncentralized ratings:</strong><br>RMSE/ME = <code>0.054 / 0.61</code></li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Figure 3: RMSE and Avg Error vs. Hyperplanes</strong><br><img src="images/bigdata/approx1.png" alt="RMSE Error vs. Hyperplanes">
+    <img src="images/bigdata/approx2.png" alt="Avg Error vs. Hyperplanes"></p>
+    <ul>
+      <li><strong>Algorithmic Note:</strong><br>Tuning is essential: too many candidates (from low hyperplane count) can overwhelm system memory and abort the process.</li>
+    </ul>
+    <h2 id="-alternative-baseline-approaches">⚡️ Alternative Baseline Approaches</h2>
+    <p>We evaluated alternative prediction baselines using recipe metadata:</p>
+    <ul>
+      <li>
+        <p><strong>Date-only Prediction</strong></p>
+        <ul>
+          <li>Predicting based only on recipe publication date is <em>very fast</em> (<code>12 seconds</code>) but yields much higher error (<code>RMSE = 1.4</code>, <code>ME = 0.9</code>).</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Nutrition-based Prediction</strong></p>
+        <ul>
+          <li>Predicting with nutrition data results in a good trade-off: <code>RMSE = 0.77</code>, <code>ME = 0.62</code>, with a runtime of just <code>15 seconds</code>.</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Figure 4: Prediction based on nutrition</strong><br><img src="images/bigdata/nutrition.png" alt="Prediction based on nutrition"></p>
+    <h2 id="-recommendations-takeaways">📝 Recommendations &amp; Takeaways</h2>
+    <ul>
+      <li><strong>Hybrid models</strong>: Combining collaborative filtering with side information (e.g., nutrition, date) is promising for further improving recommendations.</li>
+      <li><strong>Parameter tuning</strong>: Adjusting hyperplanes and bucket counts is crucial for optimizing the balance between accuracy and scalability.</li>
+      <li><strong>Scalability proven</strong>: All results demonstrate that the system can process millions of interactions in minutes—suitable for real-world, large-scale deployment.</li>
+    </ul>
+  </main>
+</body>
+</html>

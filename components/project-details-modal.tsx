@@ -38,9 +38,10 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   if (!project) return null
 
   const isFootballTeamAnalysis = project?.title === "Football Team Analysis"
-  const isBananaAirlines = project?.title === "Banana Airlines Website"
+  const isBananaAirlines = project?.title === "Banana Airlines Website";
   const isFlappyBird = project?.title === "Flappy Bird Game"
   const isF1ETL = project?.title === "Automated F1 ETL-Pipeline";
+  const isBigData = project.title === "Big Data Food Recommendation System"
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -67,7 +68,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
 
         <Tabs defaultValue="info" className="mt-4" onValueChange={setActiveTab}>
           <TabsList>
-              {isF1ETL ? (
+              {(isF1ETL || isBigData)? (
                 <>
                   <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
                     <Info className="h-4 w-4 mr-2" />
@@ -88,7 +89,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
               <>
                 {isFootballTeamAnalysis ? (
                   <>
-                    <TabsTrigger value="info" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                    <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
                       <BarChart3 className="h-4 w-4 mr-2" />
                       Analysis
                     </TabsTrigger>
@@ -101,14 +102,28 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                     </TabsTrigger>
                   </>
                 ) : isBananaAirlines && project.demoImages && project.demoImages.length > 0 ? (
-                  <TabsTrigger
-                    value="images"
-                    className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
-                  >
-                    <MonitorPlay className="h-4 w-4 mr-2" /> {/* Use MonitorPlay icon */}
-                    Live Demo
-                  </TabsTrigger>
-                ) : null}
+                  <>
+                    <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                      <Info className="h-4 w-4 mr-2" />
+                      Overview
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="images"
+                      className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
+                    >
+                      <MonitorPlay className="h-4 w-4 mr-2" /> {/* Use MonitorPlay icon */}
+                      Live Demo
+                    </TabsTrigger>
+                  </>
+                ) : isFlappyBird ? (
+                  <>
+                    <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                      <Info className="h-4 w-4 mr-2" />
+                      Overview
+                    </TabsTrigger>
+                  </>
+                ) :
+                 null}
                 {project.githubRepo && (
                   <TabsTrigger value="repo">
                     <Github className="h-4 w-4 mr-2" />
@@ -119,7 +134,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
             )}
           </TabsList>
 
-          <TabsContent value="info" className="mt-4">
+          <TabsContent value="overview" className="mt-4">
             {isFootballTeamAnalysis ? (
               <div className="mb-4">
                 <iframe
@@ -152,33 +167,17 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
               </div>
             ) : isF1ETL ? (
               <>
-                <div className="relative h-64 w-full overflow-hidden rounded-lg mb-4">
-                  <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-                </div>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, index) => (
-                    <Badge key={index} variant="outline" className="bg-cyan-500/10 text-cyan-300 border-cyan-500/30">
-                      {tag}
-                    </Badge>
-                  ))}
+                <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                  <iframe
+                    src="/f1-overview.html"
+                    width="100%"
+                    height="100%"
+                    style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
+                    title="Big Data Overview"
+                  />
                 </div>
               </>
-            ) : (
-              <>
-                <div className="relative h-64 w-full overflow-hidden rounded-lg mb-4">
-                  <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-                </div>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, index) => (
-                    <Badge key={index} variant="outline" className="bg-cyan-500/10 text-cyan-300 border-cyan-500/30">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </>
-            )}
+            ) : null}
           </TabsContent>
 
           {/* Only show Report tab for Football Team Analysis */}
@@ -198,17 +197,19 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
 
           {/* Only show Live Demo for Banana Airlines */}
           {isBananaAirlines && (
-            <TabsContent value="images" className="mt-4">
-              <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
-                <iframe
-                  src="https://bananaairlines.onrender.com/"
-                  width="100%"
-                  height="100%"
-                  style={{ minHeight: "70vh", border: "none" }}
-                  title="Banana Airlines Live"
-                />
-              </div>
-            </TabsContent>
+            <>
+              <TabsContent value="images" className="mt-4">
+                <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                  <iframe
+                    src="https://bananaairlines.onrender.com/"
+                    width="100%"
+                    height="100%"
+                    style={{ minHeight: "70vh", border: "none" }}
+                    title="Banana Airlines Live"
+                  />
+                </div>
+              </TabsContent>
+            </>
           )}
 
           {/* For other projects, keep showing screenshots if any */}
@@ -242,17 +243,6 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
           {/* TabsContent for F1 ETL */}
           {isF1ETL && (
             <>
-              <TabsContent value="overview" className="mt-4">
-                <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
-                  <iframe
-                    src="/f1-overview.html"
-                    width="100%"
-                    height="100%"
-                    style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
-                    title="F1 ETL Overview"
-                  />
-                </div>
-              </TabsContent>
               <TabsContent value="analysis" className="mt-4">
                 <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
                   <iframe
@@ -261,6 +251,34 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                     height="100%"
                     style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
                     title="F1 ETL Analysis"
+                  />
+                </div>
+              </TabsContent>
+            </>
+          )}
+
+          {/* TabsContent for Big Data */}
+          {isBigData && (
+            <>
+              <TabsContent value="overview" className="mt-4">
+                <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                  <iframe
+                    src="/BigData.html"
+                    width="100%"
+                    height="100%"
+                    style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
+                    title="Big Data Overview"
+                  />
+                </div>
+              </TabsContent>
+              <TabsContent value="analysis" className="mt-4">
+                <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                  <iframe
+                    src="/bigdata-result.html"
+                    width="100%"
+                    height="100%"
+                    style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
+                    title="Big Data Analysis"
                   />
                 </div>
               </TabsContent>

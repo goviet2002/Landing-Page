@@ -41,7 +41,7 @@ const ProjectCard = ({ title, description, tags, image, link, date, onClick }: P
         )}
       </CardHeader>
       <CardContent className="p-4 pt-2 flex-grow overflow-hidden">
-        <CardDescription className="text-gray-300 mb-4 line-clamp-5">{description}</CardDescription>
+        <CardDescription className="text-gray-300 mb-4 line-clamp-5 text-justify">{description}</CardDescription>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <Badge
