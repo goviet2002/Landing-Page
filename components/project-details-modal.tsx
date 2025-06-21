@@ -329,8 +329,14 @@ function RepoFileTree({ repoUrl, selectedFile, setSelectedFile }: { repoUrl: str
         return res.json()
       })
       .then(data => {
-        if (data.content) {
-          setFileContent(atob(data.content.replace(/\n/g, "")))
+        if (data.truncated) {
+          setFileContent("File too large to display.")
+        } else if (data.content) {
+          if (isImage(selectedFile) || isPDF(selectedFile)) {
+            setFileContent(data.content.replace(/\n/g, ""))
+          } else {
+            setFileContent(atob(data.content.replace(/\n/g, "")))
+          }
         } else {
           setFileContent("No content found.")
         }
@@ -395,7 +401,7 @@ function RepoFileTree({ repoUrl, selectedFile, setSelectedFile }: { repoUrl: str
       <div className="flex-1">
         {selectedFile && (
           <>
-            {isImage(selectedFile) && fileContent && fileContent !== "No content found." ? (
+            {isImage(selectedFile) && fileContent && fileContent !== "Cannot read content." ? (
               <img
                 src={`data:${getImageMimeType(selectedFile)};base64,${fileContent}`}
                 alt={selectedFile}
