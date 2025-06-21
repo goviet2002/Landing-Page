@@ -38,6 +38,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
 
   const isFootballTeamAnalysis = project?.title === "Football Team Analysis"
   const isBananaAirlines = project?.title === "Banana Airlines Website"
+  const isFlappyBird = project?.title === "Flappy Bird Game"
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -79,7 +80,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
               </TabsTrigger>
             )}
             {/* Change Screenshots to Live Demo */}
-            {!isFootballTeamAnalysis && project.demoImages && project.demoImages.length > 0 && (
+            {isBananaAirlines && project.demoImages && project.demoImages.length > 0 && (
               <TabsTrigger
                 value="images"
                 className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
@@ -115,6 +116,16 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                   height="100%"
                   style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
                   title="Banana Airlines"
+                />
+              </div>
+            ) : isFlappyBird ? (
+              <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                <iframe
+                  src="/flappybird.html"
+                  width="100%"
+                  height="100%"
+                  style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
+                  title="Flappy Bird"
                 />
               </div>
             ) : (

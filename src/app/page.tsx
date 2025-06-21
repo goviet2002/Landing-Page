@@ -80,7 +80,8 @@ const projectsData = [
     description:
       "Entwicklung eines klassischen Flappy Bird Spiels im Rahmen des Moduls Einführung in die Programmierung. Einsatz von Simple I/O zur Darstellung einfacher grafischen Objekte zur Simulation von Spielmechaniken.",
     tags: ["Python", "Game Development", "Programming", "Simple I/O"],
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/flappybird/flappybird.gif",
+    githubRepo: "https://github.com/goviet2002/FlappyBird",
     date: "Sept 2022 - Sept 2022",
     category: "Game Development",
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
