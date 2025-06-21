@@ -20,7 +20,7 @@ interface ProjectDetailsModalProps {
     code?: string
     demoImages?: string[]
     githubRepo?: string
-    reportPdf?: string // <-- add this
+    reportPdf?: string
   } | null
 }
 
@@ -28,6 +28,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   const [mounted, setMounted] = useState(false)
   const [activeTab, setActiveTab] = useState("info") // 1. Track active tab
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [selectedRepoFile, setSelectedRepoFile] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true)
@@ -45,9 +46,17 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
       <DialogContent
         className={clsx(
           "bg-[#1e293b] border-cyan-500/30 text-white max-h-[100vh] overflow-y-auto transition-all duration-300",
-          (activeTab === "images" && isBananaAirlines) || activeTab === "repo"
+          // Wide for Banana Airlines Live Demo
+          activeTab === "images" && isBananaAirlines
             ? "max-w-[1300px]"
-            : "max-w-[130vh]"
+          // Wide for Repository when a file is selected
+          : activeTab === "repo" && selectedRepoFile
+            ? "max-w-[1300px]"
+          // Compact only for Repository tab with nothing selected
+          : activeTab === "repo"
+            ? "max-w-[400px]"
+          // Default for all other tabs
+            : "max-w-[1000px]"
         )}
       >
         <DialogHeader>
@@ -103,8 +112,8 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                 <iframe
                   src="/football-analysis.html"
                   width="100%"
-                  height="600"
-                  style={{ border: "none", borderRadius: "8px" }}
+                  height="100%"
+                  style={{ minHeight: "70vh", border: "none", borderRadius: "8px" }}
                   title="Football Analysis"
                 />
               </div>
@@ -195,7 +204,11 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
 
           {project.githubRepo && (
             <TabsContent value="repo">
-              <RepoExplorer repoUrl={project.githubRepo} />
+              <RepoExplorer
+                repoUrl={project.githubRepo}
+                selectedFile={selectedRepoFile}
+                setSelectedFile={setSelectedRepoFile}
+              />
             </TabsContent>
           )}
         </Tabs>
@@ -208,12 +221,11 @@ const isImage = (name: string) => /\.(png|jpe?g|gif|svg)$/i.test(name)
 const isPDF = (name: string) => /\.pdf$/i.test(name)
 
 // Component to display the file tree
-function RepoFileTree({ repoUrl }: { repoUrl: string }) {
+function RepoFileTree({ repoUrl, selectedFile, setSelectedFile }: { repoUrl: string, selectedFile: string | null, setSelectedFile: (f: string | null) => void }) {
   const [pathStack, setPathStack] = useState<string[]>([""])
   const [items, setItems] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [selectedFile, setSelectedFile] = useState<string | null>(null)
   const [fileContent, setFileContent] = useState<string>("")
 
   const currentPath = pathStack[pathStack.length - 1]
@@ -258,7 +270,10 @@ function RepoFileTree({ repoUrl }: { repoUrl: string }) {
 
   return (
     <div className="flex gap-4">
-      <ul className="w-64 bg-[#0f172a] border border-cyan-500/20 rounded-lg p-2 overflow-auto max-h-[400px]">
+      <ul
+        className="bg-[#0f172a] border border-cyan-500/20 rounded-lg p-2 overflow-auto max-h-[400px]"
+        style={{ width: "360px" }} // <-- Increased width for repo file tree only
+      >
         {pathStack.length > 1 && (
           <li className="flex items-center gap-2 py-1">
             <Folder className="w-4 h-4 text-gray-400" />
@@ -332,8 +347,8 @@ function RepoFileTree({ repoUrl }: { repoUrl: string }) {
 }
 
 // Use this in your modal:
-function RepoExplorer({ repoUrl }: { repoUrl: string }) {
-  return <RepoFileTree repoUrl={repoUrl} />
+function RepoExplorer({ repoUrl, selectedFile, setSelectedFile }: { repoUrl: string, selectedFile: string | null, setSelectedFile: (f: string | null) => void }) {
+  return <RepoFileTree repoUrl={repoUrl} selectedFile={selectedFile} setSelectedFile={setSelectedFile} />
 }
 
 function getImageMimeType(name: string) {
