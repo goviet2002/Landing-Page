@@ -185,7 +185,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
             <TabsContent value="report" className="mt-4">
               <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
                 <iframe
-                  src={project.reportPdf}
+                  src={`${project.reportPdf}#toolbar=0`}
                   width="100%"
                   height="100%"
                   style={{ minHeight: "70vh", border: "none" }}
