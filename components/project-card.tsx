@@ -20,16 +20,15 @@ interface ProjectCardProps {
 const ProjectCard = ({ title, description, tags, image, link, date, onClick }: ProjectCardProps) => {
   return (
     <Card
-      className="overflow-hidden transition-all hover:shadow-lg bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 w-full flex-shrink-0 h-[420px] group cursor-pointer flex flex-col"
+      className="overflow-hidden transition-all hover:shadow-lg bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 w-full flex-shrink-0 h-[500px] group cursor-pointer flex flex-col"
       onClick={onClick}
     >
-      <div className="relative h-48 w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/10 to-blue-900/30 z-10 group-hover:opacity-70 transition-opacity"></div>
+      <div className="relative h-72 w-full"> {/* Increase height here */}
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover object-top rounded-t-lg" // Add object-top
         />
       </div>
       <CardHeader className="p-4 pb-2">

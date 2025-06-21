@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { ImageIcon, Info, Github, Folder, FileText } from "lucide-react"
+import { Info, FileText, ImageIcon, Github, BarChart3, Folder } from "lucide-react"
 
 interface ProjectDetailsModalProps {
   isOpen: boolean
@@ -19,6 +19,7 @@ interface ProjectDetailsModalProps {
     code?: string
     demoImages?: string[]
     githubRepo?: string
+    reportPdf?: string // <-- add this
   } | null
 }
 
@@ -32,6 +33,9 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   if (!mounted) return null
   if (!project) return null
 
+  // Helper to check if this is the Football Team Analysis project
+  const isFootballTeamAnalysis = project?.title === "Football Team Analysis"
+
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="bg-[#1e293b] border-cyan-500/30 text-white max-w-[130vh] max-h-[100vh] overflow-y-auto">
@@ -43,10 +47,30 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
         <Tabs defaultValue="info" className="mt-4">
           <TabsList>
             <TabsTrigger value="info" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
-              <Info className="h-4 w-4 mr-2" />
-              Overview
+              {isFootballTeamAnalysis ? (
+                <>
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  Analysis
+                </>
+              ) : (
+                <>
+                  <Info className="h-4 w-4 mr-2" />
+                  Overview
+                </>
+              )}
             </TabsTrigger>
-            {project.demoImages && project.demoImages.length > 0 && (
+            {/* Only show Report tab for Football Team Analysis */}
+            {isFootballTeamAnalysis && project.reportPdf && (
+              <TabsTrigger
+                value="report"
+                className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
+              >
+                <FileText className="h-4 w-4 mr-2" />
+                Report
+              </TabsTrigger>
+            )}
+            {/* Show Screenshots tab for other projects */}
+            {!isFootballTeamAnalysis && project.demoImages && project.demoImages.length > 0 && (
               <TabsTrigger
                 value="images"
                 className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
@@ -64,20 +88,50 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
           </TabsList>
 
           <TabsContent value="info" className="mt-4">
-            <div className="relative h-64 w-full overflow-hidden rounded-lg mb-4">
-              <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-            </div>
-            <p className="text-gray-300 mb-4">{project.description}</p>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag, index) => (
-                <Badge key={index} variant="outline" className="bg-cyan-500/10 text-cyan-300 border-cyan-500/30">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
+            {isFootballTeamAnalysis ? (
+              <div className="mb-4">
+                <iframe
+                  src="/football-analysis.html"
+                  width="100%"
+                  height="600"
+                  style={{ border: "none", borderRadius: "8px" }}
+                  title="Football Analysis"
+                />
+              </div>
+            ) : (
+              <>
+                <div className="relative h-64 w-full overflow-hidden rounded-lg mb-4">
+                  <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+                </div>
+                <p className="text-gray-300 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, index) => (
+                    <Badge key={index} variant="outline" className="bg-cyan-500/10 text-cyan-300 border-cyan-500/30">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </>
+            )}
           </TabsContent>
 
-          {project.demoImages && project.demoImages.length > 0 && (
+          {/* Only show Report tab for Football Team Analysis */}
+          {isFootballTeamAnalysis && project.reportPdf && (
+            <TabsContent value="report" className="mt-4">
+              <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                <iframe
+                  src={project.reportPdf}
+                  width="100%"
+                  height="100%"
+                  style={{ minHeight: "70vh", border: "none" }}
+                  title="Club Analysis Report"
+                />
+              </div>
+            </TabsContent>
+          )}
+
+          {/* Only show Screenshots for other projects */}
+          {!isFootballTeamAnalysis && project.demoImages && project.demoImages.length > 0 && (
             <TabsContent value="images" className="mt-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {project.demoImages.map((img, index) => (

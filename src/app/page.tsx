@@ -58,11 +58,11 @@ const projectsData = [
     description:
       "Eigenes Projekt zur Datenanalyse einer Fußballmannschaft der aktuellen Saison basierend auf Daten von Transfermarkt. Analyse mit Pandas und Seaborn, um Leistungskennzahlen wie Spielerstatistiken, Transferwerte und Teamdynamiken zu untersuchen. Visualisierung der Ergebnisse mit Power BI.",
     tags: ["Python", "Pandas", "Seaborn", "PowerBI", "Data Analysis", "Data Visualization"],
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/football-analysis.gif",
     githubRepo: "https://github.com/goviet2002/Football-Club-Analysis",
     date: "Jan 2023 - Feb 2024",
     category: "Data Analysis",
-    demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
+    reportPdf: "/documents/Club Analysis Report.pdf",
   },
   {
     title: "Banana Airlines Website",
