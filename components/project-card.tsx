@@ -20,7 +20,7 @@ interface ProjectCardProps {
 const ProjectCard = ({ title, description, tags, image, link, date, onClick }: ProjectCardProps) => {
   return (
     <Card
-      className="overflow-hidden transition-all hover:shadow-lg bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 w-full flex-shrink-0 h-[500px] group cursor-pointer flex flex-col"
+      className="overflow-hidden transition-all hover:shadow-lg bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 w-full flex-shrink-0 h-[540px] group cursor-pointer flex flex-col"
       onClick={onClick}
     >
       <div className="relative h-72 w-full"> {/* Increase height here */}
@@ -41,7 +41,7 @@ const ProjectCard = ({ title, description, tags, image, link, date, onClick }: P
         )}
       </CardHeader>
       <CardContent className="p-4 pt-2 flex-grow overflow-hidden">
-        <CardDescription className="text-gray-300 mb-4 line-clamp-3">{description}</CardDescription>
+        <CardDescription className="text-gray-300 mb-4 line-clamp-5">{description}</CardDescription>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <Badge

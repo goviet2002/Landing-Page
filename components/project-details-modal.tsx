@@ -5,7 +5,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
-import { Info, FileText, ImageIcon, Github, BarChart3, Folder } from "lucide-react"
+import { Info, FileText, ImageIcon, Github, BarChart3, Folder, MonitorPlay, Maximize2, Minimize2 } from "lucide-react"
+import clsx from "clsx"
 
 interface ProjectDetailsModalProps {
   isOpen: boolean
@@ -25,6 +26,8 @@ interface ProjectDetailsModalProps {
 
 const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalProps) => {
   const [mounted, setMounted] = useState(false)
+  const [activeTab, setActiveTab] = useState("info") // 1. Track active tab
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -33,18 +36,25 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   if (!mounted) return null
   if (!project) return null
 
-  // Helper to check if this is the Football Team Analysis project
   const isFootballTeamAnalysis = project?.title === "Football Team Analysis"
+  const isBananaAirlines = project?.title === "Banana Airlines Website"
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="bg-[#1e293b] border-cyan-500/30 text-white max-w-[130vh] max-h-[100vh] overflow-y-auto">
+      <DialogContent
+        className={clsx(
+          "bg-[#1e293b] border-cyan-500/30 text-white max-h-[100vh] overflow-y-auto transition-all duration-300",
+          (activeTab === "images" && isBananaAirlines) || activeTab === "repo"
+            ? "max-w-[1300px]"
+            : "max-w-[130vh]"
+        )}
+      >
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-cyan-400">{project.title}</DialogTitle>
           {project.date && <DialogDescription className="text-gray-300">{project.date}</DialogDescription>}
         </DialogHeader>
 
-        <Tabs defaultValue="info" className="mt-4">
+        <Tabs defaultValue="info" className="mt-4" onValueChange={setActiveTab}>
           <TabsList>
             <TabsTrigger value="info" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
               {isFootballTeamAnalysis ? (
@@ -59,7 +69,6 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                 </>
               )}
             </TabsTrigger>
-            {/* Only show Report tab for Football Team Analysis */}
             {isFootballTeamAnalysis && project.reportPdf && (
               <TabsTrigger
                 value="report"
@@ -69,14 +78,14 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                 Report
               </TabsTrigger>
             )}
-            {/* Show Screenshots tab for other projects */}
+            {/* Change Screenshots to Live Demo */}
             {!isFootballTeamAnalysis && project.demoImages && project.demoImages.length > 0 && (
               <TabsTrigger
                 value="images"
                 className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
               >
-                <ImageIcon className="h-4 w-4 mr-2" />
-                Screenshots
+                <MonitorPlay className="h-4 w-4 mr-2" /> {/* Use MonitorPlay icon */}
+                Live Demo
               </TabsTrigger>
             )}
             {project.githubRepo && (
@@ -96,6 +105,16 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                   height="600"
                   style={{ border: "none", borderRadius: "8px" }}
                   title="Football Analysis"
+                />
+              </div>
+            ) : isBananaAirlines ? (
+              <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                <iframe
+                  src="/bananaairlines.html"
+                  width="100%"
+                  height="100%"
+                  style={{ minHeight: "70vh", border: "none", borderRadius: "8px", background: "#fff" }}
+                  title="Banana Airlines"
                 />
               </div>
             ) : (
@@ -130,8 +149,23 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
             </TabsContent>
           )}
 
-          {/* Only show Screenshots for other projects */}
-          {!isFootballTeamAnalysis && project.demoImages && project.demoImages.length > 0 && (
+          {/* Only show Live Demo for Banana Airlines */}
+          {isBananaAirlines && (
+            <TabsContent value="images" className="mt-4">
+              <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-cyan-500/20 bg-[#0f172a]">
+                <iframe
+                  src="https://bananaairlines.onrender.com/"
+                  width="100%"
+                  height="100%"
+                  style={{ minHeight: "70vh", border: "none" }}
+                  title="Banana Airlines Live"
+                />
+              </div>
+            </TabsContent>
+          )}
+
+          {/* For other projects, keep showing screenshots if any */}
+          {!isBananaAirlines && project.demoImages && project.demoImages.length > 0 && (
             <TabsContent value="images" className="mt-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {project.demoImages.map((img, index) => (
@@ -159,40 +193,9 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   )
 }
 
-function RepoFileViewer({ repoUrl, filePath = "README.md" }: { repoUrl: string, filePath?: string }) {
-  const [content, setContent] = useState<string>("")
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (!repoUrl) return
-    const repoPath = repoUrl.replace("https://github.com/", "")
-    fetch(`https://api.github.com/repos/${repoPath}/contents/${filePath}`)
-      .then(res => {
-        if (!res.ok) throw new Error("File not found")
-        return res.json()
-      })
-      .then(data => {
-        if (data.content) {
-          setContent(atob(data.content.replace(/\n/g, "")))
-        } else {
-          setError("No content found.")
-        }
-      })
-      .catch(() => setError("Could not load file."))
-      .finally(() => setLoading(false))
-  }, [repoUrl, filePath])
-
-  if (loading) return <div className="text-gray-400">Loading file...</div>
-  if (error) return <div className="text-red-400">{error}</div>
-  return (
-    <pre className="bg-[#0f172a] border border-cyan-500/20 rounded-lg p-4 overflow-auto text-gray-200 text-sm">
-      {content}
-    </pre>
-  )
-}
 const isImage = (name: string) => /\.(png|jpe?g|gif|svg)$/i.test(name)
 const isPDF = (name: string) => /\.pdf$/i.test(name)
+
 // Component to display the file tree
 function RepoFileTree({ repoUrl }: { repoUrl: string }) {
   const [pathStack, setPathStack] = useState<string[]>([""])

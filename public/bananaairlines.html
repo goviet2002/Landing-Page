@@ -1,0 +1,109 @@
+<html><head><style>body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f8fafc;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+main, .container {
+  background: #fff;
+  padding: 32px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+h1, h2 {
+  color: #f7b731;
+  margin-top: 0.2em; /* or 0 */
+  margin-bottom: 0.5em;
+  font-weight: 700;
+}
+h1 { font-size: 2.2em; }
+h2 { font-size: 1.5em; }
+a {
+  color: #3867d6;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #f7b731;
+  text-decoration: underline;
+}
+ul {
+  margin: 1em 0 1em 2em;
+  line-height: 1.7;
+}
+img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+@media (max-width: 600px) {
+  main, .container {
+    padding: 12px 4vw;
+  }
+  h1 { font-size: 1.4em; }
+  h2 { font-size: 1.1em; }
+}
+</style></head><body>
+  <main>
+    <h1 id="banana-airlines-university-project">Banana Airlines – University Project</h1>
+    <p>This project is an airline booking website originally built on MariaDB, now migrated to PostgreSQL for cloud hosting with <a href="https://supabase.com/">Supabase</a> and <a href="https://render.com/">Render</a>.</p>
+    <p><strong>Live Demo:</strong> <a href="https://bananaairlines.onrender.com/">https://bananaairlines.onrender.com/</a>     </p>
+    <h2 id="-data-model">🗄️ Data Model</h2>
+    <p>The data model is designed to support a full-featured airline booking system. Key tables include:</p>
+    <ul>
+    <li><strong>aircraft</strong>: Stores aircraft details and capacities for each class.</li>
+    <li><strong>cities</strong>: Contains all supported cities and their airport codes.</li>
+    <li><strong>offer</strong>: Defines tier-based offers (Bronze, Silver, Gold).</li>
+    <li><strong>user</strong>: Handles authentication and user types (client or employee).</li>
+    <li><strong>employee</strong>: Stores employee information, linked to the user table.</li>
+    <li><strong>client</strong>: Stores client information, linked to the user table and their tier.</li>
+    <li><strong>flight</strong>: Contains all flight schedules, source/destination, and times.</li>
+    <li><strong>class</strong>: Stores pricing for each flight and class.</li>
+    <li><strong>ticket</strong>: Represents bookings, including status, check-in, and payment.</li>
+    </ul>
+    <p>All relationships are enforced with foreign keys. The schema is defined in <a href="sql/bananaairlines.sql"><code>sql/bananaairlines.sql</code></a> and is compatible with PostgreSQL/Supabase.</p>
+    <p><img src="/images/bananaairlines/dataModel.png" alt="alt text"></p>
+    <h2 id="-python-automation">🐍 Python Automation</h2>
+    <ul>
+    <li>Python scripts (see <a href="sql/create_flight.py"><code>sql/create_flight.py</code></a>) are used to generate large numbers of flights, aircraft, and classes with realistic random data.</li>
+    <li>These scripts output SQL files (e.g., <code>flights.sql</code>, <code>aircrafts.sql</code>, <code>classes.sql</code>) that can be loaded into the PostgreSQL database.</li>
+    </ul>
+    <h2 id="-running-locally">💻 Running Locally</h2>
+    <ul>
+    <li>You can still run the project locally with PostgreSQL or MariaDB (in old commmits)</li>
+    <li>To use PostgreSQL: load the schema into your database (e.g., Supabase), and update the connection settings in <code>app.py</code> to match your environment.</li>
+    </ul>
+    <h2 id="-features">📝 Features</h2>
+    <ul>
+    <li><strong>User Registration &amp; Login:</strong> With email and username uniqueness checks.</li>
+    <li><strong>Flight Booking:</strong> Dynamic selection of available destinations and dates, with tier-based discounts.</li>
+    <li><strong>Booking Confirmation:</strong> Generates a confirmation file for each booking.</li>
+    <li><strong>Flight Management:</strong> Employees can add, edit, or remove flights and manage tier offers.</li>
+    <li><strong>Cancellation &amp; Check-in:</strong> Users can cancel bookings or check in online.</li>
+    <li><strong>Tier System:</strong> Bronze, Silver, and Gold tiers with different offers and discounts.</li>
+    </ul>
+    <p><img src="/images/bananaairlines/main.png" alt="alt text">
+    <img src="/images/bananaairlines/tier.png" alt="alt text"></p>
+    <p>If you don&#39;t have an account, you can create it by clicking the Sign Up button and filling in your personal information. You cannot create a new account if the registered Email has already existed.</p>
+    <p><img src="/images/bananaairlines/login.png" alt="alt text">
+    <img src="/images/bananaairlines/signup.png" alt="alt text"></p>
+    <p>You can then book flights! By choosing the departure only the available destinations will appear and you can also only choose the available date. Discounts can also be applied based on your current tier. The flight can only be booked if the remaining seats are larger than the number of tickets you want to book.</p>
+    <p><img src="/images/bananaairlines/chooseflight.png" alt="alt text">
+    <img src="/images/bananaairlines/availableflight.png" alt="alt text">
+    <img src="/images/bananaairlines/checkdetailflight.png" alt="alt text"></p>
+    <p><img src="/images/bananaairlines/myaccount.png" alt="alt text">
+    <img src="/images/bananaairlines/myflight.png" alt="alt text"></p>
+    <p><img src="/images/bananaairlines/checkin.png" alt="alt text"></p>
+    <p>After booking all the flights will be displayed in the account details or my flights and you will receive a booking confirmation through an external file. You can cancel the flight by giving the reason or you can do check-in.</p>
+    <p><img src="/images/bananaairlines/cf.png" alt="alt text">
+    <img src="/images/bananaairlines/checkedin.png" alt="alt text"></p>
+    <h2 id="-employee-access">👨‍💻 Employee Access</h2>
+    <ul>
+    <li>Employees can log in with the default account (<code>admin_boss</code> / <code>123</code>) to manage flights and customer requests.</li>
+    </ul>
+    <p><img src="/images/bananaairlines/employee1.png" alt="alt text">
+    <img src="/images/bananaairlines/employee2.png" alt="alt text"></p>
+  </main>
+</body></html>

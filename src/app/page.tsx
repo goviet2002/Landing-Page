@@ -58,7 +58,7 @@ const projectsData = [
     description:
       "Eigenes Projekt zur Datenanalyse einer Fußballmannschaft der aktuellen Saison basierend auf Daten von Transfermarkt. Analyse mit Pandas und Seaborn, um Leistungskennzahlen wie Spielerstatistiken, Transferwerte und Teamdynamiken zu untersuchen. Visualisierung der Ergebnisse mit Power BI.",
     tags: ["Python", "Pandas", "Seaborn", "PowerBI", "Data Analysis", "Data Visualization"],
-    image: "/football-analysis.gif",
+    image: "images/football-project/football-analysis.gif",
     githubRepo: "https://github.com/goviet2002/Football-Club-Analysis",
     date: "Jan 2023 - Feb 2024",
     category: "Data Analysis",
@@ -69,7 +69,7 @@ const projectsData = [
     description:
       "Entwicklung einer Website für eine Fluggesellschaft im Modul Datenbank. Funktionen umfassten die Suche, Buchung, Bezahlung, Reservierung und den Check-in für Flüge. Implementierung des Frontends mit HTML/CSS/JavaScript, Backend mit Flask, SQL und Datenbankmanagement mit MariaDB.",
     tags: ["Flask", "SQL", "Database Management", "Web Development", "MariaDB"],
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/bananaairlines/bananaairlines.gif",
     githubRepo: "https://github.com/goviet2002/BananaAirlines",
     date: "Sept 2023 - Sept 2023",
     category: "Web Development",

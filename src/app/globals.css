@@ -92,3 +92,22 @@ body {
     @apply bg-background text-foreground;
   }
 }
+/* Blurred scrollbar for modal/dialog */
+.max-h-\[100vh\]::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+.max-h-\[100vh\]::-webkit-scrollbar-thumb {
+  background: rgba(30,41,59,0.4);           /* semi-transparent dark */
+  border-radius: 8px;
+  backdrop-filter: blur(4px);               /* blur effect */
+  -webkit-backdrop-filter: blur(4px);       /* Safari support */
+}
+.max-h-\[100vh\]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* For Firefox */
+.max-h-\[100vh\] {
+  scrollbar-color: rgba(30,41,59,0.4) transparent;
+}
