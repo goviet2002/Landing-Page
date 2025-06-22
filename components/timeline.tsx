@@ -42,9 +42,10 @@ interface TimelineProps {
   items: TimelineItem[]
   onViewCertificate: (title: string, url: string) => void
   onViewDetailedInfo: (item: TimelineItem) => void
+  onViewCourses?: (courses: any[]) => void
 }
 
-const Timeline = ({ items, onViewCertificate, onViewDetailedInfo }: TimelineProps) => {
+const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses }: TimelineProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
   const toggleExpand = (index: number) => {
@@ -187,14 +188,16 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo }: TimelineProp
                     )}
 
                     {/* For Bachelor: show "View Courses" */}
-                    {item.showCourses && (
+                    {item.showCourses && item.courses && (
                       <Button
                         variant="outline"
                         size="sm"
                         className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
                         onClick={e => {
                           e.stopPropagation()
-                          onViewDetailedInfo(item)
+                          if (onViewCourses) {
+                            onViewCourses(item.courses!)
+                          }
                         }}
                       >
                         <ExternalLink className="h-3 w-3 mr-1" />

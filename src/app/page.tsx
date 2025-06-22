@@ -646,6 +646,7 @@ export default function Home() {
             items={timelineData}
             onViewCertificate={handleViewCertificate}
             onViewDetailedInfo={handleViewDetailedInfo}
+            onViewCourses={handleViewCourses} // <-- add this prop
           />
         </div>
       </section>
