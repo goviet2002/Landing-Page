@@ -94,7 +94,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                     </div>
                   )}
                   <div>
-                    <h3 className="text-lg font-semibold text-white">{t(item.title)}</h3>
+                    <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                     {item.degree && <p className="text-cyan-400">{item.degree}</p>}
                   </div>
                 </div>
@@ -213,7 +213,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                     )}
 
                     {/* For extra certificates: show buttons for each certificate, translated */}
-                    {item.extraCertificates && item.extraCertificates.map((cert, idx) => (
+                    {item.extraCertificates && item.extraCertificates.map((cert: { name: string; url: string }, idx: number) => (
                       <Button
                         key={idx}
                         variant="outline"

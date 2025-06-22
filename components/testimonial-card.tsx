@@ -14,7 +14,7 @@ const TestimonialCard = ({ quote, author, role, image }: TestimonialCardProps) =
     <Card className="bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 transition-all overflow-hidden h-full">
       <CardContent className="p-6 flex flex-col h-full">
         <Quote className="h-8 w-8 text-cyan-400/30 mb-4" />
-        <p className="text-gray-300 italic mb-6 flex-grow">{quote}</p>
+        <p className="text-gray-300 italic mb-6 flex-grow text-justify">{quote}</p>
         <div className="flex items-center mt-auto">
           <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4 bg-[#0f172a]">
             {image ? (

@@ -29,7 +29,9 @@ const translations: { [lang: string]: TranslationDict } = {
     // Hero section
     "hero.title": "Transforming Data into Insights",
     "hero.description":
-      "I'm a motivated Computer Science student at Johannes Gutenberg-Universität Mainz, specializing in Data Science with a minor in Economics. With a strong grade of 1.9, I'm passionate about extracting meaningful insights from data and developing innovative solutions.",
+      "I'm a motivated Computer Science student at Johannes Gutenberg-Universität Mainz, specializing in Data Science \
+       with a minor in Economics. With a strong grade of 1.9 of german grading system, I'm passionate about extracting meaningful insights from \
+        data and developing innovative solutions.",
     "hero.viewProjects": "View Projects",
     "hero.downloadCV": "Download CV",
     "hero.role": "Data Science Student",
@@ -38,7 +40,8 @@ const translations: { [lang: string]: TranslationDict } = {
     // About section
     "about.title": "About Me",
     "about.description":
-      "My technical toolkit includes Python, SQL, Pandas, and visualization tools like PowerBI and Seaborn. I've worked on projects ranging from sports analytics to recommendation systems using big data technologies.",
+      "My technical toolkit includes Python, SQL, Pandas, and visualization tools like PowerBI and Seaborn. \
+       I've worked on projects ranging from sports analytics to recommendation systems using big data technologies.",
     "about.languages": "Languages",
     "about.german": "Business fluent",
     "about.english": "Business fluent",
@@ -237,7 +240,10 @@ const translations: { [lang: string]: TranslationDict } = {
     // Hero section
     "hero.title": "Daten in Erkenntnisse umwandeln",
     "hero.description":
-      "Ich bin ein motivierter Informatikstudent an der Johannes Gutenberg-Universität Mainz, spezialisiert auf Data Science mit Nebenfach Wirtschaftswissenschaften. Mit einem starken Notendurchschnitt von 1,9 bin ich leidenschaftlich daran interessiert, aussagekräftige Erkenntnisse aus Daten zu gewinnen und innovative Lösungen zu entwickeln.",
+      "Ich bin ein motivierter Informatikstudent an der Johannes Gutenberg-Universität Mainz, \
+       spezialisiert auf Data Science mit Nebenfach Wirtschaftswissenschaften. Mit einem starken \
+        Notendurchschnitt von 1,9 bin ich leidenschaftlich daran interessiert, aussagekräftige Erkenntnisse \
+         aus Daten zu gewinnen und innovative Lösungen zu entwickeln.",
     "hero.viewProjects": "Projekte ansehen",
     "hero.downloadCV": "Lebenslauf herunterladen",
     "hero.role": "Data Science Student",
@@ -248,7 +254,9 @@ const translations: { [lang: string]: TranslationDict } = {
     // About section
     "about.title": "Über mich",
     "about.description":
-      "Mein technisches Toolkit umfasst Python, SQL, Pandas und Visualisierungstools wie PowerBI und Seaborn. Ich habe an Projekten gearbeitet, die von Sportanalysen bis hin zu Empfehlungssystemen mit Big-Data-Technologien reichen.",
+      "Mein technisches Toolkit umfasst Python, SQL, Pandas und Visualisierungstools wie PowerBI und Seaborn.\
+       Ich habe an Projekten gearbeitet, die von Sportanalysen bis hin zu Empfehlungssystemen mit \
+        Big-Data-Technologien reichen.",
     "about.languages": "Sprachen",
     "about.german": "Verhandlungssicher",
     "about.english": "Verhandlungssicher",
@@ -445,7 +453,9 @@ const translations: { [lang: string]: TranslationDict } = {
     // Hero section
     "hero.title": "Chuyển đổi dữ liệu thành thông tin hữu ích",
     "hero.description":
-      "Tôi là một sinh viên Khoa học Máy tính đầy nhiệt huyết tại Đại học Johannes Gutenberg-Universität Mainz, chuyên ngành Khoa học Dữ liệu với chuyên ngành phụ là Kinh tế học. Với điểm GPA cao 1.9, tôi đam mê trích xuất thông tin có ý nghĩa từ dữ liệu và phát triển các giải pháp sáng tạo.",
+      "Tôi là một sinh viên Khoa học Máy tính đầy nhiệt huyết tại Đại học Johannes Gutenberg-Universität Mainz, \
+      chuyên ngành Khoa học Dữ liệu với chuyên ngành phụ là Kinh tế học. Với điểm trung bình cao 1.9 theo thang điểm Đức, tôi đam mê trích xuất \
+      thông tin có ý nghĩa từ dữ liệu và phát triển các giải pháp sáng tạo.",
     "hero.viewProjects": "Xem dự án",
     "hero.downloadCV": "Tải CV",
     "hero.role": "Sinh viên Khoa học Dữ liệu",
@@ -454,7 +464,8 @@ const translations: { [lang: string]: TranslationDict } = {
     // About section
     "about.title": "Về tôi",
     "about.description":
-      "Bộ công cụ kỹ thuật của tôi bao gồm Python, SQL, Pandas và các công cụ trực quan hóa như PowerBI và Seaborn. Tôi đã làm việc trên các dự án từ phân tích thể thao đến hệ thống đề xuất sử dụng công nghệ dữ liệu lớn.",
+      "Bộ công cụ kỹ thuật của tôi bao gồm Python, SQL, Pandas và các công cụ trực quan hóa như PowerBI và Seaborn. \
+      Tôi đã làm việc trên các dự án từ phân tích thể thao đến hệ thống đề xuất sử dụng công nghệ dữ liệu lớn.",
     "about.languages": "Ngôn ngữ",
     "about.german": "Thành thạo",
     "about.english": "Thành thạo",
