@@ -201,7 +201,7 @@ const certificationsData = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/datacamp%20logo-hN26dhggWGJMHxiUUisP1CjC6pSSYs.png",
     certificate: {
       name: "Data Engineer Certificate",
-      url: "images/cerficates/DataCampDE.png",
+      url: "documents/certificates/DataCampDE.png",
       type: "image",
     },
   },
@@ -215,7 +215,7 @@ const certificationsData = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google%20logo-pNnGvGo1gqkXqy39bTXEdT1A9Og6Q8.jpeg",
     certificate: {
       name: "Google Advanced Data Analytics Certificate",
-      url: "images/cerficates/GoogleADA.png",
+      url: "documents/certificates/GoogleADA.png",
       type: "image",
     },
   },
@@ -229,7 +229,7 @@ const certificationsData = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/datacamp%20logo-hN26dhggWGJMHxiUUisP1CjC6pSSYs.png",
     certificate: {
       name: "Data Analyst Associate Certificate",
-      url: "images/cerficates/DataCampADA.png",
+      url: "documents/certificates/DataCampADA.png",
       type: "image",
     },
   },
@@ -243,7 +243,7 @@ const certificationsData = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/datacamp%20logo-hN26dhggWGJMHxiUUisP1CjC6pSSYs.png",
     certificate: {
       name: "Associate SQL Certificate",
-      url: "images/cerficates/DataCampSQL.png",
+      url: "documents/certificates/DataCampSQL.png",
       type: "image",
     },
   },
@@ -257,7 +257,7 @@ const certificationsData = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google%20logo-pNnGvGo1gqkXqy39bTXEdT1A9Og6Q8.jpeg",
     certificate: {
       name: "Google Business Intelligence Certificate",
-      url: "images/cerficates/GoogleBI.png",
+      url: "documents/certificates/GoogleBI.png",
       type: "image",
     },
   },
@@ -271,9 +271,23 @@ const certificationsData = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google%20logo-pNnGvGo1gqkXqy39bTXEdT1A9Og6Q8.jpeg",
     certificate: {
       name: "Google Data Analytics Certificate",
-      url: "images/cerficates/GoogleDA.png",
+      url: "documents/certificates/GoogleDA.png",
       type: "image",
     },
+  },
+  {
+    title: "AWS Cloud Practitioner",
+    issuer: "Amazon",
+    skills: ["Amazon Web Services (AWS)"],
+    icon: "☁️",
+    color: "cyan",
+    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aws%20logo-o8ks0r2tB7Nz9fkwSkxfBis4ZnXyvF.png",
+    certificate: {
+      name: "AWS Cloud Practitioner Certificate",
+      url: "/placeholder.svg?height=800&width=600",
+      type: "image",
+    },
+    disabled: true,
   },
 ]
 
@@ -760,13 +774,18 @@ export default function Home() {
             {certificationsData.map((cert, index) => (
               <div
                 key={index}
-                className="cursor-pointer"
-                onClick={() =>
-                  handleViewCertificate(
-                    cert.certificate.name,
-                    cert.certificate.url,
-                    cert.certificate.type as "pdf" | "image",
-                  )
+                className={`${
+                  cert.disabled ? "pointer-events-none cursor-not-allowed" : "cursor-pointer"
+                }`}
+                onClick={
+                  cert.disabled
+                    ? undefined
+                    : () =>
+                        handleViewCertificate(
+                          cert.certificate.name,
+                          cert.certificate.url,
+                          cert.certificate.type as "pdf" | "image"
+                        )
                 }
               >
                 <CertificateCard
