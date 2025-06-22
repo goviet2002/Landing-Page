@@ -59,7 +59,7 @@ const projectsData = [
   {
     title: "projects.bananaairlines.title",
     description: "projects.bananaairlines.description",
-    tags: ["Flask", "SQL", "Data Modelling", "HTML/CSS/Javascript", "MariaDB", "PostgreSQL"],
+    tags: ["Flask", "SQL", "Data Modeling", "HTML/CSS/Javascript", "MariaDB", "PostgreSQL"],
     image: "/images/bananaairlines/bananaairlines.gif",
     githubRepo: "https://github.com/goviet2002/BananaAirlines",
     date: "Sept 2023 - Sept 2023",
@@ -295,22 +295,16 @@ const certificationsData = [
 const testimonialData = [
   {
     quote:
-      "Anh Viet is an exceptional student with a natural talent for data analysis. His ability to extract meaningful insights from complex datasets is impressive.",
-    author: "Prof. Dr. Schmidt",
-    role: "Data Science Professor, JGU Mainz",
+      "iu anh nhìu",
+    author: "Hoang Huong Giang Nguyen",
+    role: "Fellow Economics Student, Goethe Uni Frankfurt",
   },
   {
-    quote:
-      "Working with Anh Viet on our group project was a great experience. His technical skills and collaborative approach made him a valuable team member.",
-    author: "Lisa Müller",
-    role: "Fellow Student, JGU Mainz",
+    quote: "testimonials.demirkan.quote",
+    author: "Demirkan Akdemir",
+    role: "testimonials.csjgu.role",
   },
-  {
-    quote:
-      "Anh Viet's dedication to learning and problem-solving sets him apart. He consistently delivers high-quality work and demonstrates a deep understanding of data science concepts.",
-    author: "Dr. Michael Weber",
-    role: "Course Instructor, Big Data Analytics",
-  },
+  
 ]
 
 export default function Home() {
@@ -624,7 +618,7 @@ export default function Home() {
                 />
                 <SkillLevel
                   skill={t("skills.sql")}
-                  level={t("skills.advanced")}
+                  level={t("skills.expert")}
                   description={t("skills.sqlDesc")}
                 />
                 <SkillLevel
@@ -632,15 +626,15 @@ export default function Home() {
                   level={t("skills.expert")}
                   description={t("skills.dataAnalysisDesc")}
                 />
-                <SkillLevel
-                  skill={t("skills.machineLearning")}
-                  level={t("skills.advanced")}
-                  description={t("skills.machineLearningDesc")}
-                />
-                <SkillLevel
+                                <SkillLevel
                   skill={t("skills.dataVisualization")}
                   level={t("skills.advanced")}
                   description={t("skills.dataVisualizationDesc")}
+                />
+                <SkillLevel
+                  skill={t("skills.machineLearning")}
+                  level={t("skills.intermediate")}
+                  description={t("skills.machineLearningDesc")}
                 />
                 <SkillLevel
                   skill={t("skills.bigData")}
@@ -653,24 +647,26 @@ export default function Home() {
             <div className="h-full">
               <h3 className="text-xl font-semibold mb-6 text-cyan-400">{t("skills.other")}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
-                <SkillCategory
-                  title={t("skills.webDevelopment")}
-                  icon={<Globe className="h-5 w-5" />}
-                  skills={["HTML/CSS", "JavaScript", "Flask", "Django"]}
-                  gradient="from-cyan-500 to-blue-500"
-                />
 
                 <SkillCategory
                   title={t("skills.databases")}
                   icon={<Database className="h-5 w-5" />}
-                  skills={["SQL", "NoSQL", "Database Design", "Data Management"]}
+                  skills={["PostgreSQL/MariaDB", "Google BigQuery", "NoSQL/ Cypher Query Language", "Data Modeling", "Data Management"]}
                   gradient="from-blue-500 to-indigo-500"
                 />
 
                 <SkillCategory
+                  title={t("skills.webDevelopment")}
+                  icon={<Globe className="h-5 w-5" />}
+                  skills={["HTML/CSS/JavaScript", "React", "Flask", "Typescript"]}
+                  gradient="from-cyan-500 to-blue-500"
+                />
+
+
+                <SkillCategory
                   title={t("skills.toolsPlatforms")}
                   icon={<Server className="h-5 w-5" />}
-                  skills={["Git", "AWS", "PowerBI", "Jupyter Notebooks"]}
+                  skills={["Git", "Github Actions (CI/CD)", "MS Office", "Scala", "CUDA"]}
                   gradient="from-teal-500 to-cyan-500"
                 />
 
@@ -744,17 +740,17 @@ export default function Home() {
             <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-grow ml-4"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Carousel itemsPerView={3} className="mb-8">
             {testimonialData.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
-                quote={testimonial.quote}
+                quote={t(testimonial.quote)}
                 author={testimonial.author}
-                role={testimonial.role}
+                role={t(testimonial.role)}
                 // image={testimonial.image}
               />
             ))}
-          </div>
+          </Carousel>
         </div>
       </section>
 

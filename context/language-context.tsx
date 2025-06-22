@@ -69,6 +69,10 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Testimonial section
     "testimonials.title": "Testimonials",
+    "testimonials.demirkan.quote":
+      "I’ve come to know Viet as a dedicated and very helpful fellow student. He’s always ready to support others and brings a positive energy to every collaboration.",
+    "testimonials.csjgu.role":
+      "Fellow Computer Science Student, JGU Mainz",
 
     // Certificate date
     "certificates.date": "Date",
@@ -265,6 +269,10 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Testimonial section
     "testimonials.title": "Referenzen",
+    "testimonials.demirkan.quote":
+      "Ich habe Viet als engagierten und sehr hilfsbereiten Kommilitonen kennengelernt. Er ist immer bereit, andere zu unterstützen, und bringt positive Energie in jede Zusammenarbeit.",
+    "testimonials.csjgu.role":
+      "Mitstudent der Informatik, JGU Mainz",
 
     // Certificate date
     "certificates.date": "Datum",
@@ -420,6 +428,10 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Testimonial section
     "testimonials.title": "Nhận xét",
+    "testimonials.demirkan.quote":
+      "Tôi biết Việt là một sinh viên tận tâm và rất nhiệt tình giúp đỡ bạn bè. Cậu ấy luôn sẵn sàng hỗ trợ mọi người và mang lại năng lượng tích cực cho mọi sự hợp tác.",
+    "testimonials.csjgu.role":
+      "Sinh viên Khoa học Máy tính, JGU Mainz",
 
     // Certificate date
     "certificates.date": "Ngày",
