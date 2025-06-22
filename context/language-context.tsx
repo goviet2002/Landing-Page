@@ -12,7 +12,9 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 // Translations
-const translations: Record<Language, Record<string, string>> = {
+type TranslationDict = { [key: string]: string }
+
+const translations: { [lang: string]: TranslationDict } = {
   en: {
     // Navbar
     "navbar.about": "About",
@@ -21,6 +23,8 @@ const translations: Record<Language, Record<string, string>> = {
     "navbar.projects": "Projects",
     "navbar.certifications": "Certifications",
     "navbar.contact": "Contact",
+    "navbar.myjourney": "My Journey",
+    "navbar.testimonial": "Testimonials",
 
     // Hero section
     "hero.title": "Transforming Data into Insights",
@@ -63,7 +67,34 @@ const translations: Record<Language, Record<string, string>> = {
     "education.bigData": "Big Data (Recommendation System)",
     "education.keySkills": "Key Skills",
     "education.prep": "College/University Preparatory",
+    "timeline.grade": "Grade",
+    "timeline.viewCourses": "View Courses",
+    "timeline.bachelor.description": "Developed skills in relational databases, data warehousing, and NoSQL technologies through coursework and projects.",
+    "timeline.focus.major": "Major: Data Science",
+    "timeline.focus.minor": "Minor: Economics",
+    "timeline.projects.programming": "Programming (Computer Games)",
+    "timeline.projects.database": "Database (Web Development)",
+    "timeline.projects.software": "Software Engineering (Agile Methods)",
+    "timeline.projects.bigData": "Big Data (Recommendation System)",
+    "timeline.schulzeit.title": "School Years",
 
+    // Courses
+    "courses.ds_algo.name": "Data Structures and Efficient Algorithms",
+    "courses.ds_algo.desc": "Study of various algorithms and data structures for efficient computation.",
+    "courses.db.name": "Database Systems",
+    "courses.db.desc": "Relational databases, data warehouses, data lakes, transactions, normalization. Included a block practical course.",
+    "courses.statistik.name": "Statistics",
+    "courses.statistik.desc": "Statistical methods for computer science: descriptive statistics, hypothesis testing, regression, probability theory.",
+    "courses.se.name": "Software Engineering",
+    "courses.se.desc": "Requirements engineering, project management, agile methods. Included a block practical course.",
+    "courses.nosql.name": "Non-Standard Database",
+    "courses.nosql.desc": "Covers unstructured, graph, text, image databases, NoSQL, Redis. Included a seminar on Temporal Information Retrieval.",
+    "courses.bigdata.name": "Big Data",
+    "courses.bigdata.desc": "Apache Spark, RDDs, and algorithms such as collaborative filtering for large-scale data analysis.",
+    "courses.ml.name": "Machine Learning",
+    "courses.ml.desc": "Supervised learning: linear regression, logistic regression, random forest, neural networks, etc.",
+    "courses.programmanalyse.name": "Program Analysis",
+    "courses.programmanalyse.desc": "Programming language analysis, inference rules, with a seminar on Shape Analysis.",
     // View Certificate
     "certificates.view": "View Certificate",
 
@@ -142,6 +173,17 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Timeline section
     "timeline.title": "My Journey",
+    "timeline.year": "Year",
+    "timeline.period": "Period",
+    "timeline.focus": "Focus",
+    "timeline.projects": "Projects",
+    "timeline.keySkills": "Key Skills",
+    "timeline.viewFiles": "View Files",
+    "timeline.images": "Images",
+    "timeline.courses": "Courses",
+    "courses.name": "Course Name",
+    "courses.description": "Description",
+    "courses.grade": "Grade",
 
     // Certifications section
     "certifications.title": "Certifications",
@@ -168,6 +210,18 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     "footer.rights": "All rights reserved.",
+
+    // Timeline additional entries
+    "timeline.fsp.description": "Preparatory studies for university admission and language preparation.",
+    "timeline.schulzeit.description": `Top student in class for three consecutive years at Viet Duc High School (grades 10 to 12).
+    Graduated with a diploma from a general upper secondary school (equivalent to Abitur).
+    
+    `,
+    // Certificates
+    "Transcript of Records": "Transcript of Records",
+    "DSD-I Certificate": "DSD-I Certificate",
+    "University Entrance Exam Results": "University Entrance Exam Results",
+    "Transcript of Records in High School": "Transcript of Records in High School",
   },
   de: {
     // Navbar
@@ -177,6 +231,8 @@ const translations: Record<Language, Record<string, string>> = {
     "navbar.projects": "Projekte",
     "navbar.certifications": "Zertifikate",
     "navbar.contact": "Kontakt",
+    "navbar.myjourney": "Mein Werdegang",
+    "navbar.testimonial": "Referenzen",
 
     // Hero section
     "hero.title": "Daten in Erkenntnisse umwandeln",
@@ -221,7 +277,35 @@ const translations: Record<Language, Record<string, string>> = {
     "education.bigData": "Big Data (Recommendation System)",
     "education.keySkills": "Schlüsselkompetenzen",
     "education.prep": "Studienkolleg",
+    "timeline.grade": "Note",
+    "timeline.viewCourses": "Kurse anzeigen",
+    "timeline.bachelor.description": "Entwicklung von Fähigkeiten in relationalen Datenbanken, Data Warehousing und NoSQL-Technologien durch Kurse und Projekte.",
+    "timeline.focus.major": "Schwerpunkt: Data Science",
+    "timeline.focus.minor": "Nebenfach: Wirtschaftswissenschaften",
+    "timeline.projects.programming": "Programmierung (Computerspiele)",
+    "timeline.projects.database": "Datenbank (Webentwicklung)",
+    "timeline.projects.software": "Software Engineering (Agile Methoden)",
+    "timeline.projects.bigData": "Big Data (Empfehlungssystem)",
+    "timeline.schulzeit.title": "Schulzeit",
 
+
+    // Courses
+    "courses.ds_algo.name": "Datenstrukturen und effiziente Algorithmen",
+    "courses.ds_algo.desc": "Studium verschiedener Algorithmen und Datenstrukturen für effiziente Berechnungen.",
+    "courses.db.name": "Datenbanksysteme",
+    "courses.db.desc": "Relationale Datenbanken, Data Warehouses, Data Lakes, Transaktionen, Normalisierung. Enthielt einen Blockpraktikum.",
+    "courses.statistik.name": "Statistik",
+    "courses.statistik.desc": "Statistische Methoden für die Informatik: deskriptive Statistik, Hypothesentests, Regression, Wahrscheinlichkeitstheorie.",
+    "courses.se.name": "Software Engineering",
+    "courses.se.desc": "Anforderungsmanagement, Projektmanagement, agile Methoden. Enthielt einen Blockpraktikum.",
+    "courses.nosql.name": "Nicht-Standard-Datenbanken",
+    "courses.nosql.desc": "Behandelt unstrukturierte, Graph-, Text-, Bilddatenbanken, NoSQL, Redis. Enthielt ein Seminar zu Temporal Information Retrieval.",
+    "courses.bigdata.name": "Big Data",
+    "courses.bigdata.desc": "Apache Spark, RDDs und Algorithmen wie Collaborative Filtering für groß angelegte Datenanalysen.",
+    "courses.ml.name": "Maschinelles Lernen",
+    "courses.ml.desc": "Überwachtes Lernen: lineare Regression, logistische Regression, Random Forest, neuronale Netze usw.",
+    "courses.programmanalyse.name": "Programmanalyse",
+    "courses.programmanalyse.desc": "Analyse von Programmiersprachen, Inferenzregeln, mit einem Seminar zu Shape Analysis.",
     // Skills section
     "skills.title": "Technische Fähigkeiten",
     "skills.programming": "Programmierung & Datenfähigkeiten",
@@ -295,10 +379,17 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Timeline section
     "timeline.title": "Mein Werdegang",
-
-    "language.german": "Deutsch",
-    "language.english": "Englisch",
-    "language.vietnamese": "Vietnamesisch",
+    "timeline.year": "Jahr",
+    "timeline.period": "Zeitraum",
+    "timeline.focus": "Schwerpunkt",
+    "timeline.projects": "Projekte",
+    "timeline.keySkills": "Schlüsselkompetenzen",
+    "timeline.viewFiles": "Dateien anzeigen",
+    "timeline.images": "Bilder",
+    "timeline.courses": "Kurse",
+    "courses.name": "Kursname",
+    "courses.description": "Beschreibung",
+    "courses.grade": "Note",
 
     // Certifications section
     "certifications.title": "Zertifizierungen",
@@ -325,6 +416,18 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     "footer.rights": "Alle Rechte vorbehalten.",
+
+    // Timeline additional entries
+    "timeline.fsp.description": "Vorbereitungsstudium für die Hochschulzulassung und Sprachvorbereitung.",
+    "timeline.schulzeit.description": `Klassenbester für drei aufeinanderfolgende Jahre am Viet Duc Oberschule (Klassen 10 bis 12).
+    Abschluss mit einem Diplom einer allgemeinen Oberstufe (entspricht dem Abitur).
+    
+    `,
+    // Certificates
+    "Transcript of Records": "Notenübersicht",
+    "DSD-I Certificate": "DSD-I Zertifikat",
+    "University Entrance Exam Results": "Ergebnisse der Hochschulaufnahmeprüfung",
+    "Transcript of Records in High School": "Notenübersicht (Oberschule)",
   },
   vi: {
     // Navbar
@@ -334,6 +437,8 @@ const translations: Record<Language, Record<string, string>> = {
     "navbar.projects": "Dự án",
     "navbar.certifications": "Chứng chỉ",
     "navbar.contact": "Liên hệ",
+    "navbar.myjourney": "Hành trình",
+    "navbar.testimonial": "Lời chứng thực",
 
     "projects.date": "Thời gian",
 
@@ -378,7 +483,34 @@ const translations: Record<Language, Record<string, string>> = {
     "education.bigData": "Dữ liệu lớn (Hệ thống đề xuất)",
     "education.keySkills": "Kỹ năng chính",
     "education.prep": "Khóa dự bị đại học",
-
+    "timeline.grade": "Điểm",
+    "timeline.viewCourses": "Xem các khóa học",
+    "timeline.bachelor.description": "Phát triển kỹ năng về cơ sở dữ liệu quan hệ, kho dữ liệu và công nghệ NoSQL thông qua các môn học và dự án.",
+    "timeline.focus.major": "Chuyên ngành: Khoa học Dữ liệu",
+    "timeline.focus.minor": "Phụ: Kinh tế học",
+    "timeline.projects.programming": "Lập trình (Trò chơi máy tính)",
+    "timeline.projects.database": "Cơ sở dữ liệu (Phát triển web)",
+    "timeline.projects.software": "Kỹ thuật phần mềm (Phương pháp Agile)",
+    "timeline.projects.bigData": "Dữ liệu lớn (Hệ thống đề xuất)",
+    "timeline.schulzeit.title": "Thời học sinh",
+    
+    // Courses
+    "courses.ds_algo.name": "Cấu trúc dữ liệu và thuật toán hiệu quả",
+    "courses.ds_algo.desc": "Nghiên cứu các thuật toán và cấu trúc dữ liệu khác nhau cho tính toán hiệu quả.",
+    "courses.db.name": "Hệ thống cơ sở dữ liệu",
+    "courses.db.desc": "Cơ sở dữ liệu quan hệ, kho dữ liệu, hồ dữ liệu, giao dịch, chuẩn hóa. Bao gồm một khóa thực hành.",
+    "courses.statistik.name": "Thống kê",
+    "courses.statistik.desc": "Các phương pháp thống kê cho khoa học máy tính: thống kê mô tả, kiểm định giả thuyết, hồi quy, xác suất.",
+    "courses.se.name": "Kỹ thuật phần mềm",
+    "courses.se.desc": "Kỹ thuật yêu cầu, quản lý dự án, phương pháp Agile. Bao gồm một khóa thực hành.",
+    "courses.nosql.name": "Cơ sở dữ liệu phi chuẩn",
+    "courses.nosql.desc": "Bao gồm cơ sở dữ liệu không cấu trúc, đồ thị, văn bản, hình ảnh, NoSQL, Redis. Bao gồm một hội thảo về Truy xuất Thông tin Thời gian.",
+    "courses.bigdata.name": "Dữ liệu lớn",
+    "courses.bigdata.desc": "Apache Spark, RDDs và các thuật toán như collaborative filtering cho phân tích dữ liệu quy mô lớn.",
+    "courses.ml.name": "Học máy",
+    "courses.ml.desc": "Học có giám sát: hồi quy tuyến tính, hồi quy logistic, rừng ngẫu nhiên, mạng nơ-ron, v.v.",
+    "courses.programmanalyse.name": "Phân tích chương trình",
+    "courses.programmanalyse.desc": "Phân tích ngôn ngữ lập trình, quy tắc suy luận, với một hội thảo về Shape Analysis.",
     // Skills section
     "skills.title": "Kỹ năng kỹ thuật",
     "skills.programming": "Lập trình & Kỹ năng dữ liệu",
@@ -453,10 +585,17 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Timeline section
     "timeline.title": "Hành trình của tôi",
-
-    "language.german": "Tiếng Đức",
-    "language.english": "Tiếng Anh",
-    "language.vietnamese": "Tiếng Việt",
+    "timeline.year": "Năm",
+    "timeline.period": "Thời gian",
+    "timeline.focus": "Trọng tâm",
+    "timeline.projects": "Dự án",
+    "timeline.keySkills": "Kỹ năng chính",
+    "timeline.viewFiles": "Xem tệp",
+    "timeline.images": "Hình ảnh",
+    "timeline.courses": "Các khóa học",
+    "courses.name": "Tên môn học",
+    "courses.description": "Mô tả",
+    "courses.grade": "Điểm",
 
     // Certifications section
     "certifications.title": "Chứng chỉ",
@@ -483,6 +622,18 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     "footer.rights": "Tất cả các quyền được bảo lưu.",
+
+    // Timeline additional entries
+    "timeline.fsp.description": "Học dự bị đại học và chuẩn bị ngôn ngữ.",
+    "timeline.schulzeit.description": `Đạt danh hiệu học sinh xuất sắc ba năm liên tiếp tại trường THPT Việt Đức (lớp 10 đến 12).
+    Tốt nghiệp THPT với bằng xuất sắc (tương đương Abitur của Đức).
+    
+    `,
+    // Certificates
+    "Transcript of Records": "Bảng điểm",
+    "DSD-I Certificate": "Chứng chỉ DSD-I",
+    "University Entrance Exam Results": "Kết quả thi đại học",
+    "Transcript of Records in High School": "Bảng điểm THPT",
   },
 }
 

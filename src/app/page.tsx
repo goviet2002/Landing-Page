@@ -112,73 +112,76 @@ const projectsData = [
 // Sample timeline data with education details
 const timelineData = [
   {
-    year: "2022 - Present",
+    year: "2022 - now",
     title: "Johannes Gutenberg-Universität Mainz",
     degree: "Bachelor of Science, Informatik",
-    description: "Developed skills in relational databases, data warehousing, and NoSQL technologies through coursework and projects.",
+    description: "timeline.bachelor.description",
     icon: <GraduationCap className="h-4 w-4" />,
     grade: "1.9 (preliminary)",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed-16NhnuezIdXNmdWhkxjULkB90w5CAq.png",
-    period: "2022 - Present",
+    period: "2022 - now",
     details: {
-      focus: ["Major: Data Science", "Minor: Economics"],
+      focus: [
+        "timeline.focus.major",
+        "timeline.focus.minor"
+      ],
       projects: [
-        "Programming (Computer Games)",
-        "Database (Web Development)",
-        "Software Engineering (Agile Methods)",
-        "Big Data (Recommendation System)",
+        "timeline.projects.programming",
+        "timeline.projects.database",
+        "timeline.projects.software",
+        "timeline.projects.bigData"
       ],
       keySkills: ["Python", "SQL", "Data Management", "Machine Learning", "Big Data", "Web Development"],
     },
     hasDetailedView: false,
     showCourses: true, 
-    courses: [      
+    courses: [
       {
-        name: "Datenstrukturen und effiziente Algorithmen",
+        name: "courses.ds_algo.name",
         grade: "2.7",
-        description: "Study of various algorithms and data structures for efficient computation.",
+        description: "courses.ds_algo.desc",
         semester: "WiSe 2022/23",
       },
       {
-        name: "Datenbase Systems",
+        name: "courses.db.name",
         grade: "2.0",
-        description: "Relational databases, data warehouses, data lakes, transactions, normalization. Included a block practical course.",
+        description: "courses.db.desc",
         semester: "SoSe 2023",
       },
       {
-        name: "Statistik",
+        name: "courses.statistik.name",
         grade: "1.3",
-        description: "Statistical methods for computer science: descriptive statistics, hypothesis testing, regression, probability theory.",
+        description: "courses.statistik.desc",
         semester: "SoSe 2023",
       },
       {
-        name: "Software Engineering",
+        name: "courses.se.name",
         grade: "2.0",
-        description: "Requirements engineering, project management, agile methods. Included a block practical course.",
+        description: "courses.se.desc",
         semester: "WiSe 2023/24",
       },
       {
-        name: "Non-Standard Database",
+        name: "courses.nosql.name",
         grade: "1.0",
-        description: "Covers unstructured, graph, text, image databases, NoSQL, Redis. Included a seminar on Temporal Information Retrieval.",
+        description: "courses.nosql.desc",
         semester: "WiSe 2023/24",
       },
       {
-        name: "Big Data",
+        name: "courses.bigdata.name",
         grade: "1.3",
-        description: "Apache Spark, RDDs, and algorithms such as collaborative filtering for large-scale data analysis.",
+        description: "courses.bigdata.desc",
         semester: "SoSe 2024",
       },
       {
-        name: "Machine Learning",
+        name: "courses.ml.name",
         grade: "2.0",
-        description: "Supervised learning: linear regression, logistic regression, random forest, neural networks, etc.",
+        description: "courses.ml.desc",
         semester: "SoSe 2024",
       },
       {
-        name: "Programmanalyse",
+        name: "courses.programmanalyse.name",
         grade: "2.7",
-        description: "Programming language analysis, inference rules, with a seminar on Shape Analysis.",
+        description: "courses.programmanalyse.desc",
         semester: "SoSe 2024",
       },
 
@@ -188,7 +191,7 @@ const timelineData = [
     year: "2021",
     title: "Johannes Gutenberg-Universität Mainz",
     degree: "Feststellungsprüfung, College/University Preparatory",
-    description: "Preparatory studies for university admission and language preparation.",
+    description: "timeline.fsp.description",
     icon: <GraduationCap className="h-4 w-4" />,
     grade: "1.5",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed-16NhnuezIdXNmdWhkxjULkB90w5CAq.png",
@@ -205,19 +208,14 @@ const timelineData = [
   },
   {
     period: "2008 - 2020",
-    title: "Schulzeit",
+    title: "timeline.schulzeit.title",
     degree: "Hanoi, Vietnam",
-    description: (
-      <ul className="list-disc list-inside space-y-1">
-        <li>Graduated with a diploma from a general upper secondary school (equivalent to Abitur).</li>
-        <li>Top student in class for three consecutive years at Viet Duc High School (grades 10 to 12).</li>
-      </ul>
-    ),
+    description: "timeline.schulzeit.description", // <-- use translation key
     icon: <GraduationCap className="h-4 w-4" />,
-    logo: "/images/school-logo.png",
+    logo: "/images/vietduc.png",
     hasDetailedView: false,
     showCourses: false,
-    certificate: null, // Not used for multiple certificates
+    certificate: null,
     extraCertificates: [
       {
         name: "University Entrance Exam Results",

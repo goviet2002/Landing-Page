@@ -8,9 +8,10 @@ import { useLanguage } from "@/context/language-context"
 
 const navItems = [
 	{ key: "about", href: "#about" },
-	{ key: "education", href: "#education" },
+	{ key: "myjourney", href: "#timeline" },
 	{ key: "skills", href: "#skills" },
 	{ key: "projects", href: "#projects" },
+	{ key: "testimonial", href: "#testimonials" },
 	{ key: "certifications", href: "#certifications" },
 	{ key: "contact", href: "#contact" },
 ]
@@ -38,7 +39,7 @@ export default function Navbar() {
 			<div className="container mx-auto px-4">
 				<div className="flex items-center justify-between">
 					<Link href="/" className="text-xl font-bold text-cyan-400">
-						Anh Viet Ngo
+						Anh Việt Ngô
 					</Link>
 
 					{/* Desktop Navigation */}

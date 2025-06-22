@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button"
 import { FileText, ChevronDown, ChevronRight, ExternalLink } from "lucide-react"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
+import { useLanguage } from "@/context/language-context"
+import { LocalizedDateRange } from "@/components/localized-date-range"
 
 interface TimelineItem {
   year?: string
@@ -47,6 +49,7 @@ interface TimelineProps {
 
 const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses }: TimelineProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
+  const { t } = useLanguage()
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index)
@@ -91,12 +94,14 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                     </div>
                   )}
                   <div>
-                    <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                    <h3 className="text-lg font-semibold text-white">{t(item.title)}</h3>
                     {item.degree && <p className="text-cyan-400">{item.degree}</p>}
                   </div>
                 </div>
                 <div className="text-right flex items-center">
-                  <span className="text-cyan-400 text-sm">{item.period || item.year}</span>
+                  <span className="text-cyan-400 text-sm">
+                    <LocalizedDateRange date={item.period || item.year} />
+                  </span>
                   {expandedIndex === index ? (
                     <ChevronDown className="h-4 w-4 ml-2 text-cyan-400" />
                   ) : (
@@ -117,23 +122,25 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                 <div className="pt-4">
                   {item.grade && (
                     <div className="inline-block px-2 py-1 bg-cyan-500/10 rounded text-cyan-400 text-sm mb-3">
-                      Grade: {item.grade}
+                      {t("timeline.grade")}: {item.grade}
                     </div>
                   )}
 
-                  <p className="text-gray-300 mb-4">{item.description}</p>
+                  <p className="text-gray-300 mb-4">
+                    {typeof item.description === "string" ? t(item.description) : item.description}
+                  </p>
 
                   {item.details && (
                     <div className="mt-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {item.details.focus && item.details.focus.length > 0 && (
                           <div>
-                            <h4 className="text-white font-medium mb-2">Focus</h4>
+                            <h4 className="text-white font-medium mb-2">{t("timeline.focus")}</h4>
                             <ul className="space-y-1 text-gray-300">
                               {item.details.focus.map((focus, idx) => (
                                 <li key={idx} className="flex items-center">
                                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2"></div>
-                                  {focus}
+                                  {t(focus)}
                                 </li>
                               ))}
                             </ul>
@@ -142,12 +149,12 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
 
                         {item.details.projects && item.details.projects.length > 0 && (
                           <div>
-                            <h4 className="text-white font-medium mb-2">Projects</h4>
+                            <h4 className="text-white font-medium mb-2">{t("timeline.projects")}</h4>
                             <ul className="space-y-1 text-gray-300">
                               {item.details.projects.map((project, idx) => (
                                 <li key={idx} className="flex items-center">
                                   <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2"></div>
-                                  {project}
+                                  {t(project)}
                                 </li>
                               ))}
                             </ul>
@@ -157,7 +164,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
 
                       {item.details.keySkills && item.details.keySkills.length > 0 && (
                         <div className="mt-4">
-                          <h4 className="text-white font-medium mb-2">Key Skills</h4>
+                          <h4 className="text-white font-medium mb-2">{t("timeline.keySkills")}</h4>
                           <div className="flex flex-wrap gap-2">
                             {item.details.keySkills.map((skill, idx) => (
                               <Badge key={idx} className="bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20">
@@ -171,19 +178,19 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                   )}
 
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {/* For Feststellungsprüfung: show "View Transcript of Records" */}
-                    {item.certificate && item.certificate.name === "Transcript of Records" && (
+                    {/* For Feststellungsprüfung: show the translated certificate name */}
+                    {item.certificate && (
                       <Button
                         variant="outline"
                         size="sm"
                         className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
                         onClick={e => {
                           e.stopPropagation()
-                          onViewCertificate("Transcript of Records", item.certificate!.url)
+                          onViewCertificate(item.certificate!.name, item.certificate!.url)
                         }}
                       >
                         <FileText className="h-3 w-3 mr-1" />
-                        {item.certificate.name}
+                        {t(item.certificate.name)}
                       </Button>
                     )}
 
@@ -201,12 +208,12 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                         }}
                       >
                         <ExternalLink className="h-3 w-3 mr-1" />
-                        View Courses
+                        {t("timeline.viewCourses")}
                       </Button>
                     )}
 
-                    {/* For extra certificates: show buttons for each certificate */}
-                    {item.extraCertificates && item.extraCertificates.map((cert: { name: string; url: string }, idx: number) => (
+                    {/* For extra certificates: show buttons for each certificate, translated */}
+                    {item.extraCertificates && item.extraCertificates.map((cert, idx) => (
                       <Button
                         key={idx}
                         variant="outline"
@@ -218,7 +225,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                         }}
                       >
                         <FileText className="h-3 w-3 mr-1" />
-                        {cert.name}
+                        {t(cert.name)}
                       </Button>
                     ))}
                   </div>
