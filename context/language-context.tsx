@@ -59,8 +59,9 @@ const translations: Record<Language, Record<string, string>> = {
     // Contact section
     "contact.title": "Get In Touch",
     "contact.info": "Contact Information",
-    "contact.lookingFor": "Looking for",
-    "contact.opportunities": "I'm currently seeking opportunities in:",
+    "contact.lookingFor": "Career Interests",
+    "contact.opportunities": "I'm currently seeking intern, trainee, or full-time opportunities in:",
+    "contact.workinglocation": "Open to both remote and on-site roles throughout Germany.",
     "contact.sendMessage": "Send a Message",
     "contact.name": "Name",
     "contact.email": "Email",

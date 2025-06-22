@@ -22,7 +22,16 @@ const DataBackground = () => {
     window.addEventListener("resize", setCanvasDimensions)
 
     // Create data points
-    const dataPoints = []
+    type DataPoint = {
+      x: number
+      y: number
+      radius: number
+      vx: number
+      vy: number
+      connected: number[]
+    }
+
+    const dataPoints: DataPoint[] = []
     const numPoints = 100
 
     for (let i = 0; i < numPoints; i++) {

@@ -40,6 +40,7 @@ import Timeline from "@/components/timeline"
 import TestimonialCard from "@/components/testimonial-card"
 import ProjectFilter from "@/components/project-filter"
 import SimplePDFViewer from "@/components/simple-pdf-viewer"
+import ContactForm from "@/components/contact-form" // 1. Import the new component
 
 // Sample project data with code and demo images
 const projectsData = [
@@ -62,7 +63,7 @@ const projectsData = [
     image: "/images/bananaairlines/bananaairlines.gif",
     githubRepo: "https://github.com/goviet2002/BananaAirlines",
     date: "Sept 2023 - Sept 2023",
-    category: "Web Development",
+    category: "Web",
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
   },
   {
@@ -95,7 +96,7 @@ const projectsData = [
     image: "/images/flappybird/flappybird.gif",
     githubRepo: "https://github.com/goviet2002/FlappyBird",
     date: "Sept 2022 - Sept 2022",
-    category: "Game Development",
+    category: "Game",
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
   },
   {
@@ -105,7 +106,7 @@ const projectsData = [
     tags: ["Agile Methods", "Project Management", "Team Work", "Communication", "Django"],
     image: "images/se/se.gif",
     date: "Mar 2024 - April 2024",
-    category: "Web Development",
+    category: "Software Engineering",
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
     disabled: true,
   },
@@ -329,8 +330,15 @@ export default function Home() {
   const [isCertificateViewerOpen, setIsCertificateViewerOpen] = useState(false)
 
   // Extract unique categories from projects
-  const projectCategories = Array.from(new Set(projectsData.map((project) => project.category)))
-
+  // const projectCategories = Array.from(new Set(projectsData.map((project) => project.category)))
+  const projectCategories = [
+    "Data Analysis",
+    "Data Engineering",
+    "Web",
+    "Big Data",
+    "Game",
+    "Software Engineering"
+  ]
   useEffect(() => {
     if (activeFilter === "all") {
       setFilteredProjects(projectsData)
@@ -806,7 +814,15 @@ export default function Home() {
                 <div className="space-y-4">
                   <div className="flex items-center text-gray-300">
                     <Mail className="h-5 w-5 mr-3 text-cyan-400" />
-                    <a href="mailto:anhviet2002.vna@gmail.com" className="hover:text-cyan-400 transition-colors">
+                    <a
+                      href="mailto:anhviet2002.vna@gmail.com"
+                      className="hover:text-cyan-400 transition-colors cursor-pointer"
+                      onClick={e => {
+                        e.preventDefault();
+                        navigator.clipboard.writeText("anhviet2002.vna@gmail.com");
+                        alert("Email copied!");                      
+                    }}
+                    >
                       anhviet2002.vna@gmail.com
                     </a>
                   </div>
@@ -845,52 +861,19 @@ export default function Home() {
                       <div className="w-2 h-2 rounded-full bg-cyan-400 mr-2"></div>
                       Data Engineering
                     </li>
+                    <li className="flex items-center">
+                      <div className="w-2 h-2 rounded-full bg-cyan-400 mr-2"></div>
+                      Business Intelligence
+                    </li>
                   </ul>
+                  <p className="text-gray-300 mt-3">{t("contact.workinglocation")}</p>
                 </div>
               </div>
 
               <div>
                 <h3 className="text-2xl font-semibold mb-4 text-white">{t("contact.sendMessage")}</h3>
 
-                <form className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
-                      {t("contact.name")}
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-2 bg-[#0f172a] border border-cyan-500/30 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
-                      placeholder={t("contact.name")}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
-                      {t("contact.email")}
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-2 bg-[#0f172a] border border-cyan-500/30 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
-                      placeholder={t("contact.email")}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
-                      {t("contact.message")}
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="w-full px-4 py-2 bg-[#0f172a] border border-cyan-500/30 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
-                      placeholder={t("contact.message")}
-                    ></textarea>
-                  </div>
-
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">{t("contact.send")}</Button>
-                </form>
+                <ContactForm /> {/* 2. Replace the entire <form> block with this */}
               </div>
             </div>
           </div>
