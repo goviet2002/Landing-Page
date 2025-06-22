@@ -46,10 +46,9 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 // Sample project data with code and demo images
 const projectsData = [
-    {
-    title: "Football Team Analysis",
-    description:
-      "Personal project for data analysis of a football team for the current season based on data from Transfermarkt. Analysis with Pandas and Seaborn to examine performance metrics such as player statistics, transfer values, and team dynamics. Visualization of the results with Power BI.",
+  {
+    title: "projects.football.title",
+    description: "projects.football.description",
     tags: ["Python", "Pandas", "Seaborn", "PowerBI", "Data Analysis", "Data Visualization", "Data Wrangling"],
     image: "images/football-project/football-analysis.gif",
     githubRepo: "https://github.com/goviet2002/Football-Club-Analysis",
@@ -58,9 +57,8 @@ const projectsData = [
     reportPdf: "/documents/Club Analysis Report.pdf",
   },
   {
-    title: "Banana Airlines Website",
-    description:
-      "Development of a website for an airline as part of the Database module at JGU Mainz. Features included search, booking, payment, and check-in for flights. Frontend implemented with HTML/CSS/JavaScript, backend with Flask, SQL, and database management with MariaDB/PostgreSQL.",
+    title: "projects.bananaairlines.title",
+    description: "projects.bananaairlines.description",
     tags: ["Flask", "SQL", "Data Modelling", "HTML/CSS/Javascript", "MariaDB", "PostgreSQL"],
     image: "/images/bananaairlines/bananaairlines.gif",
     githubRepo: "https://github.com/goviet2002/BananaAirlines",
@@ -69,20 +67,18 @@ const projectsData = [
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
   },
   {
-    title: "Automated F1 ETL-Pipeline",
-    description:
-      "Automated ETL pipeline for Formula 1 data using Python for parallel extraction, dynamic schema detection, and transformation. Loads data into BigQuery with automated tables, bulk loading, weekly GitHub Actions orchestration, plus analytical SQL and ML for race prediction.",
+    title: "projects.f1etl.title",
+    description: "projects.f1etl.description",
     tags: ["Python", "ETL", "BeautifulSoup", "asyncio", "BigQuery", "SQL", "Github Actions (CI/CD)"],
-    image: "images/F1/F1.gif", 
+    image: "images/F1/F1.gif",
     githubRepo: "https://github.com/goviet2002/F1",
     date: "May 2025 - now",
     category: "Data Engineering",
     demoImages: ["/placeholder.svg?height=600&width=800"],
   },
   {
-    title: "Big Data Food Recommendation System",
-    description:
-      "Development of a recommendation system in the Big Data module for analyzing about 1 GB of food reviews using Apache Spark and Scala. Implementation of algorithms such as collaborative filtering, TF-IDF, item profiles, min hashing, and locality-sensitive hashing (LSH).",
+    title: "projects.foodrec.title",
+    description: "projects.foodrec.description",
     tags: ["Big Data", "Scala", "Apache Spark", "Collaborative Filtering"],
     image: "images/bigdata/bigdata-result.gif",
     githubRepo: "https://github.com/goviet2002/Food-Recommendation-System",
@@ -91,9 +87,8 @@ const projectsData = [
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
   },
   {
-    title: "Flappy Bird Game",
-    description:
-      "Development of a classic Flappy Bird game as part of the Introduction to Programming module. Used Simple I/O package provided by JGU Mainz to display basic graphical objects and simulate game mechanics.",
+    title: "projects.flappybird.title",
+    description: "projects.flappybird.description",
     tags: ["Python", "Game Development", "Programming", "basicio @JGU Mainz"],
     image: "/images/flappybird/flappybird.gif",
     githubRepo: "https://github.com/goviet2002/FlappyBird",
@@ -102,9 +97,8 @@ const projectsData = [
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
   },
   {
-    title: "Software Enginnering",
-    description:
-      "Development of a website for data cleaning and visualization as part of an agile software engineering project. Served as a backend team member responsible for designing and implementing the database using Django. Collaborated closely within a team structured into three clusters: Documentation, Frontend, and Backend.",
+    title: "projects.softwareeng.title",
+    description: "projects.softwareeng.description",
     tags: ["Agile Methods", "Project Management", "Team Work", "Communication", "Django"],
     image: "images/se/se.gif",
     date: "Mar 2024 - April 2024",
@@ -196,46 +190,46 @@ const timelineData = [
   },
 ]
 
-// Sample certification data with logos
 const certificationsData = [
   {
     title: "Data Engineer",
     issuer: "DataCamp",
-    date: "März 2023 - März 2027",
+    date: "Mar 2023 - Mar 2027",
     skills: ["SQL", "Data Management", "Python", "Extract, Transform, Load (ETL)", "Data Wrangling"],
     icon: "📊",
     color: "cyan",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/datacamp%20logo-hN26dhggWGJMHxiUUisP1CjC6pSSYs.png",
     certificate: {
       name: "Data Engineer Certificate",
-      url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Data%20Camp%20DA%20Association.jpg-1O3qlc3eXgx29O26QiQlYwrb91C4RN.jpeg",
+      url: "images/cerficates/DataCampDE.png",
       type: "image",
     },
   },
   {
     title: "Google Advanced Data Analytics",
     issuer: "Coursera",
+    date: "14 Aug 2024",
     skills: ["Statistics", "Python", "Project Management", "Machine Learning", "Data Wrangling"],
     icon: "📈",
     color: "blue",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google%20logo-pNnGvGo1gqkXqy39bTXEdT1A9Og6Q8.jpeg",
     certificate: {
       name: "Google Advanced Data Analytics Certificate",
-      url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Google%20Advanced%20Data%20Analytics.jpg-nqZTW20fMxaYMzVJ2YBYI7JphTX4uL.jpeg",
+      url: "images/cerficates/GoogleADA.png",
       type: "image",
     },
   },
   {
     title: "Data Analyst Associate",
     issuer: "DataCamp",
-    date: "März 2023 - März 2026",
+    date: "1 Mar 2024",
     skills: ["Pandas", "Data Visualization", "Data Analysis", "Data Wrangling"],
     icon: "🔍",
     color: "cyan",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/datacamp%20logo-hN26dhggWGJMHxiUUisP1CjC6pSSYs.png",
     certificate: {
       name: "Data Analyst Associate Certificate",
-      url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Data%20Camp%20DA%20Association.jpg-1O3qlc3eXgx29O26QiQlYwrb91C4RN.jpeg",
+      url: "images/cerficates/DataCampADA.png",
       type: "image",
     },
   },
@@ -249,46 +243,35 @@ const certificationsData = [
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/datacamp%20logo-hN26dhggWGJMHxiUUisP1CjC6pSSYs.png",
     certificate: {
       name: "Associate SQL Certificate",
-      url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Data%20Camp%20DA%20Association.jpg-1O3qlc3eXgx29O26QiQlYwrb91C4RN.jpeg",
-      type: "image",
-    },
-  },
-  {
-    title: "AWS Cloud Practitioner",
-    issuer: "Amazon",
-    skills: ["Amazon Web Services (AWS)"],
-    icon: "☁️",
-    color: "cyan",
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/aws%20logo-o8ks0r2tB7Nz9fkwSkxfBis4ZnXyvF.png",
-    certificate: {
-      name: "AWS Cloud Practitioner Certificate",
-      url: "/placeholder.svg?height=800&width=600",
+      url: "images/cerficates/DataCampSQL.png",
       type: "image",
     },
   },
   {
     title: "Google Business Intelligence",
     issuer: "Coursera",
+    date: "17 Aug 2024",
     skills: ["Business Intelligence", "BI", "Data Management", "Extract, Transform, Load (ETL)"],
     icon: "💼",
     color: "blue",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google%20logo-pNnGvGo1gqkXqy39bTXEdT1A9Og6Q8.jpeg",
     certificate: {
       name: "Google Business Intelligence Certificate",
-      url: "/placeholder.svg?height=800&width=600",
+      url: "images/cerficates/GoogleBI.png",
       type: "image",
     },
   },
   {
     title: "Google Data Analytics",
     issuer: "Coursera",
+    date: "14 Apr 2024",
     skills: ["SQL", "R", "Data Visualization", "Data Analysis", "Microsoft Excel", "Data Wrangling"],
     icon: "📊",
     color: "blue",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google%20logo-pNnGvGo1gqkXqy39bTXEdT1A9Og6Q8.jpeg",
     certificate: {
       name: "Google Data Analytics Certificate",
-      url: "/placeholder.svg?height=800&width=600",
+      url: "images/cerficates/GoogleDA.png",
       type: "image",
     },
   },
@@ -412,7 +395,7 @@ export default function Home() {
             {/* Right side - Info */}
             <div>
               <div className="inline-block px-3 py-1 mb-4 border border-cyan-500/30 rounded-full bg-cyan-500/10 text-cyan-400 text-sm">
-                Data Science Student
+                {t("hero.role")}
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
                 Anh Viet Ngo
@@ -431,7 +414,7 @@ export default function Home() {
 
                   <div className="flex items-center text-gray-300 mb-6">
                     <MapPin className="h-5 w-5 mr-2 text-cyan-400" />
-                    <span>Mainz, Germany</span>
+                    <span>{t("hero.location")}</span>
                   </div>
 
                   <div className="flex flex-wrap gap-4 mb-8">
@@ -508,9 +491,9 @@ export default function Home() {
               <div className="mb-8">
                 <h3 className="text-xl font-semibold mb-4 text-cyan-400">{t("about.languages")}</h3>
                 <div className="space-y-4">
-                  <LanguageBar language="German" level={t("about.german")} percentage={90} />
-                  <LanguageBar language="English" level={t("about.english")} percentage={90} />
-                  <LanguageBar language="Vietnamese" level={t("about.vietnamese")} percentage={100} />
+                  <LanguageBar language={t("language.german")} level={t("about.german")} percentage={90} />
+                  <LanguageBar language={t("language.english")} level={t("about.english")} percentage={90} />
+                  <LanguageBar language={t("language.vietnamese")} level={t("about.vietnamese")} percentage={100} />
                 </div>
               </div>
 
@@ -518,14 +501,14 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-4 text-cyan-400">{t("about.certification")}</h3>
                 <div className="bg-[#1e293b] p-4 rounded-lg border border-cyan-500/20 hover:border-cyan-500/40 transition-all">
                   <h4 className="font-medium text-white">FSP/DSH Deutsch C1</h4>
-                  <p className="text-gray-400 text-sm">Ergebnis: DSH-2 • Dez. 2021</p>
+                  <p className="text-gray-400 text-sm">{t("about.dshResult")}</p>
                   <div className="mt-2 grid grid-cols-2 gap-2">
                     <div>
-                      <p className="text-gray-400 text-sm">Schriftlich:</p>
+                      <p className="text-gray-400 text-sm">{t("about.written")}</p>
                       <p className="text-cyan-400 font-medium">81%</p>
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Mündlich:</p>
+                      <p className="text-gray-400 text-sm">{t("about.oral")}</p>
                       <p className="text-cyan-400 font-medium">71%</p>
                     </div>
                   </div>
@@ -540,7 +523,7 @@ export default function Home() {
                       }}
                     >
                       <FileText className="h-3 w-3 mr-1" />
-                      View Certificate
+                      {t("certificates.view")}
                     </Button>
                   </div>
                 </div>
@@ -548,29 +531,29 @@ export default function Home() {
             </div>
 
             <div className="bg-[#1e293b] rounded-xl shadow-xl p-6 border border-cyan-500/20 hover:border-cyan-500/40 transition-all h-full">
-              <h3 className="text-xl font-semibold mb-6 text-cyan-400">Technical Interests</h3>
+              <h3 className="text-xl font-semibold mb-6 text-cyan-400">{t("about.techInterests")}</h3>
               <div className="grid grid-cols-1 gap-4">
                 <TechInterestCard
-                  title="Data Analytics"
-                  description="Analyzing data to extract meaningful insights and support decision-making processes."
+                  title={t("about.techInterest.analytics")}
+                  description={t("about.techInterest.analyticsDesc")}
                   icon={<BarChart2 className="h-5 w-5" />}
                   gradient="from-cyan-500 to-blue-500"
                 />
                 <TechInterestCard
-                  title="Data Management"
-                  description="Organizing, storing, and maintaining data to ensure its accessibility, reliability, and security."
+                  title={t("about.techInterest.datamanagement")}
+                  description={t("about.techInterest.datamanagementDesc")}
                   icon={<FolderKanban className="h-5 w-5" />}
                   gradient="from-blue-500 to-indigo-500"
                 />
                 <TechInterestCard
-                  title="Data Science"
-                  description="Extracting insights from data using statistical methods and machine learning algorithms."
+                  title={t("about.techInterest.datascience")}
+                  description={t("about.techInterest.datascienceDesc")}
                   icon={<BarChart3 className="h-5 w-5" />}
                   gradient="from-teal-500 to-cyan-500"
                 />
                 <TechInterestCard
-                  title="Data Engineering"
-                  description="Building and maintaining data pipelines and infrastructure for efficient data processing."
+                  title={t("about.techInterest.dataengineering")}
+                  description={t("about.techInterest.dataengineeringDesc")}
                   icon={<Database className="h-5 w-5" />}
                   gradient="from-emerald-500 to-teal-500"
                 />
@@ -590,7 +573,7 @@ export default function Home() {
           <div className="flex items-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-                My Journey
+                {t("timeline.title")}
               </span>
             </h2>
             <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-grow ml-4"></div>
@@ -621,34 +604,34 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-6 text-cyan-400">{t("skills.programming")}</h3>
               <div className="space-y-6 bg-[#1e293b] rounded-xl shadow-md p-6 border border-cyan-500/20 hover:border-cyan-500/40 transition-all h-full">
                 <SkillLevel
-                  skill="Python"
-                  level="Expert"
-                  description="Proficient in data analysis libraries (Pandas, NumPy) and ML frameworks (Scikit-learn)"
+                  skill={t("skills.python")}
+                  level={t("skills.expert")}
+                  description={t("skills.pythonDesc")}
                 />
                 <SkillLevel
-                  skill="SQL"
-                  level="Advanced"
-                  description="Database design, complex queries, and data manipulation"
+                  skill={t("skills.sql")}
+                  level={t("skills.advanced")}
+                  description={t("skills.sqlDesc")}
                 />
                 <SkillLevel
-                  skill="Data Analysis"
-                  level="Expert"
-                  description="Statistical analysis, data cleaning, and insight generation"
+                  skill={t("skills.dataAnalysis")}
+                  level={t("skills.expert")}
+                  description={t("skills.dataAnalysisDesc")}
                 />
                 <SkillLevel
-                  skill="Machine Learning"
-                  level="Advanced"
-                  description="Supervised and unsupervised learning, model evaluation"
+                  skill={t("skills.machineLearning")}
+                  level={t("skills.advanced")}
+                  description={t("skills.machineLearningDesc")}
                 />
                 <SkillLevel
-                  skill="Data Visualization"
-                  level="Advanced"
-                  description="PowerBI, Seaborn, Matplotlib for creating insightful visualizations"
+                  skill={t("skills.dataVisualization")}
+                  level={t("skills.advanced")}
+                  description={t("skills.dataVisualizationDesc")}
                 />
                 <SkillLevel
-                  skill="Big Data"
-                  level="Intermediate"
-                  description="Apache Spark, Scala, distributed computing"
+                  skill={t("skills.bigData")}
+                  level={t("skills.intermediate")}
+                  description={t("skills.bigDataDesc")}
                 />
               </div>
             </div>
@@ -657,30 +640,35 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-6 text-cyan-400">{t("skills.other")}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
                 <SkillCategory
-                  title="Web Development"
+                  title={t("skills.webDevelopment")}
                   icon={<Globe className="h-5 w-5" />}
                   skills={["HTML/CSS", "JavaScript", "Flask", "Django"]}
                   gradient="from-cyan-500 to-blue-500"
                 />
 
                 <SkillCategory
-                  title="Databases"
+                  title={t("skills.databases")}
                   icon={<Database className="h-5 w-5" />}
                   skills={["SQL", "NoSQL", "Database Design", "Data Management"]}
                   gradient="from-blue-500 to-indigo-500"
                 />
 
                 <SkillCategory
-                  title="Tools & Platforms"
+                  title={t("skills.toolsPlatforms")}
                   icon={<Server className="h-5 w-5" />}
                   skills={["Git", "AWS", "PowerBI", "Jupyter Notebooks"]}
                   gradient="from-teal-500 to-cyan-500"
                 />
 
                 <SkillCategory
-                  title="Soft Skills"
+                  title={t("skills.softSkills")}
                   icon={<Briefcase className="h-5 w-5" />}
-                  skills={["Problem Solving", "Team Collaboration", "Project Management", "Communication"]}
+                  skills={[
+                    t("skills.problemSolving"),
+                    t("skills.teamCollaboration"),
+                    t("skills.projectManagement"),
+                    t("skills.communication"),
+                  ]}
                   gradient="from-emerald-500 to-teal-500"
                 />
               </div>
@@ -712,8 +700,8 @@ export default function Home() {
               {filteredProjects.map((project, index) => (
                 <ProjectCard
                   key={`${activeFilter}-${index}`}
-                  title={project.title}
-                  description={project.description}
+                  title={t(project.title)}
+                  description={t(project.description)}
                   tags={project.tags}
                   image={project.image}
                   date={project.date}
@@ -736,7 +724,7 @@ export default function Home() {
           <div className="flex items-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-                Testimonials
+                {t("testimonials.title")}
               </span>
             </h2>
             <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-grow ml-4"></div>
@@ -784,7 +772,7 @@ export default function Home() {
                 <CertificateCard
                   title={cert.title}
                   issuer={cert.issuer}
-                  date={cert.date}
+                  date={cert.date ? t(cert.date) : undefined}
                   skills={cert.skills}
                   icon={cert.icon}
                   color={cert.color}

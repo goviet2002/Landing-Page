@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge"
 
 interface SkillLevelProps {
   skill: string
-  level: "Beginner" | "Intermediate" | "Advanced" | "Expert"
+  level: string
   description?: string
 }
 
@@ -12,10 +12,16 @@ const SkillLevel = ({ skill, level, description }: SkillLevelProps) => {
       case "Beginner":
         return "bg-blue-500/10 text-blue-300 border-blue-500/30"
       case "Intermediate":
+      case "Mittelstufe":
+      case "Trung bình":
         return "bg-cyan-500/10 text-cyan-300 border-cyan-500/30"
       case "Advanced":
+      case "Fortgeschritten":
+      case "Nâng cao":
         return "bg-teal-500/10 text-teal-300 border-teal-500/30"
       case "Expert":
+      case "Experte":
+      case "Chuyên gia":
         return "bg-emerald-500/10 text-emerald-300 border-emerald-500/30"
       default:
         return "bg-cyan-500/10 text-cyan-300 border-cyan-500/30"
@@ -27,10 +33,16 @@ const SkillLevel = ({ skill, level, description }: SkillLevelProps) => {
       case "Beginner":
         return "w-1/4"
       case "Intermediate":
+      case "Mittelstufe":
+      case "Trung bình":
         return "w-2/4"
       case "Advanced":
+      case "Fortgeschritten":
+      case "Nâng cao":
         return "w-3/4"
-      case "Expert":
+        case "Expert":
+      case "Experte":
+      case "Chuyên gia":
         return "w-full"
       default:
         return "w-2/4"

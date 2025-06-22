@@ -1,5 +1,6 @@
 "use client"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/context/language-context"
 
 interface ProjectFilterProps {
   categories: string[]
@@ -8,6 +9,8 @@ interface ProjectFilterProps {
 }
 
 const ProjectFilter = ({ categories, onFilterChange, activeFilter }: ProjectFilterProps) => {
+  const { t } = useLanguage()
+
   return (
     <div className="flex flex-wrap gap-2 mb-8 justify-center">
       <Button
@@ -20,7 +23,7 @@ const ProjectFilter = ({ categories, onFilterChange, activeFilter }: ProjectFilt
         }`}
         onClick={() => onFilterChange("all")}
       >
-        All
+        {t("projects.all")}
       </Button>
       {categories.map((category) => (
         <Button

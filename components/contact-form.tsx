@@ -2,8 +2,10 @@
 import { useRef, useState } from "react"
 import emailjs from "emailjs-com"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/context/language-context"
 
 export default function ContactForm() {
+  const { t } = useLanguage()
   const formRef = useRef<HTMLFormElement>(null)
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
@@ -24,7 +26,7 @@ export default function ContactForm() {
       setSent(true)
       formRef.current?.reset()
     } catch (err) {
-      setError("Failed to send message.")
+      setError(t("contact.error"))
     }
     setSending(false)
   }
@@ -36,7 +38,7 @@ export default function ContactForm() {
           htmlFor="from_name"
           className="block text-sm font-medium text-gray-300 mb-1"
         >
-          Name
+          {t("contact.name")}
         </label>
         <input
           type="text"
@@ -44,7 +46,7 @@ export default function ContactForm() {
           name="name"
           required
           className="w-full px-4 py-2 bg-[#0f172a] border border-cyan-500/30 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
-          placeholder="Your Name"
+          placeholder={t("contact.namePlaceholder")}
         />
       </div>
 
@@ -53,7 +55,7 @@ export default function ContactForm() {
           htmlFor="reply_to"
           className="block text-sm font-medium text-gray-300 mb-1"
         >
-          Email
+          {t("contact.email")}
         </label>
         <input
           type="email"
@@ -61,7 +63,7 @@ export default function ContactForm() {
           name="email"
           required
           className="w-full px-4 py-2 bg-[#0f172a] border border-cyan-500/30 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
-          placeholder="Your Email"
+          placeholder={t("contact.emailPlaceholder")}
         />
       </div>
 
@@ -70,7 +72,7 @@ export default function ContactForm() {
           htmlFor="subject"
           className="block text-sm font-medium text-gray-300 mb-1"
         >
-          Subject
+          {t("contact.subject")}
         </label>
         <input
           type="text"
@@ -78,7 +80,7 @@ export default function ContactForm() {
           name="subject"
           required
           className="w-full px-4 py-2 bg-[#0f172a] border border-cyan-500/30 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
-          placeholder="Subject"
+          placeholder={t("contact.subjectPlaceholder")}
         />
       </div>
 
@@ -87,7 +89,7 @@ export default function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-gray-300 mb-1"
         >
-          Message
+          {t("contact.message")}
         </label>
         <textarea
           id="message"
@@ -95,7 +97,7 @@ export default function ContactForm() {
           rows={4}
           required
           className="w-full px-4 py-2 bg-[#0f172a] border border-cyan-500/30 rounded-md focus:ring-2 focus:ring-cyan-500 focus:border-transparent text-white"
-          placeholder="Your Message"
+          placeholder={t("contact.messagePlaceholder")}
         ></textarea>
       </div>
 
@@ -103,9 +105,9 @@ export default function ContactForm() {
         className="w-full bg-cyan-600 hover:bg-cyan-700 text-white"
         disabled={sending}
       >
-        {sending ? "Sending..." : "Send"}
+        {sending ? t("contact.sending") : t("contact.send")}
       </Button>
-      {sent && <p className="text-green-400">Message sent!</p>}
+      {sent && <p className="text-green-400">{t("contact.sent")}</p>}
       {error && <p className="text-red-400">{error}</p>}
     </form>
   )

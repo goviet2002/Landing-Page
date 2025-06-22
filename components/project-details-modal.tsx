@@ -7,6 +7,7 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Info, FileText, ImageIcon, Github, BarChart3, Folder, MonitorPlay, Maximize2, Minimize2 } from "lucide-react"
 import clsx from "clsx"
+import { useLanguage } from "@/context/language-context"
 
 interface ProjectDetailsModalProps {
   isOpen: boolean
@@ -29,6 +30,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   const [activeTab, setActiveTab] = useState("info") // 1. Track active tab
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [selectedRepoFile, setSelectedRepoFile] = useState<string | null>(null);
+  const { t } = useLanguage()
 
   useEffect(() => {
     setMounted(true)
@@ -37,11 +39,11 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
   if (!mounted) return null
   if (!project) return null
 
-  const isFootballTeamAnalysis = project?.title === "Football Team Analysis"
-  const isBananaAirlines = project?.title === "Banana Airlines Website";
-  const isFlappyBird = project?.title === "Flappy Bird Game"
-  const isF1ETL = project?.title === "Automated F1 ETL-Pipeline";
-  const isBigData = project.title === "Big Data Food Recommendation System"
+  const isFootballTeamAnalysis = project?.title === "projects.football.title";
+  const isBananaAirlines = project?.title === "projects.bananaairlines.title";
+  const isFlappyBird = project?.title === "projects.flappybird.title";
+  const isF1ETL = project?.title === "projects.f1etl.title";
+  const isBigData = project.title === "projects.foodrec.title";
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
@@ -62,50 +64,50 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
         )}
       >
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-cyan-400">{project.title}</DialogTitle>
+          <DialogTitle className="text-2xl font-bold text-cyan-400">{t(project.title)}</DialogTitle>
           {project.date && <DialogDescription className="text-gray-300">{project.date}</DialogDescription>}
         </DialogHeader>
 
         <Tabs defaultValue="info" className="mt-4" onValueChange={setActiveTab}>
           <TabsList>
-              {(isF1ETL || isBigData)? (
-                <>
-                  <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
-                    <Info className="h-4 w-4 mr-2" />
-                    Overview
+            {(isF1ETL || isBigData)? (
+              <>
+                <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                  <Info className="h-4 w-4 mr-2" />
+                  {t("projects.tabs.overview")}
+                </TabsTrigger>
+                <TabsTrigger value="analysis" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  {t("projects.tabs.analysis")}
+                </TabsTrigger>
+                {project.githubRepo && (
+                  <TabsTrigger value="repo">
+                    <Github className="h-4 w-4 mr-2" />
+                    Repository
                   </TabsTrigger>
-                  <TabsTrigger value="analysis" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
-                    <BarChart3 className="h-4 w-4 mr-2" />
-                    Analysis
-                  </TabsTrigger>
-                  {project.githubRepo && (
-                    <TabsTrigger value="repo">
-                      <Github className="h-4 w-4 mr-2" />
-                      Repository
-                    </TabsTrigger>
-                  )}
-                </>
-              ) : (
+                )}
+              </>
+            ) : (
               <>
                 {isFootballTeamAnalysis ? (
                   <>
                     <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
                       <BarChart3 className="h-4 w-4 mr-2" />
-                      Analysis
+                      {t("projects.tabs.analysis")}
                     </TabsTrigger>
                     <TabsTrigger
                       value="report"
                       className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400"
                     >
                       <FileText className="h-4 w-4 mr-2" />
-                      Report
+                      {t("projects.tabs.report")}
                     </TabsTrigger>
                   </>
                 ) : isBananaAirlines && project.demoImages && project.demoImages.length > 0 ? (
                   <>
                     <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
                       <Info className="h-4 w-4 mr-2" />
-                      Overview
+                      {t("projects.tabs.overview")}
                     </TabsTrigger>
                     <TabsTrigger
                       value="images"
@@ -119,7 +121,7 @@ const ProjectDetailsModal = ({ isOpen, onClose, project }: ProjectDetailsModalPr
                   <>
                     <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
                       <Info className="h-4 w-4 mr-2" />
-                      Overview
+                      {t("projects.tabs.overview")}
                     </TabsTrigger>
                   </>
                 ) :

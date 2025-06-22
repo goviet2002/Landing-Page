@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
+import { LocalizedDateRange } from "@/components/localized-date-range"
+import { Calendar } from "lucide-react"
 
 interface CertificateCardProps {
   title: string
@@ -42,7 +44,12 @@ const CertificateCard = ({ title, issuer, icon, color, date, skills, logo }: Cer
         </div>
       </CardHeader>
       <CardContent className="p-4 pt-2 flex-grow overflow-hidden">
-        {date && <p className="text-gray-400 text-sm mb-2">{date}</p>}
+        {date && (
+          <p className="text-gray-400 text-sm mb-2 flex items-center">
+            <Calendar className="h-4 w-4 mr-1 text-cyan-400" />
+            <LocalizedDateRange date={date} />
+          </p>
+        )}
         {skills && skills.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-2">
             {skills.map((skill, index) => (

@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, ExternalLink } from "lucide-react"
+import { useLanguage } from "@/context/language-context"
+import { LocalizedDateRange } from "@/components/localized-date-range"
 
 interface ProjectCardProps {
   title: string
@@ -18,7 +20,10 @@ interface ProjectCardProps {
   disabled?: boolean 
 }
 
+
+
 const ProjectCard = ({ title, description, tags, image, link, date, onClick, disabled }: ProjectCardProps) => {
+  const { t, language } = useLanguage()
   return (
     <Card
       className={`overflow-hidden transition-all hover:shadow-lg bg-[#1e293b] border-cyan-500/20 hover:border-cyan-500/40 w-full flex-shrink-0 h-[540px] group flex flex-col
@@ -27,12 +32,12 @@ const ProjectCard = ({ title, description, tags, image, link, date, onClick, dis
       tabIndex={disabled ? -1 : 0}
       aria-disabled={disabled}
     >
-      <div className="relative h-72 w-full"> {/* Increase height here */}
+      <div className="relative h-72 w-full">
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
           fill
-          className="object-cover object-top rounded-t-lg" // Add object-top
+          className="object-cover object-top rounded-t-lg"
         />
       </div>
       <CardHeader className="p-4 pb-2">
@@ -40,7 +45,7 @@ const ProjectCard = ({ title, description, tags, image, link, date, onClick, dis
         {date && (
           <div className="flex items-center text-sm text-gray-400 mt-1">
             <Calendar className="h-4 w-4 mr-1 text-cyan-400" />
-            {date}
+            <LocalizedDateRange date={date} />
           </div>
         )}
       </CardHeader>
