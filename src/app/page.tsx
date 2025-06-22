@@ -43,6 +43,7 @@ import ProjectFilter from "@/components/project-filter"
 import SimplePDFViewer from "@/components/simple-pdf-viewer"
 import ContactForm from "@/components/contact-form" // 1. Import the new component
 import { Dialog, DialogContent } from "@/components/ui/dialog"
+import CoursesOnlyModal from "@/components/courses-modal"
 
 // Sample project data with code and demo images
 const projectsData = [
@@ -114,77 +115,121 @@ const timelineData = [
     year: "2022 - Present",
     title: "Johannes Gutenberg-Universität Mainz",
     degree: "Bachelor of Science, Informatik",
-    description: "Studying Computer Science with a focus on Data Science at Johannes Gutenberg-Universität Mainz.",
+    description: "Developed skills in relational databases, data warehousing, and NoSQL technologies through coursework and projects.",
     icon: <GraduationCap className="h-4 w-4" />,
-    grade: "1.9 (vorläufig)",
+    grade: "1.9 (preliminary)",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed-16NhnuezIdXNmdWhkxjULkB90w5CAq.png",
     period: "2022 - Present",
     details: {
-      focus: ["Focus: Data Science", "Minor: Economics"],
+      focus: ["Major: Data Science", "Minor: Economics"],
       projects: [
         "Programming (Computer Games)",
         "Database (Web Development)",
         "Software Engineering (Agile Methods)",
         "Big Data (Recommendation System)",
       ],
-      keySkills: ["Python", "SQL", "Data Analysis", "Machine Learning", "Big Data", "Web Development"],
+      keySkills: ["Python", "SQL", "Data Management", "Machine Learning", "Big Data", "Web Development"],
     },
-    hasDetailedView: true,
-    courses: [
+    hasDetailedView: false,
+    showCourses: true, 
+    courses: [      
       {
-        name: "Big Data",
-        grade: "1.7",
-        description: "Analysis of large datasets using Apache Spark and Scala",
+        name: "Datenstrukturen und effiziente Algorithmen",
+        grade: "2.7",
+        description: "Study of various algorithms and data structures for efficient computation.",
+        semester: "WiSe 2022/23",
       },
       {
-        name: "Database Systems",
+        name: "Datenbase Systems",
+        grade: "2.0",
+        description: "Relational databases, data warehouses, data lakes, transactions, normalization. Included a block practical course.",
+        semester: "SoSe 2023",
+      },
+      {
+        name: "Statistik",
         grade: "1.3",
-        description: "Design and implementation of relational databases",
+        description: "Statistical methods for computer science: descriptive statistics, hypothesis testing, regression, probability theory.",
+        semester: "SoSe 2023",
       },
       {
         name: "Software Engineering",
         grade: "2.0",
-        description: "Agile development methodologies and project management",
+        description: "Requirements engineering, project management, agile methods. Included a block practical course.",
+        semester: "WiSe 2023/24",
       },
       {
-        name: "Data Structures and Algorithms",
-        grade: "1.7",
-        description: "Implementation and analysis of fundamental algorithms",
+        name: "Non-Standard Database",
+        grade: "1.0",
+        description: "Covers unstructured, graph, text, image databases, NoSQL, Redis. Included a seminar on Temporal Information Retrieval.",
+        semester: "WiSe 2023/24",
       },
+      {
+        name: "Big Data",
+        grade: "1.3",
+        description: "Apache Spark, RDDs, and algorithms such as collaborative filtering for large-scale data analysis.",
+        semester: "SoSe 2024",
+      },
+      {
+        name: "Machine Learning",
+        grade: "2.0",
+        description: "Supervised learning: linear regression, logistic regression, random forest, neural networks, etc.",
+        semester: "SoSe 2024",
+      },
+      {
+        name: "Programmanalyse",
+        grade: "2.7",
+        description: "Programming language analysis, inference rules, with a seminar on Shape Analysis.",
+        semester: "SoSe 2024",
+      },
+
     ],
   },
   {
     year: "2021",
     title: "Johannes Gutenberg-Universität Mainz",
     degree: "Feststellungsprüfung, College/University Preparatory",
-    description: "Completed the university preparatory course at Johannes Gutenberg-Universität Mainz.",
+    description: "Preparatory studies for university admission and language preparation.",
     icon: <GraduationCap className="h-4 w-4" />,
     grade: "1.5",
     logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed-16NhnuezIdXNmdWhkxjULkB90w5CAq.png",
-    period: "2021",
+    period: "Feb 2021 - Dec 2021",
     details: {
-      keySkills: ["Deutsch", "FSP Zeugnis"],
+      keySkills: ["Deutsch", "Informatik", "Mathematik", "Physik", "Chemie"],
     },
+    hasDetailedView: false,
+    showCourses: false,
     certificate: {
-      name: "FSP Zeugnis",
-      url: "/documents/fsp-zeugnis.pdf",
+      name: "Transcript of Records",
+      url: "/documents/fsp-zeugnis.pdf#toolbar=0&navpanes=0&scrollbar=0",
     },
-    hasDetailedView: true,
-    courses: [
+  },
+  {
+    period: "2008 - 2020",
+    title: "Schulzeit",
+    degree: "Hanoi, Vietnam",
+    description: (
+      <ul className="list-disc list-inside space-y-1">
+        <li>Graduated with a diploma from a general upper secondary school (equivalent to Abitur).</li>
+        <li>Top student in class for three consecutive years at Viet Duc High School (grades 10 to 12).</li>
+      </ul>
+    ),
+    icon: <GraduationCap className="h-4 w-4" />,
+    logo: "/images/school-logo.png",
+    hasDetailedView: false,
+    showCourses: false,
+    certificate: null, // Not used for multiple certificates
+    extraCertificates: [
       {
-        name: "German Language",
-        grade: "1.5",
-        description: "Advanced German language studies",
+        name: "University Entrance Exam Results",
+        url: "documents/schulzeit/abitur.pdf",
       },
       {
-        name: "Mathematics",
-        grade: "1.3",
-        description: "Advanced mathematics for university preparation",
+        name: "Transcript of Records in High School",
+        url: "documents/schulzeit/zensurenbuch.pdf",
       },
       {
-        name: "Physics",
-        grade: "1.7",
-        description: "Physics fundamentals for technical studies",
+        name: "DSD-I Certificate",
+        url: "documents/schulzeit/DSD-I.pdf",
       },
     ],
   },
@@ -312,7 +357,7 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<null | (typeof projectsData)[0]>(null)
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false)
   const [certificateTitle, setCertificateTitle] = useState("")
-  const [certificateUrl, setCertificateUrl] = useState("")
+  const [certificateUrl, setCertificateUrl] = useState<string>("")
   const [certificateType, setCertificateType] = useState<"pdf" | "image">("pdf")
   const [typingComplete, setTypingComplete] = useState(false)
   const [activeFilter, setActiveFilter] = useState("all")
@@ -321,6 +366,9 @@ export default function Home() {
   const [selectedEducation, setSelectedEducation] = useState<any>(null)
   const [showPdfViewer, setShowPdfViewer] = useState(false)
   const [isCertificateViewerOpen, setIsCertificateViewerOpen] = useState(false)
+  const [isCoursesModalOpen, setIsCoursesModalOpen] = useState(false)
+  const [coursesForModal, setCoursesForModal] = useState<any[]>([])
+  const [pdfModalTitle, setPdfModalTitle] = useState("FSP Zeugnis")
 
   // Extract unique categories from projects
   // const projectCategories = Array.from(new Set(projectsData.map((project) => project.category)))
@@ -355,11 +403,11 @@ export default function Home() {
     setIsProjectModalOpen(true)
   }
 
-  const handleViewCertificate = (title: string, url: string, type: "pdf" | "image" = "pdf") => {
-    setCertificateTitle(title)
+  const handleViewCertificate = (title: string, url: string, type?: "pdf" | "image") => {
     setCertificateUrl(url)
-    setCertificateType(type)
-    setIsCertificateViewerOpen(true)
+    setPdfModalTitle(title) // set the modal title
+    setCertificateType(type || "pdf")
+    setShowPdfViewer(true)
   }
 
   const handleViewDetailedInfo = (item: any) => {
@@ -369,6 +417,12 @@ export default function Home() {
     }
     setSelectedEducation(educationData)
     setIsEducationModalOpen(true)
+  }
+
+  // Handler to open the modal for JGU Bachelor
+  const handleViewCourses = (courses: any[]) => {
+    setCoursesForModal(courses)
+    setIsCoursesModalOpen(true)
   }
 
   return (
@@ -527,6 +581,7 @@ export default function Home() {
                       className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
                       onClick={() => {
                         setCertificateUrl("/documents/fsp-zeugnis.pdf")
+                        setPdfModalTitle("German Language Certification")
                         setShowPdfViewer(true)
                       }}
                     >
@@ -927,7 +982,7 @@ export default function Home() {
           <div className="flex justify-between items-center p-4 border-b border-cyan-500/30">
             <h3 className="text-xl font-bold text-cyan-400 flex items-center">
               <FileText className="h-5 w-5 mr-2" />
-              FSP Zeugnis
+              {pdfModalTitle}
             </h3>
             {/* The DialogContent already includes an X close button in the top-right corner */}
           </div>
@@ -942,6 +997,12 @@ export default function Home() {
           </div>
         </DialogContent>
       </Dialog>
+
+      <CoursesOnlyModal
+        isOpen={isCoursesModalOpen}
+        onClose={() => setIsCoursesModalOpen(false)}
+        courses={coursesForModal}
+      />
 
       <ScrollToTop />
     </main>

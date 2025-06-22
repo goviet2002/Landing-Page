@@ -9,9 +9,10 @@ import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 
 interface TimelineItem {
-  year: string
+  year?: string
+  period?: string
   title: string
-  description: string
+  description: string | React.ReactElement
   icon?: React.ReactNode
   institution?: string
   degree?: string
@@ -21,12 +22,20 @@ interface TimelineItem {
     projects?: string[]
     keySkills?: string[]
   }
-  certificate?: {
+  certificate?: { name: string; url: string } | null
+  extraCertificates?: Array<{
     name: string
     url: string
-  }
+  }>
   logo?: string
   hasDetailedView?: boolean
+  showCourses?: boolean
+  courses?: Array<{
+    name: string
+    grade?: string
+    description?: string
+    semester?: string
+  }>
 }
 
 interface TimelineProps {
@@ -86,7 +95,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo }: TimelineProp
                   </div>
                 </div>
                 <div className="text-right flex items-center">
-                  <span className="text-cyan-400 text-sm">{item.year}</span>
+                  <span className="text-cyan-400 text-sm">{item.period || item.year}</span>
                   {expandedIndex === index ? (
                     <ChevronDown className="h-4 w-4 ml-2 text-cyan-400" />
                   ) : (
@@ -107,7 +116,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo }: TimelineProp
                 <div className="pt-4">
                   {item.grade && (
                     <div className="inline-block px-2 py-1 bg-cyan-500/10 rounded text-cyan-400 text-sm mb-3">
-                      Note: {item.grade}
+                      Grade: {item.grade}
                     </div>
                   )}
 
@@ -161,35 +170,54 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo }: TimelineProp
                   )}
 
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {item.certificate && !item.hasDetailedView && (
+                    {/* For Feststellungsprüfung: show "View Transcript of Records" */}
+                    {item.certificate && item.certificate.name === "Transcript of Records" && (
                       <Button
                         variant="outline"
                         size="sm"
                         className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
-                        onClick={(e) => {
+                        onClick={e => {
                           e.stopPropagation()
-                          onViewCertificate(item.certificate!.name, item.certificate!.url)
+                          onViewCertificate("Transcript of Records", item.certificate!.url)
                         }}
                       >
                         <FileText className="h-3 w-3 mr-1" />
-                        View Certificate
+                        {item.certificate.name}
                       </Button>
                     )}
 
-                    {item.hasDetailedView && (
+                    {/* For Bachelor: show "View Courses" */}
+                    {item.showCourses && (
                       <Button
                         variant="outline"
                         size="sm"
                         className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
-                        onClick={(e) => {
+                        onClick={e => {
                           e.stopPropagation()
                           onViewDetailedInfo(item)
                         }}
                       >
                         <ExternalLink className="h-3 w-3 mr-1" />
-                        View Detailed Info
+                        View Courses
                       </Button>
                     )}
+
+                    {/* For extra certificates: show buttons for each certificate */}
+                    {item.extraCertificates && item.extraCertificates.map((cert: { name: string; url: string }, idx: number) => (
+                      <Button
+                        key={idx}
+                        variant="outline"
+                        size="sm"
+                        className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
+                        onClick={e => {
+                          e.stopPropagation()
+                          onViewCertificate(cert.name, cert.url)
+                        }}
+                      >
+                        <FileText className="h-3 w-3 mr-1" />
+                        {cert.name}
+                      </Button>
+                    ))}
                   </div>
                 </div>
               </motion.div>

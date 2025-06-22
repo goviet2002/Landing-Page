@@ -25,7 +25,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Hero section
     "hero.title": "Transforming Data into Insights",
     "hero.description":
-      "I'm a motivated Computer Science student at Johannes Gutenberg-Universität Mainz, specializing in Data Science with a minor in Economics. With a strong Note of 1.9, I'm passionate about extracting meaningful insights from data and developing innovative solutions.",
+      "I'm a motivated Computer Science student at Johannes Gutenberg-Universität Mainz, specializing in Data Science with a minor in Economics. With a strong grade of 1.9, I'm passionate about extracting meaningful insights from data and developing innovative solutions.",
     "hero.viewProjects": "View Projects",
     "hero.downloadCV": "Download CV",
     "hero.role": "Data Science Student",
