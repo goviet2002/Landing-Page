@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -41,6 +42,7 @@ import TestimonialCard from "@/components/testimonial-card"
 import ProjectFilter from "@/components/project-filter"
 import SimplePDFViewer from "@/components/simple-pdf-viewer"
 import ContactForm from "@/components/contact-form" // 1. Import the new component
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 // Sample project data with code and demo images
 const projectsData = [
@@ -460,7 +462,7 @@ export default function Home() {
                       size="icon"
                       className="rounded-full border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20"
                     >
-                      <Link href="https://github.com/" target="_blank">
+                      <Link href="https://github.com/goviet2002" target="_blank">
                         <Github className="h-5 w-5" />
                         <span className="sr-only">GitHub</span>
                       </Link>
@@ -469,6 +471,10 @@ export default function Home() {
                       variant="outline"
                       size="icon"
                       className="rounded-full border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20"
+                      onClick={() => {
+                        navigator.clipboard.writeText("anhviet2002.vna@gmail.com")
+                        alert("Email copied!")
+                      }}
                     >
                       <Link href="mailto:anhviet2002.vna@gmail.com">
                         <Mail className="h-5 w-5" />
@@ -913,29 +919,26 @@ export default function Home() {
       />
 
       {/* PDF Viewer */}
-      {showPdfViewer && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-          <div className="bg-[#1e293b] border border-cyan-500/30 rounded-lg w-full max-w-4xl h-[90vh] overflow-hidden">
-            <div className="flex justify-between items-center p-4 border-b border-cyan-500/30">
-              <h3 className="text-xl font-bold text-cyan-400 flex items-center">
-                <FileText className="h-5 w-5 mr-2" />
-                FSP Zeugnis
-              </h3>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-400 hover:text-white"
-                onClick={() => setShowPdfViewer(false)}
-              >
-                Close
-              </Button>
-            </div>
-            <div className="h-[calc(90vh-60px)]">
-              <SimplePDFViewer file={certificateUrl} />
-            </div>
+      <Dialog open={showPdfViewer} onOpenChange={setShowPdfViewer}>
+        <DialogContent className="bg-[#1e293b] border border-cyan-500/30 rounded-lg w-full h-[90vh] overflow-hidden" style={{ maxWidth: "51rem" }}>
+          <div className="flex justify-between items-center p-4 border-b border-cyan-500/30">
+            <h3 className="text-xl font-bold text-cyan-400 flex items-center">
+              <FileText className="h-5 w-5 mr-2" />
+              FSP Zeugnis
+            </h3>
+            {/* The DialogContent already includes an X close button in the top-right corner */}
           </div>
-        </div>
-      )}
+          <div className="h-[calc(90vh-60px)]">
+            <iframe
+              src={`${certificateUrl}#toolbar=0`}
+              width="100%"
+              height="100%"
+              style={{ maxHeight: "calc(93% - 8px)", border: "none" }}
+              title="FSP Zeugnis"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <ScrollToTop />
     </main>
