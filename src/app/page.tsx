@@ -440,8 +440,28 @@ export default function Home() {
             {/* Left side - Image */}
             <div className="flex justify-center md:justify-end">
               <div className="relative h-[500px] w-full max-w-md">
+                {/* Sparkles */}
+                {[...Array(20)].map((_, i) => {
+                  const angle = (i / 20) * 2 * Math.PI
+                  const radiusX = 250 // horizontal radius
+                  const radiusY = 300 // vertical radius (wider above/below)
+                  const center = 250
+                  const x = center + radiusX * Math.cos(angle) - 4
+                  const y = center + radiusY * Math.sin(angle) - 4
+                  return (
+                    <span
+                      key={i}
+                      className="absolute w-2 h-2 bg-yellow-300 rounded-full opacity-70 animate-sparkle"
+                      style={{
+                        left: `${x}px`,
+                        top: `${y}px`,
+                        animationDelay: `${i * 0.12}s`
+                      }}
+                    />
+                  )
+                })}
                 <Image
-                  src="/images/profile-transparent.png"
+                  src="/images/viet.jpg"
                   alt="Anh Viet Ngo"
                   fill
                   className="object-contain"
