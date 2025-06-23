@@ -337,8 +337,7 @@ const certificationsData = [
 // Sample testimonial data
 const testimonialData = [
   {
-    quote:
-      "iu anh nhìu",
+    quote: "testimonials.huonggiang.quote",
     author: "Hoang Huong Giang Nguyen",
     role: "Fellow Economics Student, Goethe Uni Frankfurt",
   },

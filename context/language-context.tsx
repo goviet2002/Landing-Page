@@ -104,9 +104,14 @@ const translations: { [lang: string]: TranslationDict } = {
     // Testimonial section
     "testimonials.title": "Testimonials",
     "testimonials.demirkan.quote":
-      "I’ve come to know Viet as a dedicated and very helpful fellow student. He’s always ready to support others and brings a positive energy to every collaboration.",
+      "I’ve come to know Viet as a dedicated and very helpful fellow student.\
+      He’s always ready to support others and brings a positive energy to every collaboration.",
     "testimonials.csjgu.role":
       "Fellow Computer Science Student, JGU Mainz",
+    "testimonials.huonggiang.quote":
+      "Viet is a very responsible person, has excellent planning skills, \
+      and outstanding judgment and problem-solving abilities. He can work independently \
+      as well as lead a team very well with creative and bold strategies.",
 
     // Certificate date
     "certificates.date": "Date",
@@ -362,9 +367,14 @@ const translations: { [lang: string]: TranslationDict } = {
     // Testimonial section
     "testimonials.title": "Referenzen",
     "testimonials.demirkan.quote":
-      "Ich habe Viet als engagierten und sehr hilfsbereiten Kommilitonen kennengelernt. Er ist immer bereit, andere zu unterstützen, und bringt positive Energie in jede Zusammenarbeit.",
+      "Ich habe Viet als engagierten und sehr hilfsbereiten Kommilitonen kennengelernt.\
+      Er ist immer bereit, andere zu unterstützen, und bringt positive Energie in jede Zusammenarbeit.",
     "testimonials.csjgu.role":
       "Mitstudent der Informatik, JGU Mainz",
+    "testimonials.huonggiang.quote":
+      "Viet ist eine sehr verantwortungsbewusste Person, verfügt über ausgezeichnete Planungsfähigkeiten \
+      sowie herausragendes Urteilsvermögen und Problemlösungskompetenz. Er kann sowohl eigenständig \
+      arbeiten als auch ein Team mit kreativen und mutigen Strategien sehr gut führen.",
 
     // Certificate date
     "certificates.date": "Datum",
@@ -572,9 +582,14 @@ const translations: { [lang: string]: TranslationDict } = {
     // Testimonial section
     "testimonials.title": "Nhận xét",
     "testimonials.demirkan.quote":
-      "Tôi biết Việt là một sinh viên tận tâm và rất nhiệt tình giúp đỡ bạn bè. Cậu ấy luôn sẵn sàng hỗ trợ mọi người và mang lại năng lượng tích cực cho mọi sự hợp tác.",
+      "Tôi biết Việt là một sinh viên tận tâm và rất nhiệt tình giúp đỡ bạn bè. \
+      Cậu ấy luôn sẵn sàng hỗ trợ mọi người và mang lại năng lượng tích cực cho mọi sự hợp tác.",
     "testimonials.csjgu.role":
       "Sinh viên Khoa học Máy tính, JGU Mainz",
+    "testimonials.huonggiang.quote":
+      "Việt là một người làm việc rất có trách nhiệm, có khả năng lên kế hoạch rất tốt, \
+      cùng khả năng phán đoán và giải quyết vấn đề xuất sắc. Anh ấy có thể làm việc độc lập \
+      cũng như dẫn dắt đội nhóm rất tốt với những chiến lược sáng tạo và táo bạo.",
 
     // Certificate date
     "certificates.date": "Ngày",
