@@ -80,7 +80,10 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
 
             {/* Content */}
             <div className="bg-[#1e293b] rounded-lg p-4 border border-cyan-500/20 hover:border-cyan-500/40 transition-all">
-              <div className="flex justify-between items-start cursor-pointer" onClick={() => toggleExpand(index)}>
+              <div
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 cursor-pointer"
+                onClick={() => toggleExpand(index)}
+              >
                 <div className="flex items-start gap-3">
                   {item.logo && (
                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-cyan-500/30 overflow-hidden p-0">
@@ -89,25 +92,28 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                         alt={item.institution || ""}
                         width={40}
                         height={40}
-                        className="object-cover w-full h-full"
+                        className="object-contain w-full h-full"
                       />
                     </div>
                   )}
                   <div>
                     <h3 className="text-lg font-semibold text-white">{t(item.title)}</h3>
                     {item.degree && <p className="text-cyan-400">{item.degree}</p>}
+                    {/* Show year/period below title on mobile */}
+                    <div className="text-cyan-400 text-sm sm:hidden">
+                      <LocalizedDateRange date={item.period || item.year} />
+                    </div>
                   </div>
                 </div>
-                <div className="text-right flex items-center">
-                  <span className="text-cyan-400 text-sm">
-                    <LocalizedDateRange date={item.period || item.year} />
-                  </span>
-                  {expandedIndex === index ? (
-                    <ChevronDown className="h-4 w-4 ml-2 text-cyan-400" />
-                  ) : (
-                    <ChevronRight className="h-4 w-4 ml-2 text-cyan-400" />
-                  )}
+                {/* Show year/period on the right for larger screens */}
+                <div className="text-cyan-400 text-sm hidden sm:block whitespace-nowrap ml-auto text-right">
+                  <LocalizedDateRange date={item.period || item.year} />
                 </div>
+                {expandedIndex === index ? (
+                  <ChevronDown className="h-4 w-4 ml-2 text-cyan-400" />
+                ) : (
+                  <ChevronRight className="h-4 w-4 ml-2 text-cyan-400" />
+                )}
               </div>
 
               <motion.div

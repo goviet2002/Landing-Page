@@ -229,7 +229,7 @@ const translations: { [lang: string]: TranslationDict } = {
     "Transcript of Records": "Transcript of Records",
     "DSD-I Certificate": "DSD-I Certificate",
     "University Entrance Exam Results": "University Entrance Exam Results",
-    "Transcript of Records in High School": "Transcript of Records in High School",
+    "Transcript of Records in High School": "High School Transcript",
   },
   de: {
     // Navbar
@@ -444,7 +444,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Certificates
     "Transcript of Records": "Notenübersicht",
     "DSD-I Certificate": "DSD-I Zertifikat",
-    "University Entrance Exam Results": "Ergebnisse der Hochschulaufnahmeprüfung",
+    "University Entrance Exam Results": "Hochschulaufnahmeprüfung",
     "Transcript of Records in High School": "Notenübersicht (Oberschule)",
   },
   vi: {
@@ -659,7 +659,7 @@ const translations: { [lang: string]: TranslationDict } = {
     "Transcript of Records": "Bảng điểm",
     "DSD-I Certificate": "Chứng chỉ DSD-I",
     "University Entrance Exam Results": "Kết quả thi đại học",
-    "Transcript of Records in High School": "Bảng điểm THPT",
+    "Transcript of Records in High School": "Học Bạ THPT",
   },
 }
 
