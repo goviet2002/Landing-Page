@@ -30,7 +30,7 @@ const translations: { [lang: string]: TranslationDict } = {
     "hero.title": "Transforming Data into Insights",
     "hero.description":
       "I'm a motivated Computer Science student at Johannes Gutenberg-Universität Mainz, specializing in Data Science \
-       with a minor in Economics. With a strong grade of 1.9 of german grading system, I'm passionate about extracting meaningful insights from \
+       with a minor in Economics. With a strong grade of 1.9 in the German grading system, I'm passionate about extracting meaningful insights from \
         data and developing innovative solutions.",
     "hero.viewProjects": "View Projects",
     "hero.downloadCV": "Download CV",
