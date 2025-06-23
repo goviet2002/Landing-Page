@@ -502,9 +502,15 @@ export default function Home() {
                         {t("hero.viewProjects")}
                       </Link>
                     </Button>
-                    <Button variant="outline" className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20">
-                      <Download className="mr-2 h-4 w-4" />
-                      {t("hero.downloadCV")}
+                    <Button
+                      variant="outline"
+                      className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/20"
+                      asChild
+                    >
+                      <a href="/documents/cv.pdf" download>
+                        <Download className="mr-2 h-4 w-4" />
+                        {t("hero.downloadCV")}
+                      </a>
                     </Button>
                   </div>
 
