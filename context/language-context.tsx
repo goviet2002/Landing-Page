@@ -135,7 +135,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Skill descriptions
     "skills.pythonDesc": "Proficient in data analysis libraries (Pandas, NumPy) and ML frameworks (Scikit-learn)",
     "skills.sqlDesc": "Database design, complex queries, and data manipulation",
-    "skills.dataAnalysisDesc": "Statistical analysis, data cleaning, and insight generation",
+    "skills.dataAnalysisDesc": "Data cleaning, exploration, and generating actionable insights",
     "skills.machineLearningDesc": "Supervised and unsupervised learning, model evaluation",
     "skills.dataVisualizationDesc": "PowerBI, Seaborn, Matplotlib for creating insightful visualizations",
     "skills.bigDataDesc": "Apache Spark, Scala, distributed computing",
@@ -348,7 +348,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Skill descriptions
     "skills.pythonDesc": "Versiert in Datenanalyse-Bibliotheken (Pandas, NumPy) und ML-Frameworks (Scikit-learn)",
     "skills.sqlDesc": "Datenbankdesign, komplexe Abfragen und Datenmanipulation",
-    "skills.dataAnalysisDesc": "Statistische Analyse, Datenbereinigung und Erkenntnisgewinnung",
+    "skills.dataAnalysisDesc": "Datenbereinigung, Exploration und Gewinnung umsetzbarer Erkenntnisse",
     "skills.machineLearningDesc": "Überwachtes und unüberwachtes Lernen, Modellevaluierung",
     "skills.dataVisualizationDesc": "PowerBI, Seaborn, Matplotlib zur Erstellung aussagekräftiger Visualisierungen",
     "skills.bigDataDesc": "Apache Spark, Scala, verteiltes Rechnen",
@@ -446,7 +446,7 @@ const translations: { [lang: string]: TranslationDict } = {
     "navbar.certifications": "Chứng chỉ",
     "navbar.contact": "Liên hệ",
     "navbar.myjourney": "Hành trình",
-    "navbar.testimonial": "Lời chứng thực",
+    "navbar.testimonial": "Nhận xét",
 
     "projects.date": "Thời gian",
 
@@ -556,7 +556,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Skill descriptions
     "skills.pythonDesc": "Thành thạo thư viện phân tích dữ liệu (Pandas, NumPy) và framework ML (Scikit-learn)",
     "skills.sqlDesc": "Thiết kế cơ sở dữ liệu, truy vấn phức tạp và thao tác dữ liệu",
-    "skills.dataAnalysisDesc": "Phân tích thống kê, làm sạch dữ liệu và tạo ra thông tin hữu ích",
+    "skills.dataAnalysisDesc": "Làm sạch dữ liệu, khám phá và tạo ra thông tin hữu ích",
     "skills.machineLearningDesc": "Học có giám sát, không giám sát và đánh giá mô hình",
     "skills.dataVisualizationDesc": "PowerBI, Seaborn, Matplotlib để tạo trực quan hóa dữ liệu hữu ích",
     "skills.bigDataDesc": "Apache Spark, Scala, tính toán phân tán",

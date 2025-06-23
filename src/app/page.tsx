@@ -210,7 +210,7 @@ const timelineData = [
     period: "2008 - 2020",
     title: "timeline.schulzeit.title",
     degree: "Hanoi, Vietnam",
-    description: "timeline.schulzeit.description", // <-- use translation key
+    description: "timeline.schulzeit.description",
     icon: <GraduationCap className="h-4 w-4" />,
     logo: "/images/vietduc.png",
     hasDetailedView: false,
