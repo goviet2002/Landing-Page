@@ -438,15 +438,15 @@ export default function Home() {
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Left side - Image */}
-            <div className="flex justify-center md:justify-end">
+            <div className="flex justify-center md:justify-start">
               <div className="relative h-[500px] w-full max-w-md">
                 {/* Sparkles */}
                 {[...Array(20)].map((_, i) => {
                   const angle = (i / 20) * 2 * Math.PI
-                  const radiusX = 250 // horizontal radius
-                  const radiusY = 300 // vertical radius (wider above/below)
+                  const radiusX = 280 // horizontal radius
+                  const radiusY = 320 // vertical radius (wider above/below)
                   const center = 250
-                  const x = center + radiusX * Math.cos(angle) - 4
+                  const x = center + radiusX * Math.cos(angle) - 4 - 20
                   const y = center + radiusY * Math.sin(angle) - 4
                   return (
                     <span
@@ -473,7 +473,7 @@ export default function Home() {
             </div>
 
             {/* Right side - Info */}
-            <div>
+            <div className="md:pl-8">
               <div className="inline-block px-3 py-1 mb-4 border border-cyan-500/30 rounded-full bg-cyan-500/10 text-cyan-400 text-sm">
                 {t("hero.role")}
               </div>
