@@ -490,7 +490,7 @@ export default function Home() {
 
               {(typingComplete || language === "vi" || language === "de") && (
                 <>
-                  <p className="text-gray-300 mb-6">{t("hero.description")}</p>
+                  <p className="text-gray-300 mb-6 text-justify">{t("hero.description")}</p>
 
                   <div className="flex items-center text-gray-300 mb-6">
                     <MapPin className="h-5 w-5 mr-2 text-cyan-400" />
@@ -566,7 +566,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div className="h-full flex flex-col">
-              <p className="text-gray-300 mb-6">{t("about.description")}</p>
+              <p className="text-gray-300 mb-6 text-justify">{t("about.description")}</p>
 
               <div className="mb-8">
                 <h3 className="text-xl font-semibold mb-4 text-cyan-400">{t("about.languages")}</h3>
