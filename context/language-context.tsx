@@ -219,7 +219,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Footer
     "footer.rights": "All rights reserved.",
     "footer.disclaimer": "Logos and trademarks used on this site are for illustrative/educational purposes only. \
-     All rights belong to their respective owners (e.g., JGU Mainz, Viet Duc High School, DataCamp, Google, AWS).",
+     All rights belong to their respective owners (JGU Mainz, Viet Duc High School, DataCamp, Google, AWS).",
 
     // Timeline additional entries
     "timeline.fsp.description": "Preparatory studies for university admission and language preparation.",
@@ -437,7 +437,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Footer
     "footer.rights": "Alle Rechte vorbehalten.",
     "footer.disclaimer": "Logos und Marken auf dieser Seite dienen nur zu Illustrations- und Bildungszwecken.\
-     Alle Rechte liegen bei den jeweiligen Eigentümern (z. B. JGU Mainz, THPT Việt Đức, DataCamp, Google, AWS).",
+     Alle Rechte liegen bei den jeweiligen Eigentümern (JGU Mainz, Viet Duc Oberschule, DataCamp, Google, AWS).",
 
     // Timeline additional entries
     "timeline.fsp.description": "Vorbereitungsstudium für die Hochschulzulassung und Sprachvorbereitung.",
@@ -652,7 +652,8 @@ const translations: { [lang: string]: TranslationDict } = {
 
     // Footer
     "footer.rights": "Tất cả các quyền được bảo lưu.",
-    "footer.disclaimer": "Logo và thương hiệu trên trang này chỉ dùng cho mục đích minh họa/giáo dục. Mọi quyền thuộc về chủ sở hữu tương ứng (ví dụ: JGU Mainz, Viet Duc High School, DataCamp, Google, AWS).",
+    "footer.disclaimer": "Logo và thương hiệu trên trang này chỉ dùng cho mục đích minh họa/giáo dục.\
+     Mọi quyền thuộc về chủ sở hữu tương ứng (JGU Mainz, THPT Việt Đức, DataCamp, Google, AWS).",
 
     // Timeline additional entries
     "timeline.fsp.description": "Học dự bị đại học và chuẩn bị ngôn ngữ.",
