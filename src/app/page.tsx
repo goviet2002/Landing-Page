@@ -47,6 +47,16 @@ import CoursesOnlyModal from "@/components/courses-modal"
 
 // Sample project data with code and demo images
 const projectsData = [
+    {
+    title: "projects.f1etl.title",
+    description: "projects.f1etl.description",
+    tags: ["Python", "ETL", "BeautifulSoup", "asyncio", "BigQuery", "SQL", "Github Actions (CI/CD)"],
+    image: "images/F1/F1.gif",
+    githubRepo: "https://github.com/goviet2002/F1",
+    date: "May 2025 - now",
+    category: "Data Engineering",
+    demoImages: ["/placeholder.svg?height=600&width=800"],
+  },
   {
     title: "projects.football.title",
     description: "projects.football.description",
@@ -66,16 +76,6 @@ const projectsData = [
     date: "Sept 2023 - Sept 2023",
     category: "Web",
     demoImages: ["/placeholder.svg?height=600&width=800", "/placeholder.svg?height=600&width=800"],
-  },
-  {
-    title: "projects.f1etl.title",
-    description: "projects.f1etl.description",
-    tags: ["Python", "ETL", "BeautifulSoup", "asyncio", "BigQuery", "SQL", "Github Actions (CI/CD)"],
-    image: "images/F1/F1.gif",
-    githubRepo: "https://github.com/goviet2002/F1",
-    date: "May 2025 - now",
-    category: "Data Engineering",
-    demoImages: ["/placeholder.svg?height=600&width=800"],
   },
   {
     title: "projects.foodrec.title",
