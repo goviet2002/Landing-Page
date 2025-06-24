@@ -86,13 +86,13 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
               >
                 <div className="flex items-start gap-3">
                   {item.logo && (
-                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-cyan-500/30 overflow-hidden p-0">
+                    <div className="w-16 h-10 sm:w-12 sm:h-12 bg-white rounded-lg border border-cyan-500/30 overflow-hidden relative">
                       <Image
                         src={item.logo || "/placeholder.svg"}
                         alt={item.institution || ""}
-                        width={40}
-                        height={40}
-                        className="object-contain w-full h-full"
+                        fill
+                        className="object-cover"
+                        sizes="48px"
                       />
                     </div>
                   )}

@@ -118,7 +118,7 @@ const timelineData = [
     description: "timeline.bachelor.description",
     icon: <GraduationCap className="h-4 w-4" />,
     grade: "1.9 (preliminary)",
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed-16NhnuezIdXNmdWhkxjULkB90w5CAq.png",
+    logo: "images/jgu.png",
     period: "2022 - now",
     details: {
       focus: [
@@ -194,7 +194,7 @@ const timelineData = [
     description: "timeline.fsp.description",
     icon: <GraduationCap className="h-4 w-4" />,
     grade: "1.5",
-    logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/unnamed-16NhnuezIdXNmdWhkxjULkB90w5CAq.png",
+    logo: "images/jgu.png",
     period: "Feb 2021 - Dec 2021",
     details: {
       keySkills: ["Deutsch", "Informatik", "Mathematik", "Physik", "Chemie"],
