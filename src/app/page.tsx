@@ -346,6 +346,11 @@ const testimonialData = [
     author: "Demirkan Akdemir",
     role: "testimonials.csjgu.role",
   },
+  {
+    quote: "testimonials.martin.quote",
+    author: "Martin Gawron",
+    role: "testimonials.csjgu.role",
+  },
   
 ]
 

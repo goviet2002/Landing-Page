@@ -112,6 +112,10 @@ const translations: { [lang: string]: TranslationDict } = {
       "Viet is a very responsible person, has excellent planning skills, \
       and outstanding judgment and problem-solving abilities. He can work independently \
       as well as lead a team very well with creative and bold strategies.",
+    "testimonials.martin.quote":
+      "During the Big Data internship, I experienced Viet as a very dedicated and capable fellow student.\
+       His analytical approach to complex problems and his collegial manner made him a real asset to the team.\
+       I can therefore recommend him without reservation.",
 
     // Certificate date
     "certificates.date": "Date",
@@ -377,6 +381,10 @@ const translations: { [lang: string]: TranslationDict } = {
       "Viet ist eine sehr verantwortungsbewusste Person, verfügt über ausgezeichnete Planungsfähigkeiten \
       sowie herausragendes Urteilsvermögen und Problemlösungskompetenz. Er kann sowohl eigenständig \
       arbeiten als auch ein Team mit kreativen und mutigen Strategien sehr gut führen.",
+    "testimonials.martin.quote":
+      "Während des Big-Data-Praktikums habe ich Viet als einen sehr engagierten und fähigen Kommilitonen erlebt.\
+       Seine analytische Herangehensweise an komplexe Probleme und seine kollegiale Art machten ihn zu einer echten Bereicherung\
+      für das Team. Ich kann ihn daher uneingeschränkt empfehlen.",
 
     // Certificate date
     "certificates.date": "Datum",
@@ -594,6 +602,10 @@ const translations: { [lang: string]: TranslationDict } = {
       "Việt là một người làm việc rất có trách nhiệm, có khả năng lên kế hoạch rất tốt, \
       cùng khả năng phán đoán và giải quyết vấn đề xuất sắc. Anh ấy có thể làm việc độc lập \
       cũng như dẫn dắt đội nhóm rất tốt với những chiến lược sáng tạo và táo bạo.",
+    "testimonials.martin.quote":
+      "Trong kỳ thực tập Big Data, tôi nhận thấy Việt là một người bạn cùng lớp rất tận tâm và có năng lực.\
+       Cách tiếp cận phân tích các vấn đề phức tạp và tinh thần đồng đội của bạn ấy đã mang lại giá trị lớn cho nhóm.\
+        Tôi hoàn toàn có thể giới thiệu Việt.",
 
     // Certificate date
     "certificates.date": "Ngày",
