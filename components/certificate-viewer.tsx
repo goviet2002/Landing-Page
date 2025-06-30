@@ -32,12 +32,22 @@ const CertificateViewer = ({ isOpen, onClose, title, pdfUrl, type = "pdf" }: Cer
             {title}
           </DialogTitle>
         </DialogHeader>
-        <div className="mt-4 bg-white rounded-lg overflow-hidden h-[70vh]">
+        <div className="mt-4 rounded-lg overflow-hidden">
           {type === "pdf" ? (
-            <SimplePDFViewer file={pdfUrl} />
+            <div className="h-[70vh] bg-white rounded-lg">
+              <SimplePDFViewer file={pdfUrl} />
+            </div>
           ) : (
-            <div className="relative w-full h-full">
-              <Image src={pdfUrl || "/placeholder.svg"} alt={title} fill className="object-contain" />
+            <div className="relative w-full min-h-[400px] max-h-[80vh] flex items-center justify-center">
+              <Image
+                src={pdfUrl || "/placeholder.svg"}
+                alt={title}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg"
+                style={{ width: "auto", height: "auto" }}
+              />
             </div>
           )}
         </div>

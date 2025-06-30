@@ -409,7 +409,7 @@ export default function Home() {
     setCertificateUrl(url)
     setPdfModalTitle(title) // set the modal title
     setCertificateType(type || "pdf")
-    setShowPdfViewer(true)
+    setIsCertificateViewerOpen(true)
   }
 
   const handleViewDetailedInfo = (item: any) => {
