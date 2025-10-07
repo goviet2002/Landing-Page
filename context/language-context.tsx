@@ -29,12 +29,13 @@ const translations: { [lang: string]: TranslationDict } = {
     // Hero section
     "hero.title": "Transforming Data into Insights",
     "hero.description":
-      "I'm a motivated Computer Science student at Johannes Gutenberg-Universität Mainz, specializing in Data Science \
-       with a minor in Economics. With a strong grade of 1.9 in the German grading system, I'm passionate about extracting meaningful insights from \
+      "I'm a motivated Computer Science graduate from Johannes Gutenberg University Mainz, specializing in Data Science \
+      with a minor in Economics. I finished with an overall grade of 1.8 (German system) and an excellent thesis graded 1.0. \
+      I'm passionate about extracting meaningful insights from \
         data and developing innovative solutions.",
     "hero.viewProjects": "View Projects",
     "hero.downloadCV": "Download CV",
-    "hero.role": "Data Science Student",
+    "hero.role": "Data Science Graduate",
     "hero.location": "Mainz, Germany",
 
     // About section
@@ -73,7 +74,7 @@ const translations: { [lang: string]: TranslationDict } = {
     "timeline.grade": "Grade",
     "timeline.viewCourses": "View Courses",
     "timeline.bachelor.description": "Developed skills in relational databases, data warehousing, and NoSQL technologies through coursework and projects.",
-    "timeline.focus.major": "Major: Data Science",
+    "timeline.focus.major": "Specialization: Data Science",
     "timeline.focus.minor": "Minor: Economics",
     "timeline.projects.programming": "Programming (Computer Games)",
     "timeline.projects.database": "Database (Web Development)",
@@ -223,7 +224,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Footer
     "footer.rights": "All rights reserved.",
     "footer.disclaimer": "Logos and trademarks used on this site are for illustrative/educational purposes only. \
-     All rights belong to their respective owners (JGU Mainz, Viet Duc High School, DataCamp, Google, AWS).",
+     All rights belong to their respective owners (EIT Health, JGU Mainz, Viet Duc High School, DataCamp, Google, AWS).",
 
     // Timeline additional entries
     "timeline.fsp.description": "Preparatory studies for university admission and language preparation.",
@@ -236,6 +237,24 @@ const translations: { [lang: string]: TranslationDict } = {
     "DSD-I Certificate": "DSD-I Certificate",
     "University Entrance Exam Results": "University Entrance Exam Results",
     "Transcript of Records in High School": "High School Transcript",
+
+    // Bachelor's Thesis
+    "timeline.bachelor.thesis.title": "Bachelor's Thesis: Graph database for Circuit neuroscience – frontend, editor tool",
+    "timeline.bachelor.thesis.collaboration": "In collaboration with the Central Institute for Mental Health, Mannheim",
+    "timeline.bachelor.thesis.supervisors": "Supervisors: Jun.-Prof. Dr. Panagiotis Bouros and Dr. Shimpei Ishiyama",
+    "timeline.bachelor.thesis.grade": "Grade: 1.0 (Excellent)",
+    "timeline.bachelor.thesis.point1": "Developed a semi-automated, end-to-end, cloud-based pipeline integrating NLP into a web editor to transform neuroscience publications into interactive knowledge graphs.",
+    "timeline.bachelor.thesis.point2": "Designed an intuitive UI/UX guiding neuroscientists from PDF upload and entity curation to interactive graph visualization and editing.",
+    "timeline.bachelor.thesis.point3": "Implemented a user-specific project system with secure authentication, cloud storage, and version control for data integrity and multi-user support.",
+    "timeline.viewThesis": "View Thesis",
+
+    // EIT Health
+    "timeline.eithealth.description": "Internship focusing on data management, data quality and analytical enablement within a European healthcare innovation environment.",
+    "timeline.eithealth.task.pipelines": "Develop data pipelines & APIs to enable data exchange",
+    "timeline.eithealth.task.dataQuality": "Analyze data quality issues & implement standardization",
+    "timeline.eithealth.task.dashboards": "Create and maintain dashboards for critical insights",
+    "timeline.eithealth.task.documentation": "Produce and maintain technical documentation",
+    "timeline.eithealth.task.troubleshooting": "Support Data Engineers with troubleshooting & PoCs",
   },
   de: {
     // Navbar
@@ -251,13 +270,13 @@ const translations: { [lang: string]: TranslationDict } = {
     // Hero section
     "hero.title": "Daten in Erkenntnisse umwandeln",
     "hero.description":
-      "Ich bin ein motivierter Informatikstudent an der Johannes Gutenberg-Universität Mainz, \
-       spezialisiert auf Data Science mit Nebenfach Wirtschaftswissenschaften. Mit einem starken \
-        Notendurchschnitt von 1,9 bin ich leidenschaftlich daran interessiert, aussagekräftige Erkenntnisse \
-         aus Daten zu gewinnen und innovative Lösungen zu entwickeln.",
+      "Ich bin ein motivierter Absolvent der Informatik an der Johannes Gutenberg-Universität Mainz, \
+       spezialisiert auf Data Science mit Nebenfach Wirtschaftswissenschaften. Ich habe mit einer Gesamtnote von 1,8 \
+       und einer ausgezeichneten Bachelorarbeit (Note 1,0) abgeschlossen. Ich brenne dafür, aussagekräftige Erkenntnisse \
+       aus Daten zu gewinnen und innovative Lösungen zu entwickeln.",
     "hero.viewProjects": "Projekte ansehen",
     "hero.downloadCV": "Lebenslauf herunterladen",
-    "hero.role": "Data Science Student",
+    "hero.role": "Data Science Absolvent",
     "hero.location": "Mainz, Deutschland",
 
     "projects.date": "Datum",
@@ -445,7 +464,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Footer
     "footer.rights": "Alle Rechte vorbehalten.",
     "footer.disclaimer": "Logos und Marken auf dieser Seite dienen nur zu Illustrations- und Bildungszwecken.\
-     Alle Rechte liegen bei den jeweiligen Eigentümern (JGU Mainz, Viet Duc Oberschule, DataCamp, Google, AWS).",
+     Alle Rechte liegen bei den jeweiligen Eigentümern (EIT Health, JGU Mainz, Viet Duc Oberschule, DataCamp, Google, AWS).",
 
     // Timeline additional entries
     "timeline.fsp.description": "Vorbereitungsstudium für die Hochschulzulassung und Sprachvorbereitung.",
@@ -458,6 +477,24 @@ const translations: { [lang: string]: TranslationDict } = {
     "DSD-I Certificate": "DSD-I Zertifikat",
     "University Entrance Exam Results": "Hochschulaufnahmeprüfung",
     "Transcript of Records in High School": "Notenübersicht (Oberschule)",
+
+    // Bachelor's Thesis
+    "timeline.bachelor.thesis.title": "Bachelorarbeit: Graphdatenbank für Circuit Neuroscience – Frontend, Editor-Tool",
+    "timeline.bachelor.thesis.collaboration": "In Zusammenarbeit mit dem Zentralinstitut für Seelische Gesundheit, Mannheim",
+    "timeline.bachelor.thesis.supervisors": "Betreuer: Jun.-Prof. Dr. Panagiotis Bouros und Dr. Shimpei Ishiyama",
+    "timeline.bachelor.thesis.grade": "Note: 1,0 (Exzellent)",
+    "timeline.bachelor.thesis.point1": "Entwicklung einer halbautomatisierten, durchgängigen Cloud-Pipeline, die NLP in ein webbasiertes Editor-Tool integriert, um neurowissenschaftliche Publikationen in interaktive Wissensgraphen zu überführen.",
+    "timeline.bachelor.thesis.point2": "Entwurf eines intuitiven UI/UX, das Forschende vom PDF-Upload und der Entitätskuratierung bis zur interaktiven Graphvisualisierung und -bearbeitung führt.",
+    "timeline.bachelor.thesis.point3": "Implementierung eines nutzerspezifischen Projektmanagementsystems mit sicherer Authentifizierung, Cloud-Speicherung und Versionskontrolle für Datenintegrität und Multi-User-Unterstützung.",
+    "timeline.viewThesis": "Thesis ansehen",
+
+    // EIT Health
+    "timeline.eithealth.description": "Praktikum mit Fokus auf Datenmanagement, Datenqualität und analytische Unterstützung in einem europäischen Gesundheitsinnovationsumfeld.",
+    "timeline.eithealth.task.pipelines": "Entwicklung von Datenpipelines & APIs für Datenaustausch",
+    "timeline.eithealth.task.dataQuality": "Analyse von Datenqualitätsproblemen & Standardisierung",
+    "timeline.eithealth.task.dashboards": "Erstellung und Pflege von Dashboards für kritische Insights",
+    "timeline.eithealth.task.documentation": "Erstellung und Pflege technischer Dokumentation",
+    "timeline.eithealth.task.troubleshooting": "Unterstützung der Data Engineers bei Troubleshooting & PoCs",
   },
   vi: {
     // Navbar
@@ -475,12 +512,13 @@ const translations: { [lang: string]: TranslationDict } = {
     // Hero section
     "hero.title": "Chuyển đổi dữ liệu thành thông tin hữu ích",
     "hero.description":
-      "Tôi là một sinh viên Khoa học Máy tính đầy nhiệt huyết tại Đại học Johannes Gutenberg-Universität Mainz, \
-      chuyên ngành Khoa học Dữ liệu với chuyên ngành phụ là Kinh tế học. Với điểm trung bình cao 1.9 theo thang điểm Đức, tôi đam mê trích xuất \
-      thông tin có ý nghĩa từ dữ liệu và phát triển các giải pháp sáng tạo.",
+      "Tôi là một cử nhân Khoa học Máy tính tại Đại học Johannes Gutenberg-Universität Mainz, \
+      chuyên ngành Khoa học Dữ liệu với chuyên ngành phụ Kinh tế học. Tôi tốt nghiệp với điểm tổng kết 1.8 \
+      và khóa luận tốt nghiệp xuất sắc đạt 1.0. Tôi đam mê trích xuất thông tin có ý nghĩa từ dữ liệu \
+      và phát triển các giải pháp sáng tạo.",
     "hero.viewProjects": "Xem dự án",
     "hero.downloadCV": "Tải CV",
-    "hero.role": "Sinh viên Khoa học Dữ liệu",
+    "hero.role": "Cử nhân Khoa học Dữ liệu",
     "hero.location": "Mainz, Đức",
 
     // About section
@@ -665,7 +703,7 @@ const translations: { [lang: string]: TranslationDict } = {
     // Footer
     "footer.rights": "Tất cả các quyền được bảo lưu.",
     "footer.disclaimer": "Logo và thương hiệu trên trang này chỉ dùng cho mục đích minh họa/giáo dục.\
-     Mọi quyền thuộc về chủ sở hữu tương ứng (JGU Mainz, THPT Việt Đức, DataCamp, Google, AWS).",
+     Mọi quyền thuộc về chủ sở hữu tương ứng (EIT Health, JGU Mainz, THPT Việt Đức, DataCamp, Google, AWS).",
 
     // Timeline additional entries
     "timeline.fsp.description": "Học dự bị đại học và chuẩn bị ngôn ngữ.",
@@ -678,6 +716,24 @@ const translations: { [lang: string]: TranslationDict } = {
     "DSD-I Certificate": "Chứng chỉ DSD-I",
     "University Entrance Exam Results": "Kết quả thi đại học",
     "Transcript of Records in High School": "Học Bạ THPT",
+
+    // Bachelor's Thesis
+    "timeline.bachelor.thesis.title": "Khóa luận: Cơ sở dữ liệu đồ thị cho Circuit Neuroscience – frontend, công cụ biên tập",
+    "timeline.bachelor.thesis.collaboration": "Hợp tác với Viện Sức khỏe Tâm thần Trung ương Mannheim",
+    "timeline.bachelor.thesis.supervisors": "Hướng dẫn: Jun.-Prof. Dr. Panagiotis Bouros và Dr. Shimpei Ishiyama",
+    "timeline.bachelor.thesis.grade": "Điểm: 1.0 (Xuất sắc)",
+    "timeline.bachelor.thesis.point1": "Phát triển pipeline bán tự động end-to-end trên nền tảng đám mây tích hợp NLP vào công cụ biên tập web để chuyển đổi bài báo thần kinh học thành đồ thị tri thức tương tác.",
+    "timeline.bachelor.thesis.point2": "Thiết kế UI/UX trực quan dẫn dắt nhà nghiên cứu từ tải PDF, chuẩn hóa thực thể đến trực quan hóa và chỉnh sửa đồ thị.",
+    "timeline.bachelor.thesis.point3": "Triển khai hệ thống quản lý dự án theo người dùng với xác thực bảo mật, lưu trữ đám mây và kiểm soát phiên bản đảm bảo toàn vẹn dữ liệu và hỗ trợ nhiều người dùng.",
+    "timeline.viewThesis": "Xem khóa luận",
+
+    // EIT Health
+    "timeline.eithealth.description": "Thực tập tập trung vào quản lý dữ liệu, chất lượng dữ liệu và hỗ trợ phân tích trong môi trường đổi mới y tế châu Âu.",
+    "timeline.eithealth.task.pipelines": "Phát triển pipeline & API để trao đổi dữ liệu",
+    "timeline.eithealth.task.dataQuality": "Phân tích vấn đề chất lượng dữ liệu & chuẩn hóa",
+    "timeline.eithealth.task.dashboards": "Tạo và duy trì dashboard cung cấp thông tin quan trọng",
+    "timeline.eithealth.task.documentation": "Soạn và duy trì tài liệu kỹ thuật",
+    "timeline.eithealth.task.troubleshooting": "Hỗ trợ Data Engineer xử lý sự cố & phát triển PoC",
   },
 }
 

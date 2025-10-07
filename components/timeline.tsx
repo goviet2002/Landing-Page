@@ -22,14 +22,23 @@ interface TimelineItem {
   details?: {
     focus?: string[]
     projects?: string[]
+    thesis?: string[]
     keySkills?: string[]
+    bullets?: string[]
   }
   certificate?: { name: string; url: string } | null
+  thesisPdf?: {
+    buttonLabelKey?: string
+    modalTitle?: string
+    url: string
+    type?: string
+  }
   extraCertificates?: Array<{
     name: string
     url: string
   }>
   logo?: string
+  logoFit?: "cover" | "contain"
   hasDetailedView?: boolean
   showCourses?: boolean
   courses?: Array<{
@@ -86,12 +95,16 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
               >
                 <div className="flex items-start gap-3">
                   {item.logo && (
-                    <div className="w-16 h-10 sm:w-12 sm:h-12 bg-white rounded-lg border border-cyan-500/30 overflow-hidden relative">
+                    <div className="w-16 h-10 sm:w-12 sm:h-12 bg-white rounded-lg border border-cyan-500/30 overflow-hidden relative flex items-center justify-center">
                       <Image
                         src={item.logo || "/placeholder.svg"}
-                        alt={item.institution || ""}
+                        alt={item.institution || item.title}
                         fill
-                        className="object-cover"
+                        className={
+                          item.logoFit === "contain"
+                            ? "object-contain p-1"
+                            : "object-cover"
+                        }
                         sizes="48px"
                       />
                     </div>
@@ -168,6 +181,38 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                         )}
                       </div>
 
+                      {item.details.thesis && item.details.thesis.length > 0 && (
+                        <div className="mt-4">
+                          <h4 className="text-white font-medium mb-2">{t("timeline.bachelor.thesis.title")}</h4>
+                          <ul className="space-y-1 text-gray-300">
+                            {item.details.thesis.map((th, idx) => (
+                              <li key={idx} className="flex items-start">
+                                <div className="w-1.5 flex-shrink-0 mt-2 h-1.5 rounded-full bg-cyan-400 mr-2"></div>
+                                <span>{t(th)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {item.details.bullets && item.details.bullets.length > 0 && (
+                        <div className="mt-4">
+                          <ul className="space-y-2">
+                            {item.details.bullets.map((k, i) => (
+                              <li
+                                key={i}
+                                className="relative rounded-md bg-[#0f172a]/60 border border-cyan-500/15 pl-4 py-2 pr-3 text-sm text-gray-300
+                                           before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1
+                                           before:bg-gradient-to-b before:from-cyan-400 before:to-blue-500
+                                           hover:border-cyan-500/50 hover:bg-cyan-500/10 hover:text-cyan-200 transition-colors"
+                              >
+                                {t(k)}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
                       {item.details.keySkills && item.details.keySkills.length > 0 && (
                         <div className="mt-4">
                           <h4 className="text-white font-medium mb-2">{t("timeline.keySkills")}</h4>
@@ -179,12 +224,11 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                             ))}
                           </div>
                         </div>
-                      )}
+                      )}                   
                     </div>
                   )}
 
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {/* For Feststellungsprüfung: show the translated certificate name */}
                     {item.certificate && (
                       <Button
                         variant="outline"
@@ -200,7 +244,6 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                       </Button>
                     )}
 
-                    {/* For Bachelor: show "View Courses" */}
                     {item.showCourses && item.courses && (
                       <Button
                         variant="outline"
@@ -208,9 +251,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                         className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
                         onClick={e => {
                           e.stopPropagation()
-                          if (onViewCourses) {
-                            onViewCourses(item.courses!)
-                          }
+                          onViewCourses?.(item.courses!)
                         }}
                       >
                         <ExternalLink className="h-3 w-3 mr-1" />
@@ -218,8 +259,27 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                       </Button>
                     )}
 
-                    {/* For extra certificates: show buttons for each certificate, translated */}
-                    {item.extraCertificates && item.extraCertificates.map((cert: { name: string; url: string }, idx: number) => (
+                    {item.thesisPdf && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-xs border-cyan-500/30 text-cyan-300 bg-[#0f172a] hover:bg-[#172033] hover:text-cyan-200"
+                        onClick={e => {
+                          e.stopPropagation()
+                          onViewCertificate(
+                            item.thesisPdf!.modalTitle || (item.thesisPdf!.buttonLabelKey ? t(item.thesisPdf!.buttonLabelKey) : "Thesis"),
+                            item.thesisPdf!.url
+                          )
+                        }}
+                      >
+                        <FileText className="h-3 w-3 mr-1" />
+                        {item.thesisPdf.buttonLabelKey
+                          ? t(item.thesisPdf.buttonLabelKey)
+                          : item.thesisPdf.modalTitle || "Thesis"}
+                      </Button>
+                    )}
+
+                    {item.extraCertificates && item.extraCertificates.map((cert, idx) => (
                       <Button
                         key={idx}
                         variant="outline"

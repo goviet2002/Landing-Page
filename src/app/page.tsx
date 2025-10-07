@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -40,12 +39,10 @@ import TypingEffect from "@/components/typing-effect"
 import Timeline from "@/components/timeline"
 import TestimonialCard from "@/components/testimonial-card"
 import ProjectFilter from "@/components/project-filter"
-import SimplePDFViewer from "@/components/simple-pdf-viewer"
-import ContactForm from "@/components/contact-form" // 1. Import the new component
+import ContactForm from "@/components/contact-form"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import CoursesOnlyModal from "@/components/courses-modal"
 
-// Sample project data with code and demo images
 const projectsData = [
     {
     title: "projects.f1etl.title",
@@ -111,15 +108,42 @@ const projectsData = [
 
 // Sample timeline data with education details
 const timelineData = [
+    {
+    period: "Nov 2025 - Apr 2026",
+    title: "EIT Health",
+    degree: "Intern - Data Management",
+    description: "timeline.eithealth.description",
+    icon: <GraduationCap className="h-4 w-4" />,
+    logo: "images/eit-health-logo.jpg",
+    logoFit: "contain",
+    hasDetailedView: false,
+    showCourses: false,
+    details: {
+      bullets: [
+        "timeline.eithealth.task.pipelines",
+        "timeline.eithealth.task.dataQuality",
+        "timeline.eithealth.task.dashboards",
+        "timeline.eithealth.task.documentation",
+        "timeline.eithealth.task.troubleshooting"
+      ],
+      keySkills: ["Data Pipelines", "APIs", "ETL", "Data Quality", "Dashboards", "SQL", "Python"]
+    }
+  },
   {
-    year: "2022 - now",
-    title: "Johannes Gutenberg-Universität Mainz",
-    degree: "Bachelor of Science, Informatik",
+    year: "Apr 2022 - Oct 2025",
+    title: "Johannes Gutenberg University Mainz",
+    degree: "Bachelor of Science, Computer Science",
     description: "timeline.bachelor.description",
     icon: <GraduationCap className="h-4 w-4" />,
-    grade: "1.9 (preliminary)",
+    grade: "1.8",
     logo: "images/jgu.png",
-    period: "2022 - now",
+    period: "Apr 2022 - Oct 2025",
+    thesisPdf: {
+      buttonLabelKey: "timeline.viewThesis",
+      modalTitle: "Graph database for Circuit neuroscience - frontend editor tool",
+      url: "/documents/Bachelorthesis.pdf",
+      type: "pdf",
+    },
     details: {
       focus: [
         "timeline.focus.major",
@@ -130,6 +154,16 @@ const timelineData = [
         "timeline.projects.database",
         "timeline.projects.software",
         "timeline.projects.bigData"
+      ],
+      thesis: [
+        "timeline.bachelor.thesis.collaboration",
+        "timeline.bachelor.thesis.supervisors",
+        "timeline.bachelor.thesis.grade"
+      ],
+      bullets: [
+        "timeline.bachelor.thesis.point1",
+        "timeline.bachelor.thesis.point2",
+        "timeline.bachelor.thesis.point3"
       ],
       keySkills: ["Python", "SQL", "Data Management", "Machine Learning", "Big Data", "Web Development"],
     },
@@ -189,7 +223,7 @@ const timelineData = [
   },
   {
     year: "2021",
-    title: "Johannes Gutenberg-Universität Mainz",
+    title: "Johannes Gutenberg University Mainz",
     degree: "Feststellungsprüfung, College/University Preparatory",
     description: "timeline.fsp.description",
     icon: <GraduationCap className="h-4 w-4" />,
@@ -197,7 +231,7 @@ const timelineData = [
     logo: "images/jgu.png",
     period: "Feb 2021 - Dec 2021",
     details: {
-      keySkills: ["Deutsch", "Informatik", "Mathematik", "Physik", "Chemie"],
+      keySkills: ["Deutsch", "Computer Science", "Mathematics", "Physics", "Chemistry"],
     },
     hasDetailedView: false,
     showCourses: false,
@@ -371,6 +405,7 @@ export default function Home() {
   const [isCoursesModalOpen, setIsCoursesModalOpen] = useState(false)
   const [coursesForModal, setCoursesForModal] = useState<any[]>([])
   const [pdfModalTitle, setPdfModalTitle] = useState("FSP Zeugnis")
+  const [pdfShowNavPane, setPdfShowNavPane] = useState(false)   // <-- add
 
   // Extract unique categories from projects
   // const projectCategories = Array.from(new Set(projectsData.map((project) => project.category)))
@@ -406,9 +441,21 @@ export default function Home() {
   }
 
   const handleViewCertificate = (title: string, url: string, type?: "pdf" | "image") => {
+    const resolvedType = type || (url.toLowerCase().endsWith(".pdf") ? "pdf" : "image")
+
+    if (resolvedType === "pdf") {
+      const isThesis = /Bachelorthesis\.pdf$/i.test(url) || /viewThesis/i.test(title)
+      setPdfShowNavPane(isThesis)
+      setCertificateTitle(title)
+      setCertificateUrl(url.split("#")[0])
+      setPdfModalTitle(title)
+      setShowPdfViewer(true)
+      setIsCertificateViewerOpen(false)
+      return
+    }
+    setCertificateTitle(title)
     setCertificateUrl(url)
-    setPdfModalTitle(title) // set the modal title
-    setCertificateType(type || "pdf")
+    setCertificateType("image")
     setIsCertificateViewerOpen(true)
   }
 
@@ -1016,15 +1063,20 @@ export default function Home() {
               <FileText className="h-5 w-5 mr-2" />
               {pdfModalTitle}
             </h3>
-            {/* The DialogContent already includes an X close button in the top-right corner */}
           </div>
           <div className="h-[calc(90vh-60px)]">
             <iframe
-              src={`${certificateUrl}#toolbar=0`}
+              src={
+                certificateUrl.includes("#")
+                  ? certificateUrl
+                  : pdfShowNavPane
+                    ? `${certificateUrl}#pagemode=thumbs`
+                    : `${certificateUrl}#toolbar=0&navpanes=0&scrollbar=0`
+              }
               width="100%"
               height="100%"
               style={{ maxHeight: "calc(93% - 8px)", border: "none" }}
-              title="FSP Zeugnis"
+              title={pdfModalTitle}
             />
           </div>
         </DialogContent>
