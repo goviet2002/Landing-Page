@@ -94,7 +94,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                 onClick={() => toggleExpand(index)}
               >
                 <div className="flex items-start gap-3">
-                  {item.logo && (
+                  {/* {item.logo && (
                     <div className="w-16 h-10 sm:w-12 sm:h-12 bg-white rounded-lg border border-cyan-500/30 overflow-hidden relative flex items-center justify-center">
                       <Image
                         src={item.logo || "/placeholder.svg"}
@@ -108,7 +108,7 @@ const Timeline = ({ items, onViewCertificate, onViewDetailedInfo, onViewCourses 
                         sizes="48px"
                       />
                     </div>
-                  )}
+                  )} */}
                   <div>
                     <h3 className="text-lg font-semibold text-white">{t(item.title)}</h3>
                     {item.degree && <p className="text-cyan-400">{item.degree}</p>}

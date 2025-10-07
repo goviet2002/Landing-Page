@@ -113,7 +113,7 @@ const timelineData = [
     title: "EIT Health",
     degree: "Intern - Data Management",
     description: "timeline.eithealth.description",
-    icon: <GraduationCap className="h-4 w-4" />,
+    icon: <Briefcase className="h-4 w-4" />,
     logo: "images/eit-health-logo.jpg",
     logoFit: "contain",
     hasDetailedView: false,
