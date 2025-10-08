@@ -1026,9 +1026,9 @@ export default function Home() {
           <p className="text-gray-400">
             © {new Date().getFullYear()} Anh Viet Ngo. {t("footer.rights")}
           </p>
-          <p className="text-xs text-gray-500 mt-2">
+          {/* <p className="text-xs text-gray-500 mt-2">
             {t("footer.disclaimer")}
-          </p>
+          </p> */}
         </div>
       </footer>
 
